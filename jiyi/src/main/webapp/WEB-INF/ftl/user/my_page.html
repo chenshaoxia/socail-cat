@@ -1,0 +1,81 @@
+ <#assign ctx=request.contextPath />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>用户中心</title>
+<link rel="stylesheet" href="${ctx}/styles/reset.css">
+<link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
+<link rel="stylesheet" href="${ctx}/styles/shared.css">
+<link rel="stylesheet" href="${ctx}/styles/user.css">
+<script src="${ctx}/lib/jquery.min.js"></script>
+<script src="${ctx}/js/index.js"></script>
+</head>
+<body>
+	<header> <#include "../module/common/header.html"> </header>
+
+
+	<div class="user-header-wrapper">
+
+		<div class="user-header"></div>
+
+		<div class="user-header-content">
+			<div class="user-header-inner">
+				<div class="user-header-left">
+					<img class="user-header-head" src="${ctx}/${user.picture}" />
+					<h5 class="user-header-title">${user.name}</h5>
+					<span class="user-header-description">这个人很懒，什么都没说</span>
+				</div>
+				<!--user-header-left-->
+				<div class="user-header-right">
+					<div>
+						<span>发帖</span> <span>信用</span> <span>喵币</span>
+					</div>
+					<div>
+						<span>${user.releaseNum+user.rewardNum}</span> <span>${user.credit}</span>
+						<span>${user.wealth}</span>
+					</div>
+					<button>我要发帖</button>
+				</div>
+				<!--user-header-right-->
+			</div>
+			<!--user-header-inner-->
+			<div class="user-header-nav">
+				<a href="myReleaseSkills">我的技能</a> <a href="#">我的悬赏</a> <a
+					href="myRewardSkills">正在学习</a> <a href="myInfo">个人资料</a> <a
+					href="user-appeal.html">我要申诉</a>
+			</div>
+			<!--user-header-nav-->
+		</div>
+		<!--user-header-content-->
+
+		<div class="user-content">
+			<div class="user-nav">
+				<a href="#" style="color: white; background-color: #f07f7f">全部</a> <a
+					href="#">已过审</a> <a href="#">待审核</a> <a href="#">未过审</a> <a
+					href="#">已完成</a> <a href="#">退订中</a> <a href="#">被投诉</a> <a
+					href="#">草稿</a>
+			</div>
+			<div class="user-post">
+				<#list releaseList as skill>
+				<div class="user-post-item">
+					<img src="images/background-index.jpg" />
+					<div class="user-post-wrapper">
+						<div class="user-post-top">
+							<span class="user-post-title">${skill.rsTitle}</span> <span
+								class="user-post-category">${skill.rsCategory}</span> <span
+								class="user-post-logo">${skill.getRsStatusEnum()}</span> <i
+								class="fa fa-thumbs-o-up user-post-like">11</i>
+						</div>
+						<div class="user-post-bottom">
+							<span>${skill.rsCreateTime}</span> <span>15:14</span> <i
+								class="fa fa-edit"></i> <i class="fa fa-share"></i>
+						</div>
+					</div>
+				</div>
+				</#list>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

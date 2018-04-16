@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chendi.jiyi.dao.ReplyDAO">
+	<!-- 目的:为dao接口方法提供sql语句配置 -->
+	<insert id="addReply" parameterType="Reply">
+		insert into reply (r_id,c_id,u_id,r_reply_target,r_details,r_create_time)
+		values(#{rId},#{cId},#{uId},#{rReplyTarget},#{rDetails},#{rCreateTime})
+	</insert>
+
+	<select id="queryByComment" resultType="Reply" parameterType="int">
+		select r_id,c_id,u_id,r_reply_target,r_details,r_create_time,r_praise
+		from reply
+		where c_id=#{cId}
+	</select>
+
+	<update id="praiseByReplyId" parameterType="int">
+		update reply 
+		set r_praise=r_praise+1
+		where r_id=#{rId}
+	</update>
+	
+	<delete id="deleteByReplyId" parameterType="int">
+		delete from reply
+		where c_id=#{cId}
+	</delete>
+</mapper>

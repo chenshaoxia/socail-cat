@@ -1,0 +1,294 @@
+/*************技能贴************/
+/* 总体设置 */
+#release_skills {
+    background-image: url("../img/release_skills.jpg");
+    background-size: cover;
+}
+#release_offer {
+    background-image: url("../img/release_offer.jpg");
+    background-size: cover;
+}
+#release_skill_content, #release_offer_content {
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Title部分 */
+.release_title {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+/* Search部分 */
+.release_nav {
+    text-align: center;
+}
+.release_search_head {
+    font-weight: 600;
+}
+/* 不小心使用了全局样式 */
+.release_nav a,.release_nav span{
+    font-size: 14px;
+    color: rgb(100, 100, 100);
+    font-weight: 500;
+}
+.release_nav a:hover{
+    color: rgb(77, 177, 186);
+}
+.release_filter span {
+    color: rgb(100, 100, 100);
+}
+
+/* Content部分 */
+.background_depart {
+    background-color: rgb(238, 240, 242);
+}
+.release_item {
+    border: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+/* 侧边栏部分 */
+.release_hot, .contact_us {
+    color: grey;
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    background-color: rgba(200, 200, 200, 0.1);
+}
+.contact_us_ad {
+    color: grey;
+    background-color: #eee;
+    font-size: 14px;
+}
+.release_hot a {
+    font-size: 14px;
+}
+.release_hot_head {
+    font-size: 20px;
+}
+.release_hot_head i {
+    color: #ff7d85;
+}
+.contact_us i {
+    color: #6ce4ff;
+}
+.contact_us_message span {
+    font-size: 14px;
+}
+.contact_us_message i {
+    color: rgb(80, 80, 80);
+}
+.release_hot a{
+    color: rgb(80, 80, 80);
+}
+
+/************** detail *******************/
+#detail {
+    background-image: url("../img/detail.jpg");
+    background-size: cover;
+}
+.detail_truename {
+    font-size: 12px;
+    /*color: white;*/
+    background-color: rgba(100, 100, 100, 0.3);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 2px 8px;
+}
+.detail_ready {
+    background-color: rgba(100, 200, 100, 0.3);
+}
+.detail_verifier {
+    font-size: 14px;
+    background-color: #abcfd0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    position: absolute;
+    top: -2px;
+    right:-2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+#detail_head {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid transparent;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+/* head left */
+.detail_pic {
+    background-color: rgba(100, 100, 200, 0.2);
+    border-radius: 10px;
+    /*color: white;*/
+    color: rgb(80, 80, 80);
+    height: 260px;
+}
+.detail_pic_offer {
+    /*background-color: rgba(103, 174, 255, 0.5);*/
+    background-color: rgba(100, 100, 200, 0.2);
+    border-radius: 10px;
+    /*color: white;*/
+    color: rgb(80, 80, 80);
+    height: 200px;
+}
+.detail_pic span {
+    font-size: 14px;
+}
+.detail_pic_offer span {
+    font-size: 14px;
+}
+/* detail_central */
+.detail_price {
+    font-size: 14px;
+    color: rgb(80, 80, 80);
+}
+.detail_buy a{
+    font-size: 14px;
+    color: rgb(80, 80, 80);
+}
+.detail_buy a:hover{
+    text-decoration: underline;
+}
+/* detail_right */
+.detail_user {
+    font-size: 14px;
+    color:white;
+}
+.detail_detail {
+    height: 150px;
+    font-size: 14px;
+    text-indent: 2em;
+}
+.detail_detail_offer {
+    height: 80px;
+    font-size: 14px;
+    text-indent: 2em;
+}
+.detail_more {
+    font-size: 14px;
+    color: rgb(80, 80, 80);
+    margin-top: 8px;
+}
+.detail_pic_more {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(200, 200, 200, 0.3);
+    margin: 5px;
+}
+.detail_user {
+    background-color: rgba(100, 100, 200, 0.2);
+    border-radius: 10px;
+    text-align: left;
+}
+.detail_user span {
+    color: rgb(80, 80, 80);
+}
+.detail_user a {
+    color: rgb(80, 80, 80);
+}
+.detail_user_pic {
+    border: 1px solid transparent;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    margin:0 auto;
+}
+
+/* detail_comment */
+#detail_comment {
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.notice_comment_nav a {
+    color: black;
+}
+.detail_comment_detail {
+    font-size: 15px;
+}
+.detail_comment_more {
+    font-size: 14px;
+    color: rgb(100, 100, 100);
+}
+.notice_want_comment {
+    font-size: 14px;
+    position: relative;
+    bottom: 16px;
+}
+.detail_leaveword_img {
+    position: relative;
+    top: 15px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 3px solid #e9efe6;
+}
+/* 聊天气泡效果 */
+.bubble{
+    max-width: 655px;
+    position: relative;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 7px;
+    margin-top: 15px;
+    padding-right: 10px;
+    display: inline-block;
+}
+.leftBubble{
+    position: relative;
+    margin-left: 25px;
+    border: 1px solid #00b6b6;
+    background-color: #f8fdfc;
+}
+.leftBubble .bottomLevel{
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    border-top: 10px solid #00b6b6;
+    border-left: 10px solid transparent;
+}
+.leftBubble .topLevel{
+    position: absolute;
+    top: 11px;
+    left: -8px;
+    border-top: 10px solid #f8fdfc;
+    border-left: 10px solid transparent;
+    z-index: 100;
+}
+.rightBubble{
+    position: relative;
+    margin-right: 25px;
+    float: right;
+    border: 1px solid #aaa;
+}
+.rightBubble .bottomLevel{
+    position: absolute;
+    bottom: 11px;
+    right: -10px;
+    border-bottom: 10px solid #aaa;
+    border-right: 10px solid transparent;
+}
+.rightBubble .topLevel{
+    position: absolute;
+    bottom: 12px;
+    right: -8px;
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid transparent;
+    z-index: 100;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}

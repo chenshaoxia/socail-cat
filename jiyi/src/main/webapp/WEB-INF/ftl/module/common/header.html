@@ -1,0 +1,28 @@
+ <#assign ctx=request.contextPath />
+<div class="header-container">
+	<img class="header-logo" src="${ctx}/images/logo.png" height="66"
+		width="158" />
+	<div class="header-nav">
+		<a href="${ctx}/v1/index">主页</a> <a href="${ctx}/v1/skills/releaseSkills">技能贴</a>
+		<a href="${ctx}/v1/skills/rewardSkills">悬赏贴</a>
+	</div>
+	<div class="header-search">
+		<input type="search" placeholder="search" /> <i class="fa fa-search"></i>
+	</div>
+	<#if Session.user??>
+	<div class="header-uesr">
+		<a href="${ctx}/v1/messages/letters"><i class="fa fa-bell-o header-info-bell"><span class="header-info-count">11</span></i></a> 
+		<a href="${ctx}/v1/users/myPage">
+			<img class="header-head" src="${ctx}/${Session.user.picture}" />
+		</a>
+	</div>
+	<div class="header-post">
+		<a href="${ctx}/v1/skills/releaseSkills/creation"><i class="fa fa-send fa-3x"></i></a>
+		<!--<span>鍙戝笘</span>-->
+	</div>
+	<#else>
+	<div class="header-uesr">
+		 <a href="${ctx}/v1/sessions/creation" class="header-login">登录</a>&nbsp;<a href="${ctx}/v1/users/creation" class="header-login">注册</a>
+	</div>
+	</#if>
+</div>

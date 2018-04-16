@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chendi.jiyi.dao.RewardAccepterDAO">
+	<!-- 目的:为dao接口方法提供sql语句配置 -->
+	<insert id="addAccepter" keyProperty="nId"
+		useGeneratedKeys="true"  parameterType="RewardAccepter">
+		insert into reward_accepter (rs_id,accepter_id,ra_create_time)
+		values(#{rsId},#{accepterId},#{raCreateTime})
+	</insert>
+
+	<select id="queryByFkId" resultType="RewardAccepter" parameterType="int">
+		select ra_id,rs_id,accepter_id,ra_create_time
+		from reward_accepter
+		where rs_id=#{rsId}
+	</select>
+
+	<!-- <update id="updateById" parameterType="Notice">
+		update notice
+		set n_title=#{nTitle},n_details=#{nDetails},n_publisher=#{nPublisher},
+			n_create_time=#{nCreateTime},n_is_top=#{nIsTop}
+		where n_id=#{nId}
+	</update> -->
+	
+	<delete id="deleteAccepter" parameterType="int">
+		delete from reward_accepter
+		where rs_id=#{rsId} and accepter_id=#{accepterId}
+	</delete>
+</mapper>

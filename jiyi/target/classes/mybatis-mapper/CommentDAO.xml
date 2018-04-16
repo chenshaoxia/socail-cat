@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chendi.jiyi.dao.CommentDAO">
+	<resultMap type="Comment" id="CommentMap">
+		<id property="cId" column="c_id" />
+		<result property="fkId" column="fk_id"/>
+		<result property="fkType" column="fk_type" />
+		<result property="cDetails" column="c_details" />
+		<result property="cCreateTime" column="c_create_time" />
+		<result property="cPraise" column="c_praise" />
+		<association property="cUser" column="u_id"
+			select="com.chendi.jiyi.dao.UserDAO.queryName" />
+		<collection property="replyList" ofType="Reply" column="c_id"
+			select="com.chendi.jiyi.dao.ReplyDAO.queryByComment"/>
+	</resultMap>
+	<!-- 目的:为dao接口方法提供sql语句配置 -->
+	<insert id="addComment" parameterType="Comment">
+		insert into comment (c_id,fk_id,fk_type,u_id,c_details,c_create_time)
+		values(#{cId},#{fkId},#{fkType},#{cUser.id},#{cDetails},#{cCreateTime})
+	</insert>
+
+	<select id="queryRelease" resultType="Comment" parameterType="int">
+		select c_id,fk_id,fk_type,u_id,c_details,c_create_time,c_praise
+		from comment
+		where fk_type=3 and fk_id=#{fkId}
+	</select>
+
+	<select id="queryByFk" resultMap="CommentMap" parameterType="int">
+		select c_id,fk_id,fk_type,u_id,c_details,c_create_time,c_praise
+		from comment
+		where fk_id=#{fkId} and fk_type=#{fkType}
+	</select>
+
+	<update id="praiseByCommentId" parameterType="int">
+		update comment 
+		set c_praise=c_praise+1
+		where c_id=#{cId}
+	</update>
+	
+	<delete id="deleteByCommentId" parameterType="int">
+		delete from comment
+		where c_id=#{cId}
+	</delete>
+</mapper>

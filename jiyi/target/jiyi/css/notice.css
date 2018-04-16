@@ -1,0 +1,130 @@
+#notice {
+    background-image: url("../img/notice_detail.jpg");
+}
+
+#notice_main {
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* 侧边栏 */
+.notice_hot, .notice_contact_us {
+    color: grey;
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.notice_hot a {
+    font-size: 14px;
+}
+
+.notice_contact_us i {
+    color: #6ce4ff;
+}
+
+.contact_us_message span {
+    font-size: 14px;
+}
+
+.contact_us_message i {
+    color: rgb(80, 80, 80);
+}
+
+.notice_hot a {
+    color: rgb(80, 80, 80);
+}
+
+/* 侧边栏 */
+
+.notice_plate_nav {
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 14px;
+}
+
+.notice_plate_nav_inner {
+    background-color: rgba(255, 255, 255, 0);
+    /*-webkit-border-radius: 5px;*/
+    /*-moz-border-radius: 5px;*/
+    /*border-radius: 5px;*/
+}
+
+.notice_plate_sub {
+    font-size: 14px;
+}
+
+.notice_plate_content {
+    background-color: white;
+}
+
+.notice_content {
+    font-size: 15px;
+    text-indent: 2em;
+}
+
+.notice_plate_more {
+    background-color: white;
+}
+
+/*notice_comment*/
+.notice_plate_content {
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.notice_comment_floor_pic {
+    border-radius: 30px;
+}
+
+.notice_comment_floor {
+    font-size: 14px;
+}
+
+.notice_comment_floor span {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.notice_comment_floor_header a {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 600;
+    color: rgb(80, 80, 80);
+}
+
+.notice_comment_floor_header a:hover {
+    color: rgb(80, 80, 80);
+}
+
+.notice_comment_floor_content {
+    font-size: 14px;
+}
+
+.notice_comment_floor_footer span {
+    font-size: 12px;
+    color: rgb(160, 160, 160);
+}
+
+.notice_comment_floor_header_sub a {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(80, 80, 80);
+}
+
+.notice_comment_floor_comment {
+    background-color: #f0f0f0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.comment_floor_more {
+    font-size: 12px;
+    color: rgb(160, 160, 160);
+    display: block;
+}

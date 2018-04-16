@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chendi.jiyi.dao.RewardSkillDAO">
+
+	<resultMap type="RewardSkill" id="RewardSkillMap">
+		<id property="rsId" column="rs_id" />
+		<result property="rsTitle" column="rs_title" />
+		<result property="rsDetails" column="rs_details" />
+		<result property="rsCreateTime" column="rs_create_time" />
+		<result property="rsCategory" column="rs_category" />
+		<result property="rsPlace" column="rs_place" />
+		<result property="rsTarget" column="rs_target" />
+		<result property="rsTerm" column="rs_term" />
+		<result property="rsCost" column="rs_cost" />
+
+		<result property="rsTryClassNum" column="rs_try_class_num" />
+		<result property="rsTryCost" column="rs_try_cost" />
+		<result property="rsPraise" column="rs_praise" />
+		<result property="rsStatus" column="rs_status" />
+		<result property="rsAuditingMsg" column="rs_auditing_msg" />
+		<association property="rsPublisher" column="rs_publisher"
+			javaType="User" select="com.chendi.jiyi.dao.UserDAO.queryName" />
+
+		<association property="rsAccepter" column="rs_accepter"
+			select="com.chendi.jiyi.dao.UserDAO.queryName" />
+
+		<association property="rsAuditor" column="rs_auditor"
+			select="com.chendi.jiyi.dao.AdminDAO.queryName" />
+			
+		<collection property="rsAccepterList" ofType="User">
+			<id property="id" column="id" /> 
+			<result property="name" column="name" /> 
+			<result property="picture" column="picture" />
+		</collection>
+	</resultMap>
+
+	<resultMap type="RewardSkill" id="RewardSkillMap1">
+		<id property="rsId" column="rs_id" />
+		<result property="rsTitle" column="rs_title" />
+		<result property="rsDetails" column="rs_details" />
+		<result property="rsCreateTime" column="rs_create_time" />
+		<result property="rsCategory" column="rs_category" />
+		<result property="rsPlace" column="rs_place" />
+		<result property="rsTarget" column="rs_target" />
+		<result property="rsTerm" column="rs_term" />
+		<result property="rsCost" column="rs_cost" />
+
+		<result property="rsTryClassNum" column="rs_try_class_num" />
+		<result property="rsTryCost" column="rs_try_cost" />
+		<result property="rsPraise" column="rs_praise" />
+		<result property="rsStatus" column="rs_status" />
+		<result property="rsAuditingMsg" column="rs_auditing_msg" />
+		<association property="rsPublisher" column="rs_publisher"
+			javaType="User" select="com.chendi.jiyi.dao.UserDAO.queryById" />
+
+		<association property="rsAccepter" column="rs_accepter"
+			select="com.chendi.jiyi.dao.UserDAO.queryById" />
+
+		<association property="rsAuditor" column="rs_auditor"
+			select="com.chendi.jiyi.dao.AdminDAO.queryById" />
+	</resultMap>
+	<!-- 目的:为dao接口方法提供sql语句配置 -->
+	<insert id="addRewardSkill" keyProperty="rsId" useGeneratedKeys="true"
+		parameterType="RewardSkill">
+		insert into
+		reward_skill
+		(rs_title,rs_details,rs_publisher,rs_create_time,rs_category,
+		rs_place,rs_target,rs_term,rs_cost,rs_status)
+		values(#{rsTitle},#{rsDetails},#{rsPublisher.id},#{rsCreateTime},#{rsCategory},
+		#{rsPlace},#{rsTarget},#{rsTerm},#{rsCost},#{rsStatus})
+	</insert>
+
+	<select id="queryById" resultMap="RewardSkillMap"
+		parameterType="int">
+		select
+		rs.rs_id,rs.rs_title,rs.rs_details,rs.rs_publisher,rs.rs_accepter,rs.rs_create_time,rs.rs_category,
+		rs.rs_place,rs.rs_target,rs.rs_term,rs.rs_cost,rs.rs_try_cost,rs.rs_status,rs.rs_auditor,rs.rs_auditing_msg,
+		u.id,u.name,u.picture,ra.ra_create_time
+		from reward_skill rs,reward_accepter ra,user u
+		where rs.rs_id=ra.rs_id and ra.accepter_id=u.id
+				and rs.rs_id=#{id}
+	</select>
+
+	<select id="queryByIdNoAccepter" resultMap="RewardSkillMap"
+		parameterType="int">
+		select
+		rs.rs_id,rs.rs_title,rs.rs_details,rs.rs_publisher,rs.rs_accepter,rs.rs_create_time,rs.rs_category,
+		rs.rs_place,rs.rs_target,rs.rs_term,rs.rs_cost,rs.rs_try_cost,rs.rs_status,rs.rs_auditor,rs.rs_auditing_msg
+		from reward_skill rs
+		where rs.rs_id=#{id}
+	</select> 
+
+	<!-- <select id="queryAll" resultType="RewardSkill"> select rs_id,rs_title,rs_details,rs_publisher,rs_accepter,rs_create_time,rs_category, 
+		rs_place,rs_target,rs_term,rs_cost,rs_need_try,rs_try_cost,rs_prase,rs_status,rs_auditor 
+		from reward_skill </select> -->
+
+	<select id="queryByStatus" resultMap="RewardSkillMap">
+		select
+		rs_id,rs_title,rs_details,rs_publisher,rs_accepter,rs_create_time,rs_category,
+		rs_place,rs_term,rs_status
+		from reward_skill
+		where rs_status=#{status}
+	</select>
+	
+	<select id="queryByStatusToUser" resultMap="RewardSkillMap">
+		select
+		rs_id,rs_title,rs_details,rs_publisher,rs_create_time,rs_category,rs_status
+		from reward_skill
+		where rs_status=#{status}
+		order by ${orderBy} ${order}
+	</select>
+	
+	<select id="queryByCategory" resultMap="RewardSkillMap">
+		select
+		rs_id,rs_title,rs_details,rs_publisher,rs_create_time,rs_category,rs_status
+		from reward_skill
+		where
+		rs_category=#{category}
+	</select>
+
+	<update id="auditing">
+		update reward_skill
+		set
+		rs_status=#{status},rs_cost=#{cost},rs_try_cost=#{tryCost},rs_auditor=#{auditor},rs_auditing_msg=#{auditingMsg}
+		where rs_id=#{id}
+	</update>
+
+	<update id="updateById" parameterType="RewardSkill">
+		update reward_skill
+		set
+		rs_title=#{rsTitle},rs_details=#{rsDetails},rs_category=#{rsCategory},
+		rs_place=#{rsPlace},rs_target=#{rsTarget},rs_term=#{rsTerm}
+		where rs_id=#{id}
+	</update>
+
+	<update id="updateStatus" parameterType="int">
+		update reward_skill
+		set
+		rs_status=#{status}
+		where rs_id=#{id}
+	</update>
+
+	<update id="accept">
+		update Reward_skill
+		set
+		rs_status=#{status},rs_accepter=#{accepter}
+		where rs_id=#{id} and
+		rs_status=1
+	</update>
+
+	<update id="updateAccepterNum">
+		update Reward_skill
+		set
+		rs_accepter_num=rs_accepter_num+1
+		where rs_id=#{id} and
+		rs_status=1
+	</update>
+</mapper>

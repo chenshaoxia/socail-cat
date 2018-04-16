@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.chendi.jiyi.dao.MessageDAO">
+	
+	<insert id="addMessage" parameterType="Message">
+		insert into message(m_sender,m_receiver,m_type,m_content,m_send_time)
+		values(#{mSender},#{mReceiver},#{mType},#{mContent},#{mSendTime})
+	</insert>
+	
+	<select id="queryByBothId" resultType="Message">
+		select m_id,m_sender,m_receiver,m_type,m_content,m_send_time,m_has_read
+		from message
+		<where>
+			<if test="senderId!=null and senderId.length()>0">
+				m_sender=#{senderId}
+			</if>
+			<if test="receiverId!=null and receiverId.length()>0">
+				and m_receiver=#{receiverId}
+			</if>
+		</where>
+	</select>
+	
+	<update id="updateRead" parameterType="int">
+		update message
+		set m_has_read=#{mHasRead}
+		where m_id=#{mId}
+	</update>
+</mapper>

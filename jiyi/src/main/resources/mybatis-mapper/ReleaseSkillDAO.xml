@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chendi.jiyi.dao.ReleaseSkillDAO">
+	<resultMap type="com.chendi.jiyi.entity.ReleaseSkill" id="ReleaseSkillMap">
+		<id property="rsId" column="rs_id" />
+		<result property="rsTitle" column="rs_title" />
+		<result property="rsDetails" column="rs_details" />
+		<result property="rsCreateTime" column="rs_create_time" />
+		<result property="rsCategory" column="rs_category" />
+		<result property="rsClassNum" column="rs_class_num" />
+		<result property="rsClassTime" column="rs_class_time" />
+		<result property="rsPlace" column="rs_place" />
+		<result property="rsTarget" column="rs_target" />
+		<result property="rsTerm" column="rs_term" />
+		<result property="rsPersonalDescribe" column="rs_personal_describe" />
+		<result property="rsCost" column="rs_cost" />
+		<result property="rsCanTry" column="rs_can_try" />
+		<result property="rsTryClassNum" column="rs_try_class_num" />
+		<result property="rsTryCost" column="rs_try_cost" />
+		<result property="rsPraise" column="rs_praise" />
+		<result property="rsStatus" column="rs_status" />
+		<result property="rsAuditingMsg" column="rs_auditing_msg" />
+		<result property="rsCover" column="rs_cover" />
+		<association property="rsPublisher" column="rs_publisher"
+			select="com.chendi.jiyi.dao.UserDAO.queryById" />
+
+		<association property="rsBuyer" column="rs_buyer"
+			select="com.chendi.jiyi.dao.UserDAO.queryById" />
+
+		<association property="rsAuditor" column="rs_auditor"
+			select="com.chendi.jiyi.dao.AdminDAO.queryById" />
+	
+		<collection property="rsPictureList" ofType="Picture"
+			column="rs_id" select="com.chendi.jiyi.dao.PictureDAO.queryRelease" />
+		<!-- <collection property="commentList" ofType="Comment" column="rs_id" 
+			select="com.chendi.jiyi.dao.CommentDAO.queryRelease"/> -->
+	</resultMap>
+
+	<resultMap type="com.chendi.jiyi.entity.ReleaseSkill" id="ReleaseSkillMap1">
+		<id property="rsId" column="rs_id" />
+		<result property="rsTitle" column="rs_title" />
+		<result property="rsDetails" column="rs_details" />
+		<result property="rsCreateTime" column="rs_create_time" />
+		<result property="rsCategory" column="rs_category" />
+		<result property="rsClassNum" column="rs_class_num" />
+		<result property="rsClassTime" column="rs_class_time" />
+		<result property="rsPlace" column="rs_place" />
+		<result property="rsTarget" column="rs_target" />
+		<result property="rsTerm" column="rs_term" />
+		<result property="rsPersonalDescribe" column="rs_personal_describe" />
+		<result property="rsCost" column="rs_cost" />
+		<result property="rsCanTry" column="rs_can_try" />
+		<result property="rsTryClassNum" column="rs_try_class_num" />
+		<result property="rsTryCost" column="rs_try_cost" />
+		<result property="rsPraise" column="rs_praise" />
+		<result property="rsStatus" column="rs_status" />
+		<result property="rsCover" column="rs_cover" />
+		
+		<association property="rsPublisher" column="rs_publisher"
+			select="com.chendi.jiyi.dao.UserDAO.queryName" />
+
+		<association property="rsBuyer" column="rs_buyer"
+			select="com.chendi.jiyi.dao.UserDAO.queryName" />
+
+		<association property="rsAuditor" column="rs_auditor"
+			select="com.chendi.jiyi.dao.AdminDAO.queryName" />
+			
+	</resultMap>
+	<!-- 目的:为dao接口方法提供sql语句配置 -->
+	
+	<!-- Type handler was null on parameter mapping for property 'rsCover'. 
+	It was either not specified and/or could not be found for the 
+	javaType (com.chendi.jiyi.entity.Picture) : jdbcType (null) combination. 
+		rsCover后面加.pId
+	-->
+	<insert id="addReleaseSkill" keyProperty="rsId"
+		useGeneratedKeys="true" parameterType="ReleaseSkill">
+		insert into release_skill
+		(rs_title,rs_details,rs_publisher,rs_create_time,rs_category,rs_cost,
+		rs_class_num,rs_class_time,rs_place,rs_target,rs_term,rs_personal_describe,
+		rs_can_try,rs_try_class_num,rs_praise,rs_status,rs_cover)
+		values(#{rsTitle},#{rsDetails},#{rsPublisher.id},#{rsCreateTime},#{rsCategory},#{rsCost},
+			#{rsClassNum},#{rsClassTime},#{rsPlace},#{rsTarget},#{rsTerm},
+			#{rsPersonalDescribe},#{rsCanTry},#{rsTryClassNum},#{rsPraise},#{rsStatus},#{rsCover})
+	</insert>
+
+	<!-- <select id="getPublisher" resultType="User" parameterType="String"> 
+		select </select> -->
+
+	<select id="queryById" resultMap="ReleaseSkillMap"
+		parameterType="int">
+		select
+		rs_id,rs_title,rs_details,rs_publisher,rs_buyer,rs_create_time,rs_category,
+		rs_class_num,rs_class_time,rs_place,rs_target,rs_term,rs_personal_describe,
+		rs_cost,rs_can_try,rs_try_class_num,rs_try_cost,rs_praise,rs_status,rs_auditor,rs_cover
+		from release_skill
+		where rs_id=#{id}
+	</select>
+	
+	<select id="queryByPublisher" resultMap="ReleaseSkillMap"
+		parameterType="String">
+		select
+		rs_id,rs_title,rs_publisher,rs_buyer,rs_create_time,rs_category,rs_status,rs_auditor
+		from release_skill
+		where rs_publisher=#{id}
+	</select>
+	
+	<select id="queryByBuyer" resultMap="ReleaseSkillMap"
+		parameterType="String">
+		select
+		rs_id,rs_title,rs_publisher,rs_buyer,rs_create_time,rs_category,rs_status,rs_auditor
+		from release_skill
+		where rs_buyer=#{id}
+	</select>
+
+	<select id="queryCost" resultMap="ReleaseSkillMap" parameterType="int">
+		select
+		rs_id,rs_title,rs_publisher,rs_cost,rs_can_try,rs_try_cost
+		from release_skill
+		where rs_id=#{id}
+	</select>
+
+	<select id="queryAll" resultMap="ReleaseSkillMap">
+		select
+		rs_id,rs_title,rs_details,rs_publisher,rs_buyer,rs_create_time,rs_category,
+		rs_class_num,rs_class_time,rs_place,rs_target,rs_term,rs_personal_describe,
+		rs_cost,rs_can_try,rs_try_class_num,rs_try_cost,rs_praise,rs_status,rs_auditor
+		from release_skill
+	</select>
+
+	<!-- <select id="queryNoPermit" resultMap="ReleaseSkillMap"> select rs_title,rs_publisher,rs_create_time,rs_category, 
+		rs_class_num,rs_class_time,rs_term,rs_can_try,rs_try_class_num,rs_status 
+		from release_skill where rs_status=#{status} </select> -->
+
+	<select id="queryByStatus" resultMap="ReleaseSkillMap1">
+		select
+		rs_id,rs_title,rs_publisher,rs_create_time,rs_category,rs_class_num,
+		rs_class_time,rs_term,rs_can_try,rs_try_class_num,rs_status,rs_cover
+		from release_skill
+		where rs_status=#{status}
+	</select>
+
+	<!-- #将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。
+	如：order by #{user_id}，
+	如果传入的值是id，则解析成的sql为order by "id"。
+	$将传入的数据直接显示生成在sql中。如：order by ${user_id}，
+	 如果传入的值是id，则解析成的sql为order by id。 -->
+	<select id="queryByStatusToUser" resultMap="ReleaseSkillMap">
+		select
+		rs_id,rs_title,rs_details,rs_publisher,rs_category,rs_create_time,rs_cover
+		from release_skill
+		where rs_status=#{status}
+		order by ${orderBy} ${order}
+	</select>
+	
+	<select id="queryByCategory" resultMap="ReleaseSkillMap">
+		select
+		rs_id,rs_title,rs_details,rs_publisher,rs_category,rs_create_time
+		from release_skill
+		where
+		rs_category=#{category}
+	</select>
+
+	<update id="auditing">
+		update release_skill
+		set
+		rs_status=#{status},rs_cost=#{cost},rs_try_cost=#{tryCost},rs_auditor=#{auditor}
+		where rs_id=#{id}
+	</update>
+
+	<update id="updateById" parameterType="ReleaseSkill">
+		update release_skill
+		set
+		rs_title=#{rsTitle},rs_details=#{rsDetails},rs_publisher=#{rsPublisher.id},rs_category=#{rsCategory},
+		rs_class_num=#{rsClassNum},rs_class_time=#{rsClassTime},rs_place=#{rsPlace},rs_target=#{rsTarget},
+		rs_term=#{rsTerm},rs_personal_describe=#{rsPersonalDescribe},rs_can_try=#{rsCanTry},
+		rs_try_class_num=#{rsTryClassNum},rs_status=#{rsStatus}
+		where
+		rs_id=#{id}
+	</update>
+
+	<update id="buyOrTry">
+		update release_skill
+		set
+		rs_status=#{status},rs_buyer=#{buyer}
+		where rs_id=#{id} and rs_status=1
+	</update>
+	
+	<update id="updateCover">
+		update release_skill
+		set rs_cover=#{coverPath}
+		where rs_id=#{id}
+	</update>
+</mapper>

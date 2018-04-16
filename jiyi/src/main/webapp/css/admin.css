@@ -1,0 +1,37 @@
+#admin {
+    background-image: url('../img/log.jpg');
+}
+#user_content_cont div {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.skill_title {
+    font-size: 18px;
+    border-bottom: 2px solid rgba(200, 200, 200, 0.5);
+}
+.admin_user_title {
+    border-bottom: 2px solid rgba(200, 200, 200, 0.5);
+}
+.admin_user_title h3 {
+    font-size: 18px;
+}
+.admin_user_title div {
+     position: relative;
+    bottom: 5px;
+    right: 10px;
+ }
+
+.skill_sub {
+    font-size: 14px;
+    color: rgb(120, 120, 120);
+}
+#user_special {
+    font-size: 20px;
+}
+.table_center {
+    text-align: center;
+    font-size: 14px;
+}
+.admin_btn {
+    font-size: 12px;
+}
+

@@ -1,0 +1,31 @@
+ <#assign ctx=request.contextPath />
+<div class="index-wrapper">
+	<div class="items">
+		<#list skillList as skill> <a
+			href="release-skills/${skill.rsId}/details">
+			<div class="item-wrapper">
+				<div class="item-img"></div>
+				<div class="item-message">
+					<div class="item-message-top">
+						<span class="item-title">${skill.rsTitle}</span> <span
+							class="item-like"><i class="fa fa-thumbs-o-up ">&nbsp;</i>11</span>
+					</div>
+					<div class="item-message-bottom">
+						<span class="item-cate">${skill.getCategoryEnum()}</span>
+					</div>
+				</div>
+				<div class="item-footer">
+					<div class="item-footer-left">
+						<img class="item-head" src="${ctx}/${skill.rsPublisher.picture}" />
+						<span class="item-name">${skill.rsPublisher.name}</span>
+					</div>
+					<span class="item-time">ÁùÐ¡Ê±Ç°</span>
+				</div>
+			</div>
+		</a>
+		<!--item-wrapper-->
+		</#list>
+	</div>
+
+	<!--items-->
+</div>

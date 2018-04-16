@@ -1,0 +1,140 @@
+<#assign ctx=request.contextPath />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>悬赏详情</title>
+<link rel="stylesheet" href="${ctx}/styles/bootstrap.min.css">
+<link rel="stylesheet" href="${ctx}/styles/reset.css">
+<link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
+<link rel="stylesheet" href="${ctx}/styles/shared.css">
+<link rel="stylesheet" href="${ctx}/styles/index.css">
+<link rel="stylesheet" href="${ctx}/styles/detail.css">
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="${ctx}/lib/jquery.min.js"></script>
+<script src="${ctx}/js/user_order.js"></script>
+<script src="${ctx}/js/index.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		<#if hasSupport??&&hasSupport &gt; 0>
+			$("#reward_support").hide();
+			$("#rewardSupportTips").show();
+		</#if>
+	})
+</script>
+</head>
+<body>
+	<header> <#include "../module/common/header.html"> </header>
+
+	<div class="index-wrapper">
+		<div class="post-wrapper">
+			<div class="post-nav">
+				<span>全部悬赏>>></span> <span>${(skill.getCategoryEnum())!}>>></span> <span>${(skill.rsTitle)!}</span>
+			</div>
+			<!--post-nav-->
+			<div class="post-header">
+				<#if skill.rsCover ??>
+					<img class="post-left" src="${ctx}/${(skill.rsCover)!}">
+				<#else>
+					<img class="post-left" src="${ctx}/images/background-detail.jpg" />
+				</#if>
+				<div class="post-right">
+					<span class="post-title">${skill.rsTitle}</span> 
+               		<span id="rewardSupportTips" class="post-call" style="display:none">打完了</span>
+					<span id="reward_support" class="post-call" onclick="support('${base}','${skill.rsId}','reward_skill')" style="display: inline-block">为Ta打Call</span>
+					<div class="post-heads" id="supportDiv">
+						<#if praiseList??>
+							<#list praiseList as praise> <img
+								src="${ctx}/${(praise.pUser.picture)!}" /> 
+							</#list>
+						</#if>
+						<span id="post-heads-more" style="display: none">...</span>
+	                    <span class="post-heads-count">共有${(praiseList?size)!}人为他打call</span>
+					</div>
+					<div class="post-btn">
+						
+						<span class="post-btn1" id="accepterSpan">
+	                        <i class="fa fa-hand-lizard-o"></i>
+	                        <span class="post-btn-content">当前接受人数 ${(skill.rsAccepterList?size)!}/5</span>
+                   		</span>
+						<span class="post-btn2" id="accept"> 
+							<i class="fa fa-krw"></i> 
+							<span class="post-btn-content">接受悬赏 ${(skill.rsCost)!} 喵币</span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!--post-header-->
+
+			<div class="post-content-wrapper">
+				<div class="post-content">
+					<div class="post-sub">
+						<span class="post-sub1">悬赏简介</span> <i class="post-subline"></i> <span>评论</span>
+					</div>
+					<div class="post-info">
+						<span class="post-info-title">悬赏详情</span> <span
+							class="post-info-detail">${(skill.rsDetails)!}</span> <span
+							class="post-info-title">悬赏类别</span> <span
+							class="post-info-detail">${(skill.getCategoryEnum())!}</span> <span
+							class="post-info-title">悬赏目标</span> <span
+							class="post-info-detail">${skill.rsTarget}</span> <span
+							class="post-info-title">教学地点</span> <span
+							class="post-info-detail">${skill.rsPlace}</span>  
+							<span class="post-info-title">完成期限</span> 
+							<span class="post-info-detail">${skill.rsTerm}</span> 
+							<span class="post-info-title">悬赏图片</span> 
+							<span class="post-info-detail"> 
+							<#if skill.rsPictureList??>
+								<#list skill.rsPictureList as picture> 
+									<img class="post-info-img" src="${ctx}/${(picture.pPath)!}" />
+								</#list>
+							</#if>
+						</span>
+					</div>
+				</div>
+				<div class="post-more">
+					<div class="post-more-inner">
+						<img src="${ctx}/${(skill.rsPublisher.picture)!}" /> 
+						<span>${skill.rsPublisher.name}</span>
+						<div class="post-more-span">
+							<span>
+								发帖 ${skill.rsPublisher.releaseNum+skill.rsPublisher.rewardNum}
+							</span> 
+							<span>
+								信用 ${skill.rsPublisher.credit}
+							</span>
+						</div>
+						<button class="post-more-btn" data-toggle="modal" data-target="#messageModal">私信</button>
+                    	<div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
+	                        <div class="modal-dialog" role="document">
+	                            <div class="modal-content">
+	                                <div class="modal-header">
+	                                    <h5 class="modal-title" id="messageModalLabel">写私信</h5>
+	                                    <i class="fa fa-close" data-dismiss="modal"></i>
+	                                </div>
+	                                <div class="modal-body">
+	                                    <textarea id="letterContent" class="post-more-modal-text"></textarea>
+	                                </div>
+	                                <div class="modal-footer">
+	                                    <button onclick="personalLetter('${base}','${skill.rsPublisher.id}');" class="modal-footer-confirm">确定</button>
+	                                    <button class="modal-footer-consol" data-dismiss="modal">取消</button>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<span>关于我们</span> <span>用户协议</span>
+	</div>
+</body>
+</html>

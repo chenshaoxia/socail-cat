@@ -1,0 +1,71 @@
+ <#assign ctx=request.contextPath />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消息中心</title>
+    <link rel="stylesheet" href="${ctx}/styles/reset.css">
+    <link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
+    <link rel="stylesheet" href="${ctx}/styles/shared.css">
+    <link rel="stylesheet" href="${ctx}/styles/user.css">
+    <script src="${ctx}/lib/jquery.min.js"></script>
+    <script src="${ctx}/js/index.js"></script>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <img class="header-logo" src="${ctx}/images/logo.png" height="66" width="158"/>
+        <div class="header-nav">
+            <a href="index.html">主页</a>
+            <a href="post-skills.html">技能贴</a>
+            <a href="reward-skills.html">悬赏贴</a>
+        </div>
+        <div class="header-search">
+            <input type="search" placeholder="search" />
+            <i class="fa fa-search"></i>
+        </div>
+        <div class="header-uesr">
+            <a href="message-info.html"><i class="fa fa-bell-o"></i></a>
+            <a href="user.html"><img class="header-head" src="${ctx}/images/stupid.jpg" /></a>
+        </div>
+        <div class="header-post">
+            <a href="login.html"><i class="fa fa-send fa-3x"></i></a>
+            <!--<span>发帖</span>-->
+        </div>
+    </div>
+</header>
+
+
+<div class="message-wrapper">
+    <div class="message-side">
+        <div class="message-user">
+            <img src="images/stupid.jpg" />
+            <span>Kant</span>
+            <button>我要发帖</button>
+        </div>
+        <div class="message-nav">
+            <a href="letters">通知</a>
+            <a href="comments" class="message-nav-special" style="color: white">评论</a>
+            <a href="personalLetters">私信</a>
+            <a href="calls">call我的人</a>
+        </div>
+    </div>
+    <!--message-side-->
+
+    <div class="message-content">
+        <span class="message-content-title">我的评论</span>
+        <div class="message-items">
+            <div class="message-comment-item">
+                <img class="message-comment-head" src="${ctx}/images/stupid.jpg"/>
+                <div class="message-comment-content">
+                    <span class="message-comment-header">Kant</span>
+                    <span class="message-comment-data">2018/1/1</span>
+                    <p>这里是评论的内容</p>
+                </div>
+                <img class="message-comment-img" src="${ctx}/images/background-index.jpg"/>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

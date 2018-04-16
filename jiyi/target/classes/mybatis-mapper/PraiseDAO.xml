@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chendi.jiyi.dao.PraiseDAO">
+	<resultMap type="Praise" id="PraiseMap">
+		<id property="pId" column="p_id" />
+		<result property="fkId" column="fk_id"/>
+		<result property="fkType" column="fk_type" />
+		<association property="pUser" column="u_id"
+			select="com.chendi.jiyi.dao.UserDAO.queryName" />
+	</resultMap>
+	<!-- 目的:为dao接口方法提供sql语句配置 -->
+	<select id="queryByFk" resultMap="PraiseMap" parameterType="int">
+		select p_id,u_id,fk_type,fk_id
+		from praise
+		where fk_id=#{fkId} and fk_type=#{fkType}
+	</select>
+	
+	<select id="queryForComment" resultType="int" parameterType="int">
+		select count(u_id)
+		from praise
+		where fk_id=#{fkId} and fk_type=#{fkType}
+	</select>
+	
+	<select id="checkBeforeAdd" resultType="int" parameterType="Praise">
+		select count(p_id)
+		from praise
+		where u_id=#{pUser.id} and fk_type=#{fkType} and fk_id=#{fkId}
+	</select>
+	<!-- if exists(select count(u_id)
+			from praise
+			where u_id=#{uId} and fk_category=#{fkCategory} and fk_id=#{fkId}) -->
+	<insert id="addPraise"  parameterType="Praise">
+		insert into praise (u_id,fk_id,fk_type)
+		values(#{pUser.id},#{fkId},#{fkType})
+	</insert>
+</mapper>

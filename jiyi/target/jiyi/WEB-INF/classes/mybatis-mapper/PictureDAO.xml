@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chendi.jiyi.dao.PictureDAO">
+	<!-- 目的:为dao接口方法提供sql语句配置 -->
+	<insert id="addPicture" keyProperty="pId" useGeneratedKeys="true" parameterType="Picture">
+		insert into picture (p_id,fk_id,fk_type,p_path,p_order)
+		values(#{pId},#{fkId},#{fkType},#{pPath},#{pOrder})
+	</insert>
+
+	<select id="queryByFk" resultType="Picture">
+		select p_id,fk_id,fk_type,p_path,p_order
+		from picture
+		where  fk_type=#{fkType} and fk_id=#{fkId}
+		order by p_order ASC
+	</select>
+	
+	<select id="queryRelease" resultType="Picture">
+		select p_id,fk_id,fk_type,p_path,p_order
+		from picture
+		where  fk_type=3 and fk_id=#{fkId}
+		order by p_order ASC
+	</select>
+	
+	<select id="queryAll" resultType="Picture">
+		select p_id,fk_id,fk_type,p_path,p_order
+		from picture
+	</select>
+
+	<delete id="deleteByFk">
+		delete from picture
+		where fk_id=#{fkId} and fk_type=#{fkType}
+	</delete>
+</mapper>

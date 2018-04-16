@@ -1,0 +1,165 @@
+body {
+    background-color: #d2d2d2;
+    /*display: flex;*/
+    /*align-items: center;*/
+    background-image: url("../images/background-login.jpg");
+}
+.login-wrapper {
+    /*display: flex;*/
+    /*align-items: center;*/
+}
+.login-logo {
+    height: 160px;
+    width: 415px;
+    margin: 80px auto 0;
+    display: flex;
+    align-self: center;
+}
+.login-title {
+    display: block;
+    font-size: 42px;
+    color: white;
+    text-align: center;
+    margin: 35px auto 55px;
+}
+.login-box {
+    width: 335px;
+    background-color: rgb(230, 224, 223);
+    margin: 0 auto 200px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.signup-box {
+    width: 500px;
+    background-color: rgb(230, 224, 223);
+    margin: 0 auto 200px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.login-sub {
+    display: block;
+    text-align: center;
+    padding: 24px 0 30px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: rgb(111, 179, 174);
+}
+.form-info {
+    font-size: 12px;
+    color: grey;
+    position: relative;
+    left: 100px;
+    bottom: 14px;
+}
+.login-input {
+    position: relative;
+}
+.login-box i {
+    position: absolute;
+    left: 70px;
+    top: 6px;
+    color: rgb(187, 187, 187);
+}
+.login-box input,.signup-box input, .signup-box select{
+    width: 304px;
+    height: 27px;
+    display: block;
+    margin: 0 auto 28px;
+    padding-left: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+}
+.login-box input {
+    width: 190px;
+    padding-left: 37px;
+}
+.signup-box select {
+    width: 314px;
+}
+.login-checkbox {
+    font-size: 14px;
+    position: relative;
+    left: 95px;
+}
+.login-checkbox input {
+    display: inline;
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: 13px;
+    margin-right: 10px;
+}
+.login-box input:focus, .signup-box input:focus {
+    border: 0;
+}
+.login-box button, .signup-box button {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 5px;
+    width: 304px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(240, 127, 127);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+}
+.login-box button {
+    width: 230px;
+}
+.login-footer {
+    width: 304px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    font-size: 12px;
+    color: rgb(187, 187, 187);
+}
+.login-box .login-footer {
+    width: 230px;
+}
+
+/* Signup*/
+.signup-wrapper {
+    margin-top: 75px;
+    min-width: 1350px;
+    display: flex;
+    justify-content: space-around;
+}
+.signup-wrapper .login-wrapper {
+    margin: 0 30px;
+}
+.login-wrapper-left {
+    position: fixed;
+    left: 100px;
+}
+
+/* footer */
+.footer {
+    font-size: 14px;
+    text-align: center;
+    margin: 30px auto;
+}
+.footer span {
+    padding: 0 21px 0 21px;
+}
+/* form-validate */
+.form-validate {
+    display: none;
+    font-size: 12px;
+    color: red;
+    position: relative;
+    bottom: 20px;
+    left: 60px;
+}
+.signup-box .form-validate {
+    position: relative;
+    bottom: 20px;
+    left: 100px;
+}

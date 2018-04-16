@@ -1,0 +1,128 @@
+/***** Reset *****/
+a:hover {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+
+/***** Global Defination *****/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+body {
+    color: rgb(50, 50, 50);
+}
+@font-face {
+    /*font-family: "myFont1";*/
+    /*src: url("../fonts/FontAwesome.otf");*/
+}
+/* 阴影：颜色较浅，用于小组件 */
+.border_shadow {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(7,17,27,.05);
+    -moz-box-shadow: 0 4px 8px 0 rgba(7,17,27,.05);
+    box-shadow: 0 4px 8px 0 rgba(7,17,27,.05);
+}
+.border_shadow:hover {
+    -webkit-box-shadow: 0 4px 12px 0 rgba(0,0,0,.1);
+    -moz-box-shadow: 0 4px 12px 0 rgba(0,0,0,.1);
+    box-shadow: 0 4px 12px 0 rgba(0,0,0,.1);
+}
+/* 阴影：颜色较深、规整 */
+.border_with_shadow {
+     border: 1px solid transparent;
+     -webkit-box-shadow: 2px 2px 2px 2px rgba(200, 200, 200, 0.6);
+     -moz-box-shadow: 2px 2px 2px 2px rgba(200, 200, 200, 0.6);
+     box-shadow: 2px 2px 2px 2px rgba(200, 200, 200, 0.6);
+}
+/* 字格式：用于小组件的底部 */
+.comment {
+    font-size: 14px;
+    color: rgb(100, 100, 100);
+}
+/***** Header *****/
+nav {
+    text-align: center;
+    font-size: 16px;
+    background-color: white;
+}
+nav a {
+    color: rgb(80, 80, 80);
+    font-weight: 400;
+}
+nav a:hover {
+     color: rgb(50, 50, 50);
+ }
+.nav_shadow {
+    box-shadow: 0 4px 8px 0 rgba(7,17,27,.1);
+}
+.head_img {
+    width: 35px;
+    height: 35px;
+    line-height: 0;
+    border: 3px solid white;
+    border-radius: 18px;
+}
+.collapse_custom {
+    /*position: absolute;*/
+}
+#searchCollapse {
+    position: absolute;
+    top: 40px;
+}
+.header_num {
+    font-size: 14px;
+    position: relative;
+    left: -15px;
+    top: -5px;
+}
+.header_icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: rgba(100, 200, 100, 0.5);
+    border-radius: 8px;
+    position: relative;
+    top:3px;
+    left: 12px;
+}
+/* Footer */
+#footer {
+    background-color: rgba(200, 200, 200, 0.1);
+    /*background-color: white;*/
+    border-top: 1px solid rgba(200, 200, 200, 0.3);
+    color: rgba(200, 200, 200, 0.8);
+    text-align: center;
+}
+#foot_link a {
+    color: rgba(100, 100, 100, 1);
+}
+#foot_link a:hover {
+    color: rgba(100, 100, 100, 1);
+}
+#foot_message {
+    color: rgba(100, 100, 100, 1);
+}
+
+/********************* Login & Signup *****************/
+#signup {
+    background-image: url("../img/log.jpg");
+    background-size: cover;
+}
+#login {
+     background-image: url("../img/backgroundImage2.jpg");
+     background-size: cover;
+ }
+#signup_box, #login_box {
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.sign_head {
+    font-size: 18px;
+}
+.signup_box_head {
+    text-align: center;
+}
+

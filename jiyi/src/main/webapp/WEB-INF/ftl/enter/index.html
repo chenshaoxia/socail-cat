@@ -1,0 +1,98 @@
+<#assign ctx=request.contextPath/>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>主页</title>
+<link rel="stylesheet" href="${ctx}/styles/reset.css">
+<link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
+<link rel="stylesheet" href="${ctx}/styles/shared.css">
+<link rel="stylesheet" href="${ctx}/styles/index.css">
+<script src="${ctx}/lib/jquery.min.js"></script>
+<script src="${ctx}/js/index.js"></script>
+</head>
+<body>
+	<header> <#include "../module/common/header.html"> </header>
+
+
+	<!-- 轮播图 -->
+	<div class="index-carousel"></div>
+
+	<div class="index-wrapper">
+
+		<!-- 首页导航 -->
+		<div class="index-nav">
+			<hr>
+			<a class="index-nav-item" href="#">首页推荐</a> <a class="index-nav-item"
+				href="#">最新发布</a> <a class="index-nav-item" href="#">最热上升</a>
+			<hr>
+		</div>
+
+		<div class="items">
+			<div class="item-wrapper">
+				<div class="item-img"></div>
+				<div class="item-message">
+					<div class="item-message-top">
+						<span class="item-title">技能标题</span> <span class="item-like"><i
+							class="fa fa-thumbs-o-up ">&nbsp;</i>11</span>
+					</div>
+					<div class="item-message-bottom">
+						<span class="item-cate">类别</span>
+					</div>
+				</div>
+				<div class="item-footer">
+					<div class="item-footer-left">
+						<img class="item-head" src="images/stupid.jpg" /> <span
+							class="item-name">Kant</span>
+					</div>
+					<span class="item-time">六小时前</span>
+				</div>
+			</div>
+			<!--item-wrapper-->
+		</div>
+		<!--items-->
+		<div class="items-line"></div>
+
+		<div class="items-header">
+			<div class="items-header-left">
+				<span class="items-title">技能贴</span> <span class="items-new">新动态</span>
+			</div>
+			<span class="items-more">查看更多></span>
+		</div>
+		<!--item-header-->
+
+		<div class="items">
+			<div class="item-wrapper">
+				<img class="item-img" src="images/background-index.jpg" />
+				<!--<div class="item-img"></div>-->
+				<div class="item-message">
+					<div class="item-message-top">
+						<span class="item-title">技能标题</span> <span class="item-like"><i
+							class="fa fa-thumbs-o-up ">&nbsp;</i>11</span>
+					</div>
+					<div class="item-message-bottom">
+						<span class="item-cate">类别</span>
+					</div>
+				</div>
+				<div class="item-footer">
+					<div class="item-footer-left">
+						<img class="item-head" src="images/stupid.jpg" /> <span
+							class="item-name">Kant</span>
+					</div>
+					<span class="item-time">六小时前</span>
+				</div>
+			</div>
+			<!--item-wrapper-->
+		</div>
+		<!--items-->
+		<div class="items-line"></div>
+
+	</div>
+
+	<div class="footer">
+		<span>关于我们</span> <span>用户协议</span>
+	</div>
+
+
+</body>
+</html>

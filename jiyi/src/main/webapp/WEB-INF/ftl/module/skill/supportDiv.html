@@ -1,0 +1,9 @@
+<#assign ctx=request.contextPath />
+
+<meta charset="UTF-8">
+
+<#list praiseList as praise> 
+<img src="${ctx}/${praise.pUser.picture}" /> 
+</#list>
+<span id="post-heads-more" style="display: none">...</span>
+<span class="post-heads-count">共有${praiseList?size}人为他打call</span>
