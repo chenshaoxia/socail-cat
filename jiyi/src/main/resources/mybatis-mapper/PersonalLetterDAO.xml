@@ -46,6 +46,10 @@
 		select pl_id,pl_sender,pl_receiver,pl_content,pl_send_time,pl_has_read
 		from personal_letter
 		where pl_receiver=#{receiverId}
+		<if test="hasRead!=null">
+			and pl_has_read=#{hasRead}
+		</if>
+		order by pl_send_time DESC
 	</select>
 	
 	<update id="updateRead" parameterType="int">

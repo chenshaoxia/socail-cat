@@ -18,7 +18,7 @@
 	<div class="message-wrapper">
 		<div class="message-side">
 			<div class="message-user">
-				<img src="${ctx}/images/stupid.jpg" /> <span>Kant</span>
+				<img src="${ctx}/${(Session.user.picture)!}" /> <span>${(Session.user.name)!}</span>
 				<button>我要发帖</button>
 			</div>
 			<div class="message-nav">
@@ -32,21 +32,23 @@
 		<div class="message-content">
 			<span class="message-content-title">我的通知</span>
 			<div class="message-items">
+			<#if letterList?? ||letterList?size==0>
 				<#list letterList as letter>
 				<div class="message-item">
-					<img class="message-item-img" src="${ctx}/images/stupid.jpg" />
+					<img class="message-item-img" src="${ctx}/${(letter.lSender.picture)!}" />
 					<div class="message-item-content">
 						<div class="message-item-header">
-							<#if letter.lSender??>
-							<h5>${letter.lSender.name}</h5>
-							</#if>
-							<span>${letter.lSendTime}</span>
+							<h5>${(letter.lSender.name)!}</h5>
+							<span>${(letter.lSendTime)!}</span>
 						</div>
-						<p>${letter.lContent}</p>
+						<p>${(letter.lContent)!}</p>
 					</div>
 					<i class="fa fa-trash-o fa-2x"></i>
 				</div>
 				</#list>
+				<#else>
+				你当前没有新通知、
+			</#if>
 			</div>
 		</div>
 	</div>

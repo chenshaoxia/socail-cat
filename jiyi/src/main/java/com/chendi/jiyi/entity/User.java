@@ -1,32 +1,46 @@
 package com.chendi.jiyi.entity;
 
+import com.chendi.jiyi.Enum.InstituteEnum;
+import com.chendi.jiyi.Enum.UserStatus;
+
 public class User {
 	private String id;
 	private String name;
 	private String password;
-	private String institute;
+	private String signature;
+	private Integer institute;
 	private String specialty;
 	private String sex;
 	private String picture;
-	private String phone;
 	private String email;
 	private String qq;
-	private int status;
+	private Integer status;
 	private String auditor;
-	private int wealth;
-	private int releaseNum;
-	private int rewardNum;
-	private int buyReleaseNum;
-	private int acceptRewardNum;
-	private int credit;
-	private int dissensionNum;
+	private Integer wealth;
+	private Integer releaseNum;
+	private Integer rewardNum;
+	private Integer buyReleaseNum;
+	private Integer acceptRewardNum;
+	private Integer credit;
+	private Integer dissensionNum;
 	private String createTime;
 	private String realName;
+	private String auditingMsg;
 	
 	public User() {
 //		this.picture=new byte[1024];
 	}
 
+	//获取学院名称
+	public String getInstituteEnum(){
+		return InstituteEnum.getNameByIndex(institute);
+	}
+	
+	//获取当前状态
+	public String getStatusEnum(){
+		return UserStatus.getNameByIndex(status);
+	}
+	
 	public String getId() {
 		return id;
 	}
@@ -51,11 +65,19 @@ public class User {
 		this.password = password;
 	}
 
-	public String getInstitute() {
+	public String getSignature() {
+		return signature;
+	}
+
+	public void setSignature(String signature) {
+		this.signature = signature;
+	}
+
+	public Integer getInstitute() {
 		return institute;
 	}
 
-	public void setInstitute(String institute) {
+	public void setInstitute(Integer institute) {
 		this.institute = institute;
 	}
 
@@ -83,14 +105,6 @@ public class User {
 		this.picture = picture;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -98,7 +112,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getQq() {
 		return qq;
 	}
@@ -107,11 +121,11 @@ public class User {
 		this.qq = qq;
 	}
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -123,59 +137,59 @@ public class User {
 		this.auditor = auditor;
 	}
 
-	public int getWealth() {
+	public Integer getWealth() {
 		return wealth;
 	}
 
-	public void setWealth(int wealth) {
+	public void setWealth(Integer wealth) {
 		this.wealth = wealth;
 	}
 
-	public int getReleaseNum() {
+	public Integer getReleaseNum() {
 		return releaseNum;
 	}
 
-	public void setReleaseNum(int releaseNum) {
+	public void setReleaseNum(Integer releaseNum) {
 		this.releaseNum = releaseNum;
 	}
 
-	public int getRewardNum() {
+	public Integer getRewardNum() {
 		return rewardNum;
 	}
 
-	public void setRewardNum(int rewardNum) {
+	public void setRewardNum(Integer rewardNum) {
 		this.rewardNum = rewardNum;
 	}
-	
-	public int getBuyReleaseNum() {
+
+	public Integer getBuyReleaseNum() {
 		return buyReleaseNum;
 	}
 
-	public void setBuyReleaseNum(int buyReleaseNum) {
+	public void setBuyReleaseNum(Integer buyReleaseNum) {
 		this.buyReleaseNum = buyReleaseNum;
 	}
 
-	public int getAcceptRewardNum() {
+	public Integer getAcceptRewardNum() {
 		return acceptRewardNum;
 	}
 
-	public void setAcceptRewardNum(int acceptRewardNum) {
+	public void setAcceptRewardNum(Integer acceptRewardNum) {
 		this.acceptRewardNum = acceptRewardNum;
 	}
 
-	public int getCredit() {
+	public Integer getCredit() {
 		return credit;
 	}
 
-	public void setCredit(int credit) {
+	public void setCredit(Integer credit) {
 		this.credit = credit;
 	}
 
-	public int getDissensionNum() {
+	public Integer getDissensionNum() {
 		return dissensionNum;
 	}
 
-	public void setDissensionNum(int dissensionNum) {
+	public void setDissensionNum(Integer dissensionNum) {
 		this.dissensionNum = dissensionNum;
 	}
 
@@ -195,10 +209,18 @@ public class User {
 		this.realName = realName;
 	}
 
+	public String getAuditingMsg() {
+		return auditingMsg;
+	}
+
+	public void setAuditingMsg(String auditingMsg) {
+		this.auditingMsg = auditingMsg;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", password=" + password + ", institute=" + institute
-				+ ", specialty=" + specialty + ", sex=" + sex + ", picture=" + picture + ", phone=" + phone + ", email="
+				+ ", specialty=" + specialty + ", sex=" + sex + ", picture=" + picture + ", auditingMsg=" + auditingMsg + ", email="
 				+ email + ", qq=" + qq + ", status=" + status + ", auditor=" + auditor + ", wealth=" + wealth
 				+ ", releaseNum=" + releaseNum + ", rewardNum=" + rewardNum + ", credit=" + credit + ", dissensionNum="
 				+ dissensionNum + ", createTime=" + createTime + "]";

@@ -33,7 +33,7 @@ public class PraiseService {
 	}
 	
 	@Transactional
-	public Result addPraise(String uId,CategoryEnum fkType,int fkId){
+	public Result<Object> addPraise(String uId,CategoryEnum fkType,int fkId){
 		try {
 			Praise praise = new Praise();
 			User user = new User();
@@ -42,21 +42,21 @@ public class PraiseService {
 			praise.setFkType(fkType.getIndex());
 			praise.setFkId(fkId);
 			if (praiseDAO.checkBeforeAdd(praise) != 0) {
-				return new Result(false,"打CALL成功，不能重复打CALL");
+				return new Result<Object>(false,"打CALL成功，不能重复打CALL");
 			}
 			switch (fkType) {
 			case COMMENT:
 				praiseDAO.addPraise(praise);
 				commentDAO.praiseByCommentId(fkId);
-				return new Result(true,"点赞成功");
+				return new Result<Object>(true,"点赞成功");
 			case RELEASESKILL:
 				praiseDAO.addPraise(praise);
-				return new Result(true,"为TA打call成功");
+				return new Result<Object>(true,"为TA打call成功");
 			case REWARDSKILL:
 				praiseDAO.addPraise(praise);
-				return new Result(true,"为TA打call成功");
+				return new Result<Object>(true,"为TA打call成功");
 			default:
-				return new Result(false,"参数错误");
+				return new Result<Object>(false,"参数错误");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -34,11 +34,11 @@
 				<form action="creation" method="post" enctype="multipart/form-data">
 					<span class="login-sub">注册</span>
 					<div class="login-input">
-						<input type="text" name="id" placeholder="学号" class="signup-box-input"/> <span
+						<input type="text" name="id" value="${(user.id)!}" placeholder="学号" class="signup-box-input"/> <span
 							class="form-validate form-require">*&nbsp;学号不能为空</span>
 					</div>
 					<div class="login-input">
-						<input type="text" name="name" placeholder="真实姓名" class="signup-box-input"/> <span
+						<input type="text" name="name" value="${(user.name)!}" placeholder="真实姓名" class="signup-box-input"/> <span
 							class="form-validate form-require">*&nbsp;真实姓名不能为空</span>
 					</div>
 					<div class="login-input">
@@ -51,35 +51,35 @@
 						<span id="form-repassword" class="form-validate">*&nbsp;两次密码不一致</span>
 					</div>
 					<div class="login-input">
-						<input id="login-email" name="email" type="text"
+						<input id="login-email" name="email" value="${(user.email)!}" type="text"
 							placeholder="电子邮箱" class="signup-box-input"/> <span class="form-validate form-require">*&nbsp;邮箱不能为空</span>
 						<span id="form-email" class="form-validate">*&nbsp;邮箱格式不正确</span>
 					</div>
 					<span class="form-info">*&nbsp;完善的用户信息将使您获得80的<a href="#">信用积分</a></span>
-					<!-- <div class="login-input">
-                    <input id="login-tel" type="text" placeholder="手机号"/>
-                    <span id="form-tel" class="form-validate">*&nbsp;请输入有效的手机号</span>
-                </div> -->
 					<div class="login-input">
-						<input id="login-qq" name="qq" type="text" placeholder="QQ号" class="signup-box-input"/> <span
+						<input id="login-qq" name="qq" value="${(user.qq)!}" type="text" placeholder="QQ号" class="signup-box-input"/> <span
 							id="form-qq" class="form-validate">*&nbsp;请输入有效的QQ号</span>
 					</div>
 					<div class="login-input">
 						<select name="sex">
-							<option value="男">男</option>
-							<option value="女">女</option>
+							<option value="男" <#if (user.sex)??><#if "男" == (user.sex)!>selected="selected"</#if></#if>>男</option>
+							<option value="女" <#if (user.sex)??><#if "女" == (user.sex)!>selected="selected"</#if></#if>>女</option>
 						</select>
 					</div>
 					<div class="login-input">
 						<select name="institute"> 
 							<#list instituteList as institute>
+								<#if (user.institute) ?? && user.institute=institute.index>
+	               					<option value="${(institute.index)!}" selected="selected" >${(institute.name1)!}</option>
+	                			<#else>
+	                				<option value="${(institute.index)!}">${(institute.name1)!}</soption> 
+	                			</#if>
 								<!-- 这里用name报错 .NonStringException: [... Exception message was already printed; see it above ...] -->
-								<option value="${institute.index}">${institute.name1}</soption> 
 							</#list>
 						</select>
 					</div>
 					<div class="login-input">
-						<input id="login-specialty" name="specialty" type="text" placeholder="专业" class="signup-box-input"/> <span
+						<input id="login-specialty" name="specialty" value="${(user.specialty)!}" type="text" placeholder="专业" class="signup-box-input"/> <span
 							id="form-specialty" class="form-validate">*&nbsp;请输入有效的专业名称</span>
 					</div>
 					<span class="form-info">*&nbsp;请通过校园卡、学生证照片进行<a href="#">实名认证</a></span>

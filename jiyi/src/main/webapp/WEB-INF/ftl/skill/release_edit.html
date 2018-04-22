@@ -28,17 +28,21 @@
         <h5 class="skill-edit-title">发布我的技能</h5>
         <a href="${ctx}/v1/skills/rewardSkills/creation" class="skill-edit-trans"><span>悬赏&nbsp;<i class="fa fa-arrow-circle-o-right"></i></span></a>
         <div class="skill-edit-input-wrapper">
-            <input type="text" placeholder="标题" name="rsTitle" class="skill-edit-input min-width require"/>
+            <input type="text" placeholder="标题" name="rsTitle" value="${(skill.rsTitle)!}" class="skill-edit-input min-width require"/>
             <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
             <p class="skill-edit-info">*&nbsp;请输入帖子标题</p>
         </div>
         <div class="skill-edit-input-wrapper">
             <select class="skill-edit-select require" name="rsCategory">
-                <option disabled selected value>技能类别</option>
+                <option disabled selected >技能类别</option>
                 <#list skillCategory as category>
                 	<!-- 不取第0行 第0行为全部 -->
                 	<#if category_index !=0>
-               			<option value="${(category.index)!}">${(category.name1)!}</option>
+                		<#if (skill.rsCategory) ?? && skill.rsCategory=category.index>
+               				<option value="${(category.index)!}" selected="selected" >${(category.name1)!}</option>
+                			<#else>
+                			<option value="${(category.index)!}">${(category.name1)!}</option>
+                		</#if>
                 	</#if>
                 </#list>
             </select>
@@ -46,36 +50,36 @@
             <p class="skill-edit-info">*&nbsp;请选择技能类别</p>
         </div>
         <div class="skill-edit-input-wrapper">
-            <input type="number" placeholder="课时数" name="rsClassNum" class="skill-edit-input min-width require"/>
+            <input type="number" placeholder="课时数" name="rsClassNum" value="${(skill.rsClassNum)!}" class="skill-edit-input min-width require"/>
             <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
             <p class="skill-edit-info">*&nbsp;请输入课时数类别</p>
         </div>
         <div class="skill-edit-input-wrapper">
-            <select class="skill-edit-select require" name=rsClassTime>
-                <option disabled selected value>单课时长</option>
-                <option value="30">30分钟</option>
-                <option value="45">45分钟</option>
-                <option value="60">60分钟</option>
-                <option value="90">90分钟</option>
-                <option value="120">120分钟</option>
+            <select class="skill-edit-select require" name="rsClassTime">
+                <option disabled selected>单课时长</option>
+                <option value="30" <#if (skill.rsClassTime)??><#if 30 == (skill.rsClassTime)!>selected="selected"</#if></#if> >30分钟</option>
+                <option value="45" <#if (skill.rsClassTime)??><#if 45 == (skill.rsClassTime)!>selected="selected"</#if></#if>>45分钟</option>
+                <option value="60" <#if (skill.rsClassTime)??><#if 60 == (skill.rsClassTime)!>selected="selected"</#if></#if>>60分钟</option>
+                <option value="90" <#if (skill.rsClassTime)??><#if 90 == (skill.rsClassTime)!>selected="selected"</#if></#if>>90分钟</option>
+                <option value="120" <#if (skill.rsClassTime)??><#if 120 == (skill.rsClassTime)!>selected="selected"</#if></#if>>120分钟</option>
             </select>
             <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
             <p class="skill-edit-info">*&nbsp;请选择单课时长</p>
         </div>
         
         <div class="skill-edit-input-wrapper">
-            <input id="datetimepicker" type="text" name="rsTerm" class="skill-edit-input min-width require" placeholder="预计技能完成时间">
+            <input id="datetimepicker" type="text" name="rsTerm" value="${(skill.rsTerm)!}" class="skill-edit-input min-width require" placeholder="预计技能完成时间">
             <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
             <p class="skill-edit-info">*&nbsp;预计技能完成时间</p>
         </div>
         
         <div class="skill-edit-input-wrapper">
-            <input type="text" placeholder="教学地点" name="rsPlace" class="skill-edit-input mid-width require"/>
+            <input type="text" placeholder="教学地点" name="rsPlace" value="${(skill.rsPlace)!}" class="skill-edit-input mid-width require"/>
             <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
-            <p class="skill-edit-info">*&nbsp;请输入教学地点（“文波702，西苑i-like”）</p>
+            <p class="skill-edit-info">*&nbsp;请输入教学地点如（“文波702，西苑i-like”）没想好请输入“待定”</p>
         </div>
         <div class="skill-edit-input-wrapper">
-            <textarea placeholder="课程目标"  name="rsTarget" class="skill-edit-text mid-width mid-height require"></textarea>
+            <textarea placeholder="课程目标"  name="rsTarget"  class="skill-edit-text mid-width mid-height require">${(skill.rsTarget)!}</textarea>
             <p class="skill-edit-info">*&nbsp;请输入课程目标（“两小时上手蓝调口琴，三小时吹奏《海上钢琴师》”）</p>
         </div>
         <!--<div class="skill-edit-input-wrapper">-->
@@ -83,11 +87,11 @@
         <!--<p class="skill-edit-info">*&nbsp;请输入技能详情（ emmmm 吹牛逼都会吧）</p>-->
         <!--</div>-->
         <div class="skill-edit-input-wrapper">
-            <textarea placeholder="个人技能描述" name="rsPersonalDescribe" class="skill-edit-text lar-width lar-height require"></textarea>
+            <textarea placeholder="个人技能描述" name="rsPersonalDescribe" class="skill-edit-text lar-width lar-height require">${(skill.rsPersonalDescribe)!}</textarea>
             <p class="skill-edit-info">*&nbsp;请输入个人技能描述（ emmmm 吹自己的牛逼，我会XXX，我能够XXX）</p>
         </div>
         <div class="skill-edit-input-wrapper">
-            <input type="number" name="rsCost" placeholder="所需喵币数" class="skill-edit-input min-width require"/>
+            <input type="number" name="rsCost" placeholder="所需喵币数" value="${(skill.rsCost)!}" class="skill-edit-input min-width require"/>
             <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
             <p class="skill-edit-info">*&nbsp;请输入喵币数量</p>
         </div>
@@ -102,10 +106,10 @@
         </div>
         <div class="skill-edit-input-pic-wrapper2">
             <div class="skill-edit-input-wrapper skill-edit-input-pic">
-                <button>上传技能封面</button><div class="skill-edit-input-content"></div>
-                <input type="file" placeholder="上传技能封面" name="picture2" class="skill-edit-input min-width require"/>
+                <button>上传技能贴封面</button><div class="skill-edit-input-content"></div>
+                <input type="file" placeholder="上传技能贴封面" name="picture2" class="skill-edit-input min-width require"/>
                 <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
-                <p class="skill-edit-info skill-edit-btn-info">*&nbsp;为你的帖子选择一个好看的封面哦</p>
+                <p class="skill-edit-info skill-edit-btn-info">*&nbsp;为你的帖子选择一个好看的封面哦，不上传统一分配了</p>
             </div>
         </div>
         <!-- ****************** 这里修改了上传按钮 ********************* -->
@@ -114,6 +118,7 @@
             <label for="skill-edit-law">我已阅读并同意<a href="#">《用户协议》</a></label>
         </div>
         <div class="skill-edit-btns">
+        	<input type="hidden" name="rsId" value="${(skill.rsId)!}">
             <button type="button" id="doRelease" class="skill-edit-btn">保存草稿</button>
             <button id="skill-submit-btn" class="skill-edit-btn red-color" disabled style="background-color: #d2d2d2">
                 	上传发布

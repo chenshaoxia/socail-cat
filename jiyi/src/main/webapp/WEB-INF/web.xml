@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
@@ -21,8 +22,24 @@
 	<!-- 载入配置文件 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring.xml,classpath:spring-dao.xml</param-value>
+		<param-value>classpath:spring.xml,classpath:spring-dao.xml,classpath:spring-shiro.xml,</param-value>
 	</context-param>
+	
+	<!-- 添加shiro过滤器 -->  
+  	<filter>  
+	    <filter-name>shiroFilter</filter-name>  
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
+	    <init-param>  
+	        <!-- 该值缺省为false，表示声明周期由SpringApplicationContext管理，
+	        		设置为true表示ServletContainer管理 -->  
+	        <param-name>targetFilterLifecycle</param-name>  
+	        <param-value>true</param-value>  
+	    </init-param>  
+  	</filter>  
+	<filter-mapping>  
+	    <filter-name>shiroFilter</filter-name>  
+	    <url-pattern>/*</url-pattern>  
+	</filter-mapping>  
 	
 	<!-- utf8过滤器 -->
 	<filter>
@@ -38,6 +55,8 @@
 		</init-param>
 	</filter>
 	<filter-mapping>
+		<!-- 设置为/*时才会拦截所有请求，和servlet有点区别，servlet设置为/*只拦截所有的一级请求
+		，如/xx.do，而不拦截/xx/xx.do；servlet设置为/时才会拦截所有请求 -->
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
@@ -59,4 +78,5 @@
 		<servlet-name>spring-mvc</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
 </web-app>

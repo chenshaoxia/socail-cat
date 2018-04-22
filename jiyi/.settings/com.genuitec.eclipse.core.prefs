@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-validator.Checked=src/main/webapp/WEB-INF/ftl/skill/release_details.html,src/main/webapp/WEB-INF/ftl/skill/reward_details.html,src/main/webapp/WEB-INF/ftl/skill/release_skill.html
+validator.Checked=src/main/webapp/WEB-INF/ftl/admin/reward_permission.html,src/main/webapp/WEB-INF/ftl/skill/release_edit.html,src/main/webapp/WEB-INF/ftl/user/register.html,src/main/webapp/WEB-INF/ftl/skill/reward_skill.html,src/main/webapp/WEB-INF/ftl/admin/release_manage.html,src/main/webapp/WEB-INF/ftl/skill/release_details.html,src/main/webapp/WEB-INF/ftl/admin/release_permission.html,src/main/webapp/WEB-INF/ftl/admin/user_permission.html,src/main/webapp/WEB-INF/ftl/skill/reward_details.html,src/main/webapp/WEB-INF/ftl/skill/release_skill.html
 validator.Revalidate=true
 validator.Unchecked=

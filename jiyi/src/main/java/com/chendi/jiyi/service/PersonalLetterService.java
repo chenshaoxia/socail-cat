@@ -20,16 +20,16 @@ public class PersonalLetterService {
 		return letterDAO.addLetter(letter);
 	}
 	
-	public List<Letter> queryByBothId(String senderId,String receiverId){
+	public List<PersonalLetter> queryByBothId(String senderId,String receiverId){
 		return letterDAO.queryByBothId(senderId, receiverId);
 	}
 	
-	public List<Letter> queryBySenderId(String senderId){
+	public List<PersonalLetter> queryBySenderId(String senderId){
 		return letterDAO.queryBySenderId(senderId);
 	}
 	
-	public List<Letter> queryByReceiverId(String receiverId){
-		return letterDAO.queryByReceiverId(receiverId);
+	public List<PersonalLetter> queryByReceiverId(String receiverId,Integer hasRead){
+		return letterDAO.queryByReceiverId(receiverId,hasRead);
 	}
 
 	public int updateRead(int mId,int mHasRead){

@@ -23,13 +23,14 @@ public class RewardSkill {
 	private Integer rsStatus;
 	private Admin rsAuditor;
 	private String rsAuditingMsg;
+	private String rsCover;
 
 	public RewardSkill() {
 		super();
 	}
 	
 	//获取枚举对象中的name 技能状态
-	public String getRsStatusEnum(){
+	public String getStatusEnum(){
 		return RewardSkillStatus.getName(getRsStatus().intValue());
 	}
 	
@@ -172,6 +173,14 @@ public class RewardSkill {
 
 	public void setRsAuditingMsg(String rsAuditingMsg) {
 		this.rsAuditingMsg = rsAuditingMsg;
+	}
+
+	public String getRsCover() {
+		return rsCover;
+	}
+
+	public void setRsCover(String rsCover) {
+		this.rsCover = rsCover;
 	}
 
 	@Override

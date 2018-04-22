@@ -53,8 +53,8 @@ public class PictureService {
 		// 把图片属性上传到数据库
 		if (fkType==CategoryEnum.RELEASECOVER.getIndex()) {
 			releaseDAO.updateCover(fkId,path);
-		}else if (fkId==CategoryEnum.REWARDCOVER.getIndex()) {
-			
+		}else if (fkType==CategoryEnum.REWARDCOVER.getIndex()) {
+			rewardDAO.updateCover(fkId,path);
 		}
 		else {
 			Picture picture = new Picture();

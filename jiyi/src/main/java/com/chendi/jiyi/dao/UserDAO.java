@@ -10,7 +10,7 @@ public interface UserDAO {
 	// 添加用户
 	public int addUser(User user);
 	// 根据id查询用户
-	public User queryById(String id);
+	public User queryById(@Param("id")String id,@Param("status")Integer status);
 	// 根据id查询用户姓名
 	public User queryName(String id);
 	// 根据id查询用户金币
@@ -24,7 +24,7 @@ public interface UserDAO {
 	// 查询所有未审核的用户
 	public List<User> queryAllNotActive();
 	// 管理员审核后的激活账户
-	public int updateStatus(@Param("id") String id, @Param("status") int status, @Param("auditor") String auditor);
+	public int updateStatusById(@Param("id") String id, @Param("status") int status, @Param("auditingMsg") String auditingMsg,@Param("auditor") String auditor);
 	// 更新用户信息
 	public int updateById(User user);
 	// 更新头像信息

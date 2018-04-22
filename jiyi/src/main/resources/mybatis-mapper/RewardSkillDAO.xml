@@ -15,12 +15,12 @@
 		<result property="rsTarget" column="rs_target" />
 		<result property="rsTerm" column="rs_term" />
 		<result property="rsCost" column="rs_cost" />
-
 		<result property="rsTryClassNum" column="rs_try_class_num" />
 		<result property="rsTryCost" column="rs_try_cost" />
 		<result property="rsPraise" column="rs_praise" />
 		<result property="rsStatus" column="rs_status" />
 		<result property="rsAuditingMsg" column="rs_auditing_msg" />
+		<result property="rsCover" column="rs_cover" />
 		<association property="rsPublisher" column="rs_publisher"
 			javaType="User" select="com.chendi.jiyi.dao.UserDAO.queryName" />
 
@@ -68,9 +68,9 @@
 		insert into
 		reward_skill
 		(rs_title,rs_details,rs_publisher,rs_create_time,rs_category,
-		rs_place,rs_target,rs_term,rs_cost,rs_status)
+		rs_place,rs_target,rs_term,rs_cost,rs_status,rs_cover)
 		values(#{rsTitle},#{rsDetails},#{rsPublisher.id},#{rsCreateTime},#{rsCategory},
-		#{rsPlace},#{rsTarget},#{rsTerm},#{rsCost},#{rsStatus})
+		#{rsPlace},#{rsTarget},#{rsTerm},#{rsCost},#{rsStatus},#{rsCover})
 	</insert>
 
 	<select id="queryById" resultMap="RewardSkillMap"
@@ -78,36 +78,58 @@
 		select
 		rs.rs_id,rs.rs_title,rs.rs_details,rs.rs_publisher,rs.rs_accepter,rs.rs_create_time,rs.rs_category,
 		rs.rs_place,rs.rs_target,rs.rs_term,rs.rs_cost,rs.rs_try_cost,rs.rs_status,rs.rs_auditor,rs.rs_auditing_msg,
-		u.id,u.name,u.picture,ra.ra_create_time
+		rs.rs_cover,u.id,u.name,u.picture,ra.ra_create_time
 		from reward_skill rs,reward_accepter ra,user u
-		where rs.rs_id=ra.rs_id and ra.accepter_id=u.id
-				and rs.rs_id=#{id}
+		where rs.rs_id=ra.rs_id and ra.accepter_id=u.id and rs.rs_id=#{id}
+		<if test="status!=null">
+			and rs.rs_status=#{status}
+		</if>
 	</select>
 
 	<select id="queryByIdNoAccepter" resultMap="RewardSkillMap"
 		parameterType="int">
 		select
 		rs.rs_id,rs.rs_title,rs.rs_details,rs.rs_publisher,rs.rs_accepter,rs.rs_create_time,rs.rs_category,
-		rs.rs_place,rs.rs_target,rs.rs_term,rs.rs_cost,rs.rs_try_cost,rs.rs_status,rs.rs_auditor,rs.rs_auditing_msg
+		rs.rs_place,rs.rs_target,rs.rs_term,rs.rs_cost,rs.rs_try_cost,rs.rs_status,rs.rs_auditor,
+		rs.rs_auditing_msg,rs.rs_cover
 		from reward_skill rs
 		where rs.rs_id=#{id}
+		<if test="status!=null">
+			and rs_status=#{status}
+		</if>
 	</select> 
 
 	<!-- <select id="queryAll" resultType="RewardSkill"> select rs_id,rs_title,rs_details,rs_publisher,rs_accepter,rs_create_time,rs_category, 
 		rs_place,rs_target,rs_term,rs_cost,rs_need_try,rs_try_cost,rs_prase,rs_status,rs_auditor 
 		from reward_skill </select> -->
-
+	
+	<select id="queryByPublisher" resultMap="RewardSkillMap">
+		select
+		rs_id,rs_title,rs_publisher,rs_create_time,rs_category,rs_status,rs_auditor,rs_cover
+		from reward_skill 
+		where rs_publisher=#{id} and rs_status!=#{exceptStatus}
+	</select>
+	
+	<!-- <select id="queryByAccepter" resultMap="RewardSkillMap"
+		parameterType="String">
+		select
+		rs_id,rs_title,rs_publisher,rs_buyer,rs_create_time,rs_category,rs_status,rs_auditor,rs_cover
+		from reward_skill
+		where rs_buyer=#{id} and rs_status!=-2
+	</select> -->
+	
 	<select id="queryByStatus" resultMap="RewardSkillMap">
 		select
 		rs_id,rs_title,rs_details,rs_publisher,rs_accepter,rs_create_time,rs_category,
 		rs_place,rs_term,rs_status
 		from reward_skill
 		where rs_status=#{status}
+		order by rs_create_time ASC
 	</select>
 	
 	<select id="queryByStatusToUser" resultMap="RewardSkillMap">
 		select
-		rs_id,rs_title,rs_details,rs_publisher,rs_create_time,rs_category,rs_status
+		rs_id,rs_title,rs_details,rs_publisher,rs_create_time,rs_category,rs_status,rs_cover
 		from reward_skill
 		where rs_status=#{status}
 		order by ${orderBy} ${order}
@@ -124,15 +146,18 @@
 	<update id="auditing">
 		update reward_skill
 		set
-		rs_status=#{status},rs_cost=#{cost},rs_try_cost=#{tryCost},rs_auditor=#{auditor},rs_auditing_msg=#{auditingMsg}
+		rs_status=#{status},rs_auditing_msg=#{auditingMsg}
+		<if test="auditor!=null and auditor!=''">
+			,rs_auditor=#{auditor}
+		</if>
 		where rs_id=#{id}
 	</update>
 
 	<update id="updateById" parameterType="RewardSkill">
 		update reward_skill
 		set
-		rs_title=#{rsTitle},rs_details=#{rsDetails},rs_category=#{rsCategory},
-		rs_place=#{rsPlace},rs_target=#{rsTarget},rs_term=#{rsTerm}
+		rs_title=#{rsTitle},rs_details=#{rsDetails},rs_create_time=#{rsCreateTime},rs_category=#{rsCategory},
+		rs_cost=#{rsCost},rs_place=#{rsPlace},rs_target=#{rsTarget},rs_term=#{rsTerm},rs_status=#{rsStatus}
 		where rs_id=#{id}
 	</update>
 
@@ -148,7 +173,7 @@
 		set
 		rs_status=#{status},rs_accepter=#{accepter}
 		where rs_id=#{id} and
-		rs_status=1
+		rs_status=#{originalStatus}
 	</update>
 
 	<update id="updateAccepterNum">
@@ -156,6 +181,12 @@
 		set
 		rs_accepter_num=rs_accepter_num+1
 		where rs_id=#{id} and
-		rs_status=1
+		rs_status=#{originalStatus}
+	</update>
+	
+	<update id="updateCover">
+		update reward_skill
+		set rs_cover=#{coverPath}
+		where rs_id=#{id}
 	</update>
 </mapper>

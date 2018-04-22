@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.chendi.jiyi.Enum.UserStatus;
 import com.chendi.jiyi.dao.AdminDAO;
 import com.chendi.jiyi.dao.CommentDAO;
 import com.chendi.jiyi.dao.UserDAO;
-import com.chendi.jiyi.dto.UserStatus;
 import com.chendi.jiyi.entity.Admin;
 import com.chendi.jiyi.entity.Comment;
 import com.chendi.jiyi.entity.User;

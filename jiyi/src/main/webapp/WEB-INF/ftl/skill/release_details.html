@@ -10,14 +10,23 @@
 <link rel="stylesheet" href="${ctx}/styles/shared.css">
 <link rel="stylesheet" href="${ctx}/styles/index.css">
 <link rel="stylesheet" href="${ctx}/styles/detail.css">
+<link rel="stylesheet" href="${ctx}/styles/all.css">
 
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
 
 <script src="${ctx}/lib/jquery.min.js"></script>
 <script src="${ctx}/js/user_order.js"></script>
 <script src="${ctx}/js/index.js"></script>
+<script src="${ctx}/js/all.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -34,36 +43,33 @@
 	<div class="index-wrapper">
 		<div class="post-wrapper">
 			<div class="post-nav">
-				<span>全部技能>>></span> <span>类别>>></span> <span>${skill.rsTitle}</span>
+				<span>全部技能>>></span> <span>类别>>></span> <span>${(skill.rsTitle)!}</span>
 			</div>
 			<!--post-nav-->
 			<div class="post-header">
-				<#if skill.rsCover ??>
-					<img class="post-left" src="${ctx}/${(skill.rsCover)!}">
-				<#else>
-					<img class="post-left" src="${ctx}/images/background-detail.jpg" />
+				<#if (skill.rsCover)??> <img class="post-left"
+					src="${ctx}/${(skill.rsCover)!}"> <#else> <img
+					class="post-left" src="${ctx}/images/background-detail.jpg" />
 				</#if>
 				<div class="post-right">
-					<span class="post-title">${skill.rsTitle}</span> 
-               		<span id="releaseSupportTips" class="post-call" style="display:none">打完了</span>
-					<span id="release_support" class="post-call" onclick="support('${base}','${skill.rsId}','release_skill')" style="display: inline-block">为Ta打Call</span>
+					<span class="post-title">${skill.rsTitle}</span> <span
+						id="releaseSupportTips" class="post-call" style="display:none">打完了</span>
+					<span id="release_support" class="post-call"
+						onclick="support('${base}','${skill.rsId}','release_skill')"
+						style="display: inline-block">为Ta打Call</span>
 					<div class="post-heads" id="supportDiv">
 						<#list praiseList as praise> <img
-							src="${ctx}/${praise.pUser.picture}" /> </#list>
-						<span id="post-heads-more" style="display: none">...</span>
-	                    <span class="post-heads-count">共有${praiseList?size}人为他打call</span>
+							src="${ctx}/${praise.pUser.picture}" /> </#list> <span
+							id="post-heads-more" style="display: none">...</span> <span
+							class="post-heads-count">共有${praiseList?size}人为他打call</span>
 					</div>
 					<div class="post-btn">
-						<span class="post-btn1"> 
-							<i class="fa fa-tags"></i>
-							 <span class="post-btn-content">课时 ${skill.rsClassNum}</span>
-						</span> 
-						<span class="post-btn1">
-	                        <i class="fa fa-hand-lizard-o"></i>
-	                        <span class="post-btn-content">单课时长 ${skill.rsClassTime} min</span>
-                   		</span>
-						<span class="post-btn2" id="buy"> 
-							<i class="fa fa-krw"></i> 
+						<span class="post-btn1"> <i class="fa fa-tags"></i> <span
+							class="post-btn-content">课时 ${skill.rsClassNum}</span>
+						</span> <span class="post-btn1"> <i class="fa fa-hand-lizard-o"></i>
+							<span class="post-btn-content">单课时长 ${skill.rsClassTime}
+								min</span>
+						</span> <span class="post-btn2" id="buy"> <i class="fa fa-krw"></i>
 							<span class="post-btn-content">购买 ${skill.rsCost} 喵币</span>
 						</span>
 					</div>
@@ -71,12 +77,14 @@
 			</div>
 			<!--post-header-->
 
-			<div class="post-content-wrapper">
-				<div class="post-content">
-					<div class="post-sub">
-						<span class="post-sub1">技能简介</span> <i class="post-subline"></i> <span>评论</span>
-					</div>
-					<div class="post-info">
+			<div class="detail-content-wrapper">
+            <div class="detail-content" id="detail-content">
+                <div class="detail-content-nav">
+                    <a href="detail-post.html"><span class="detail-content-nav-item" style="color: white; background-color: #f07f7f">技能简介</span></a>
+                    <i class="detail-content-nav-line"></i>
+                    <a href="#"><span class="detail-content-nav-item" id="comment">评论</span></a>
+                </div>
+                <div class="detail-content-info">
 						<span class="post-info-title">个人技能描述</span> <span
 							class="post-info-detail">${(skill.rsPersonalDescribe)!}</span> <span
 							class="post-info-title">技能类别</span> <span
@@ -98,34 +106,34 @@
 				</div>
 				<div class="post-more">
 					<div class="post-more-inner">
-						<img src="${ctx}/${skill.rsPublisher.picture}" /> 
-						<span>${skill.rsPublisher.name}</span>
+						<img src="${ctx}/${skill.rsPublisher.picture}" /> <span>${skill.rsPublisher.name}</span>
 						<div class="post-more-span">
-							<span>
-								发帖 ${skill.rsPublisher.releaseNum+skill.rsPublisher.rewardNum}
-							</span> 
-							<span>
-								信用 ${skill.rsPublisher.credit}
-							</span>
+							<span> 发帖
+								${skill.rsPublisher.releaseNum+skill.rsPublisher.rewardNum} </span> <span>
+								信用 ${skill.rsPublisher.credit} </span>
 						</div>
-						<button class="post-more-btn" data-toggle="modal" data-target="#messageModal">私信</button>
-                    	<div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
-	                        <div class="modal-dialog" role="document">
-	                            <div class="modal-content">
-	                                <div class="modal-header">
-	                                    <h5 class="modal-title" id="messageModalLabel">写私信</h5>
-	                                    <i class="fa fa-close" data-dismiss="modal"></i>
-	                                </div>
-	                                <div class="modal-body">
-	                                    <textarea id="letterContent" class="post-more-modal-text"></textarea>
-	                                </div>
-	                                <div class="modal-footer">
-	                                    <button onclick="personalLetter('${base}','${skill.rsPublisher.id}');" class="modal-footer-confirm">确定</button>
-	                                    <button class="modal-footer-consol" data-dismiss="modal">取消</button>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
+						<button class="post-more-btn" data-toggle="modal"
+							data-target="#messageModal">私信</button>
+						<div class="modal fade" id="messageModal" tabindex="-1"
+							role="dialog">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="messageModalLabel">写私信</h5>
+										<i class="fa fa-close" data-dismiss="modal"></i>
+									</div>
+									<div class="modal-body">
+										<textarea id="letterContent" class="post-more-modal-text"></textarea>
+									</div>
+									<div class="modal-footer">
+										<button
+											onclick="personalLetter('${base}','${skill.rsPublisher.id}');"
+											class="modal-footer-confirm">确定</button>
+										<button class="modal-footer-consol" data-dismiss="modal">取消</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -97,23 +97,24 @@
 		rs_class_num,rs_class_time,rs_place,rs_target,rs_term,rs_personal_describe,
 		rs_cost,rs_can_try,rs_try_class_num,rs_try_cost,rs_praise,rs_status,rs_auditor,rs_cover
 		from release_skill
-		where rs_id=#{id}
+		where rs_id=#{id} 
+		<if test="status!=null">
+			and rs_status=#{status}
+		</if>
 	</select>
 	
-	<select id="queryByPublisher" resultMap="ReleaseSkillMap"
-		parameterType="String">
+	<select id="queryByPublisher" resultMap="ReleaseSkillMap">
 		select
-		rs_id,rs_title,rs_publisher,rs_buyer,rs_create_time,rs_category,rs_status,rs_auditor
+		rs_id,rs_title,rs_publisher,rs_buyer,rs_create_time,rs_category,rs_status,rs_auditor,rs_cover
 		from release_skill
-		where rs_publisher=#{id}
+		where rs_publisher=#{id} and rs_status!=#{exceptStatus}
 	</select>
 	
-	<select id="queryByBuyer" resultMap="ReleaseSkillMap"
-		parameterType="String">
+	<select id="queryByBuyer" resultMap="ReleaseSkillMap">
 		select
-		rs_id,rs_title,rs_publisher,rs_buyer,rs_create_time,rs_category,rs_status,rs_auditor
+		rs_id,rs_title,rs_publisher,rs_buyer,rs_create_time,rs_category,rs_status,rs_auditor,rs_cover
 		from release_skill
-		where rs_buyer=#{id}
+		where rs_buyer=#{id} and rs_status!=#{exceptStatus}
 	</select>
 
 	<select id="queryCost" resultMap="ReleaseSkillMap" parameterType="int">
@@ -138,9 +139,10 @@
 	<select id="queryByStatus" resultMap="ReleaseSkillMap1">
 		select
 		rs_id,rs_title,rs_publisher,rs_create_time,rs_category,rs_class_num,
-		rs_class_time,rs_term,rs_can_try,rs_try_class_num,rs_status,rs_cover
+		rs_class_time,rs_term,rs_cost,rs_status
 		from release_skill
 		where rs_status=#{status}
+		order by rs_create_time ASC
 	</select>
 
 	<!-- #将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。
@@ -163,23 +165,34 @@
 		where
 		rs_category=#{category}
 	</select>
+	
+	<select id="queryStatusById" resultType="int">
+		select
+		rs_status
+		from release_skill
+		where
+		rs_id=#{id}
+	</select>
 
-	<update id="auditing">
+	<update id="updateStatusById">
 		update release_skill
 		set
-		rs_status=#{status},rs_cost=#{cost},rs_try_cost=#{tryCost},rs_auditor=#{auditor}
+		rs_status=#{status},rs_auditing_msg=#{auditingMsg}
+		<if test="auditor!=null and auditor!=''">
+			,rs_auditor=#{auditor}
+		</if>
 		where rs_id=#{id}
 	</update>
 
 	<update id="updateById" parameterType="ReleaseSkill">
 		update release_skill
 		set
-		rs_title=#{rsTitle},rs_details=#{rsDetails},rs_publisher=#{rsPublisher.id},rs_category=#{rsCategory},
-		rs_class_num=#{rsClassNum},rs_class_time=#{rsClassTime},rs_place=#{rsPlace},rs_target=#{rsTarget},
-		rs_term=#{rsTerm},rs_personal_describe=#{rsPersonalDescribe},rs_can_try=#{rsCanTry},
-		rs_try_class_num=#{rsTryClassNum},rs_status=#{rsStatus}
+		rs_title=#{rsTitle},rs_details=#{rsDetails},rs_publisher=#{rsPublisher.id},rs_create_time=#{rsCreateTime},
+		rs_category=#{rsCategory},rs_cost=#{rsCost},rs_class_num=#{rsClassNum},rs_class_time=#{rsClassTime},
+		rs_place=#{rsPlace},rs_target=#{rsTarget},rs_term=#{rsTerm},rs_personal_describe=#{rsPersonalDescribe},
+		rs_can_try=#{rsCanTry},rs_try_class_num=#{rsTryClassNum},rs_status=#{rsStatus}
 		where
-		rs_id=#{id}
+		rs_id=#{rsId}
 	</update>
 
 	<update id="buyOrTry">

@@ -1,0 +1,95 @@
+<#assign ctx=request.contextPath />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>帖子管理</title>
+<link rel="stylesheet" href="${ctx}/styles/reset.css">
+<link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
+<link rel="stylesheet" href="${ctx}/styles/bootstrap.min.css">
+
+<link rel="stylesheet" href="${ctx}/styles/admin.css">
+<link rel="stylesheet" href="${ctx}/styles/shared.css">
+<link rel="stylesheet" href="${ctx}/styles/edit.css">
+
+<script src="${ctx}/lib/jquery.datetimepicker.full.min.js"></script>
+<link rel="stylesheet" href="${ctx}/styles/jquery.datetimepicker.css">
+<script src="${ctx}/lib/jquery.min.js"></script>
+<script src="${ctx}/lib/bootstrap.min.js"></script>
+<script src="${ctx}/js/index.js"></script>
+<script src="${ctx}/js/post-edit.js"></script>
+</head>
+<body>
+	<div class="admin-upload-wrapper">
+		<div class="admin-bar">
+			<div class="admin-card">
+				<img class="admin-card-img" src="${ctx}/${(Session.admin.picture)!}" />
+				<span class="admin-card-name">${Session.admin.name}</span>
+			</div>
+			<div class="admin-nav">
+				<a href="${ctx}/v1/admin/releasePermission" class="admin-nav-link">上传许可</a>
+				<a href="${ctx}/v1/admin/userPermission" class="admin-nav-link">用户认证</a>
+				<a href="${ctx}/v1/admin/releaseManage"
+					class="admin-nav-link admin-nav-linked">帖子管理</a> <a
+					href="${ctx}/v1/admin/userManage" class="admin-nav-link">用户管理</a> <a
+					href="${ctx}/v1/admin/noticeManage" class="admin-nav-link">公告管理</a>
+				<a href="${ctx}/v1/admin/appealManage" class="admin-nav-link">申诉处理</a>
+			</div>
+		</div>
+		<!--admin-bar-->
+
+		<div class="admin-content">
+			<div class="admin-header">
+				<div>
+					<span class="admin-header-title" style="bottom: 6px;">帖子管理</span> <a
+						href="admin-posts.html"><span
+						class="admin-upload-link admin-upload-link-hover ">技能贴</span></a> <a
+						href="admin-posts-reward.html"><span class="admin-upload-link">悬赏贴</span></a>
+				</div>
+				<div class="admin-search">
+					<input type="search" /> <i class="fa fa-search"></i>
+				</div>
+			</div>
+			<div class="admin-table-wrapper">
+				<table class="table admin-table" style="background-color: white;">
+					<thead>
+						<tr class="admin-table-tr">
+							<!-- <th></th> -->
+							<th>序号</th>
+							<th>名称</th>
+							<th>发布人</th>
+							<th>发布时间</th>
+							<th>当前状态</th>
+							<th>类别</th>
+							<th>课时</th>
+							<th>单课时长</th>
+							<th>期限</th>
+							<th>喵币</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#list releaseList! as skill>
+						<tr class="changeBg"
+							onclick="location.href='releasePermission/${(skill.rsId)!}/details';">
+							<!-- <td><input type="checkbox"></td> -->
+							<td>${skill_index+1}</td>
+							<td>${(skill.rsTitle)!}</td>
+							<td>${(skill.rsPublisher.name)!}</td>
+							<td>${(skill.rsCreateTime)!}</td>
+							<td>${(skill.getStatusEnum())!}</td>
+							<td>${(skill.getCategoryEnum())!}</td>
+							<td>${(skill.rsClassNum)!}</td>
+							<td>${(skill.rsClassTime)!}</td>
+							<td>${(skill.rsTerm)!}</td>
+							<td>${(skill.rsCost)!}</td>
+						</tr>
+						</#list>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!--admin-content-->
+
+	</div>
+</body>
+</html>

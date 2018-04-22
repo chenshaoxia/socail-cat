@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.css">
+
+    <script src="lib/jquery.min.js"></script>
+    <script src="js/all.js"></script>
+</head>
+<body>
+<div class="header-container">
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" />
+        <div class="header-nav">
+            <a href="index.html" class="header-nav-item">主页</a>
+            <a href="search-post.html" class="header-nav-item">技能贴</a>
+            <a href="search-reward.html" class="header-nav-item">悬赏贴</a>
+        </div>
+        <div class="header-search">
+            <input type="search" placeholder="search" class="header-search-input" id="header-search-input"/>
+            <i class="fa fa-search header-search-icon"></i>
+        </div>
+        <div class="header-user">
+            <a href="message-info.html" class="header-user-message">
+                <i class="fa fa-bell-o header-user-message-bell">
+                    <span class="header-user-message-bell-count">11</span>
+                </i>
+            </a>
+            <a href="user.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
+            <a href="login.html" class="header-user-login">登录</a>
+            <a href="signup.html" class="header-user-login">注册</a>
+        </div>
+        <div class="header-post">
+            <a href="skill-edit.html"><i class="fa fa-send fa-3x"></i></a>
+        </div>
+    </header>
+</div>
+
+
+<div class="search-header">
+    <div class="search-header-input">
+        <input type="search" placeholder="搜索...">
+        <i class="fa fa-search"></i>
+    </div>
+    <div class="search-header-keywords">
+        <span class="search-header-keywords-title">热搜关键词</span>
+        <span class="search-header-keywords-item">音乐</span>
+        <span class="search-header-keywords-item">绘画</span>
+    </div>
+    <div class="search-header-advanced">
+        <div class="search-header-advanced-line">
+            <span class="search-header-advanced-title">类型</span>
+            <span class="search-header-advanced-item">技能贴</span>
+            <span class="search-header-advanced-item">悬赏贴</span>
+        </div>
+        <div class="search-header-advanced-line">
+            <span class="search-header-advanced-title">类别</span>
+            <span class="search-header-advanced-item">全部</span>
+            <span class="search-header-advanced-item">球类运动</span>
+            <span class="search-header-advanced-item">乐器教学</span>
+            <span class="search-header-advanced-item">软件学习</span>
+            <span class="search-header-advanced-item">闲置物品</span>
+            <span class="search-header-advanced-item">期末辅导</span>
+            <span class="search-header-advanced-item">教材考试</span>
+            <span class="search-header-advanced-item">街舞指导</span>
+            <span class="search-header-advanced-item">强行分类</span>
+        </div>
+        <div class="search-header-advanced-line">
+            <span class="search-header-advanced-title">排序</span>
+            <span class="search-header-advanced-item">最佳匹配</span>
+            <span class="search-header-advanced-item">最新</span>
+            <span class="search-header-advanced-item">最热</span>
+        </div>
+    </div>
+</div>
+
+<div class="index-wrapper">
+    <div class="items">
+        <a href="#">
+    <div class="item-wrapper">
+        <img src="images/carousel-nature1.jpg" class="item-img"/>
+        <div class="item-message">
+            <div class="item-message-top">
+                <span class="item-message-title">技能标题</span>
+                <span class="item-message-like"><i class="fa fa-thumbs-o-up ">&nbsp;</i>11</span>
+            </div>
+            <div class="item-message-bottom">
+                <span class="item-message-cate">类别</span>
+            </div>
+        </div>
+        <div class="item-footer">
+            <div class="item-footer-left">
+                <img class="item-footer-img" src="images/stupid.jpg"/>
+                <span class="item-footer-name">Kant</span>
+            </div>
+            <span class="item-footer-time">六小时前</span>
+        </div>
+    </div>
+</a>
+    </div>
+</div>
+
+<div class="footer">
+  <span class="footer-item">关于我们</span>
+  <span class="footer-item">用户协议</span>
+</div>
+
+</body>
+</html>

@@ -40,7 +40,7 @@ public class ReleaseSkill {
 		super();
 	}
 	
-	public String getRsStatusEnum(){
+	public String getStatusEnum(){
 		return ReleaseSkillStatus.getName(getRsStatus().intValue());
 	}
 	

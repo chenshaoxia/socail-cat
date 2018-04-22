@@ -1,9 +1,7 @@
 .login-background {
-    background-color: #d2d2d2;
     background-image: url("../images/background-login.jpg");
     -webkit-background-size: cover;
     background-size: cover;
-
 }
 .login-wrapper {
     /*display: flex;*/

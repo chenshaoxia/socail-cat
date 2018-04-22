@@ -1,0 +1,118 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd    
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+	<!-- 缓存管理器 使用Ehcache实现 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+
+	<bean id="sessionManager"
+		class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<!-- session的失效时长，单位毫秒 -->
+		<property name="globalSessionTimeout" value="1200000" />
+		<!-- 删除失效的session -->
+		<property name="deleteInvalidSessions" value="true" />
+		<!-- 去掉 JSESSIONID -->
+		<property name="sessionIdUrlRewritingEnabled" value="false" />
+		<!-- <property name="sessionValidationSchedulerEnabled" value="true"/> 
+			<property name="sessionDAO" ref="sessionDAO"/> <property name="sessionIdCookie" 
+			ref="sessionIdCookie"/> <property name="sessionIdCookieEnabled" value="true"/> -->
+	</bean>
+
+	<!-- 凭证匹配器 -->
+	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher"> 
+		<!-- <constructor-arg ref="cacheManager" />  -->
+		<property name="hashAlgorithmName" value="md5" /> 
+		<property name="hashIterations" value="2" /> 
+		<!-- storedCredentialsHexEncoded表示是否存储散列后的密码为16进制 -->
+		<property name="storedCredentialsHexEncoded" value="true" /> 
+	</bean>
+
+	<!-- Realm实现 -->
+	<bean id="adminRealm" class="com.chendi.jiyi.shiro.AdminRealm" />
+	<!-- <property name="credentialsMatcher" ref="credentialsMatcher" /> -->
+	<!-- </bean> -->
+
+	<!-- UserRealm实现 -->
+	<bean id="userRealm" class="com.chendi.jiyi.shiro.UserRealm">
+		<property name="credentialsMatcher" ref="credentialsMatcher" />
+	</bean>
+
+	<!-- 配置使用自定义认证器，可以实现多Realm认证，并且可以指定特定Realm处理特定类型的验证 -->
+    <bean id="authenticator" class="com.chendi.jiyi.shiro.CustomizedRealmAuthenticator">
+        <!-- 配置认证策略，只要有一个Realm认证成功即可，并且返回所有认证成功信息 -->
+        <property name="authenticationStrategy">
+            <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"></bean>
+        </property>
+    </bean>	
+    
+    <bean id="authorizer" class="com.chendi.jiyi.shiro.CustomizedRealmAuthorizer">
+    </bean>	
+
+	<!-- 安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="authenticator" ref="authenticator"></property>
+		<property name="authorizer" ref="authorizer"></property>
+		<!-- 使用配置的缓存管理器 -->
+		<!-- <property name="cacheManager" ref="cacheManager"></property> -->
+		<!-- 会话管理 -->
+		<property name="sessionManager" ref="sessionManager" />
+		<property name="realms">
+			<list>
+				<ref bean="adminRealm"/>
+				<ref bean="userRealm"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Shiro的Web过滤器 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- Shiro过滤器的核心安全接口，这个属性是必须的 -->
+		<property name="securityManager" ref="securityManager" />
+		<!--身份认证失败，则跳转到登录页面的配置 -->
+		<property name="loginUrl" value="/v1/sessions/creation" />
+		<!--权限认证失败，则跳转到指定页面 -->
+		<property name="unauthorizedUrl" value="/v1/sessions/noPermission" />
+		<!-- Shiro连接约束配置，即过滤链的定义 -->
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- 公共资源 -->
+				/js/* = anon
+				/styles/* = anon
+				/img/* = anon
+				/images/* = anon
+				/lib/* = anon
+				/fonts/* = anon
+		
+				<!-- 用户访问拦截 -->
+				/v1/users/creation=anon
+				/v1/skills/releaseSkills=anon
+				/v1/skills/releaseSkills/*/details=anon
+				/v1/skills/releaseSkills/*/comments=anon
+				/v1/skills/rewardSkills=anon
+				/v1/skills/rewardSkills/*/details=anon
+				/v1/skills/rewardSkills/*/comments=anon
+				
+				/v1/messages/**=authc,roles[no_permission_user]
+				/v1/users/**=authc,roles[no_permission_user]
+				<!-- /v1/messages/**=authc,roles[no_permission_user]
+				/v1/users/**=authc,roles[no_permission_user]
+				/v1/skills/**=authc,roles[general_user] -->
+
+				<!-- 管理员访问拦截 -->
+				/v1/sessions/admin/creation = anon
+				/v1/admin/releasePermission = authc,perms[releasePermisson]
+				/v1/admin/userPermission = authc,perms[userPermission]
+				/v1/admin/** = authc
+			</value>
+		</property>
+	</bean>
+
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+</beans>

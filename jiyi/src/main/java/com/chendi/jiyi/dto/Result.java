@@ -1,16 +1,22 @@
 package com.chendi.jiyi.dto;
 
-public class Result {
+public class Result<T> {
 	private boolean flag;
 	private String msg;
-
+	private T obj;
+	
 	public Result() {
 	}
 
 	public Result(boolean flag, String msg) {
-		super();
 		this.flag = flag;
 		this.msg = msg;
+	}
+
+	public Result(boolean flag, String msg, T obj) {
+		this.flag = flag;
+		this.msg = msg;
+		this.obj = obj;
 	}
 
 	public boolean isFlag() {
@@ -28,4 +34,13 @@ public class Result {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
+
+	public T getObj() {
+		return obj;
+	}
+
+	public void setObj(T obj) {
+		this.obj = obj;
+	}
+	
 }

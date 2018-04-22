@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,14 +40,16 @@ public class ReleaseSkillService {
 //	private MessageService messageService;
 	@Autowired
 	private LetterDAO letterDAO;
+	@Autowired
+	private LetterService letterService;
 
 	@Resource
 	private UserDAO userDao;
 
 	@Transactional
-	public Result addReleaseSkill(ReleaseSkill skill, String id, MultipartFile[] pictureList
+	public Result<Object> addReleaseSkill(ReleaseSkill skill, String id, MultipartFile[] pictureList
 			,MultipartFile cover, HttpSession session)throws Exception{
-		Result result=null;
+		Result<Object> result=null;
 		try {
 			User user = new User();
 			user.setId(id);
@@ -59,16 +62,23 @@ public class ReleaseSkillService {
 			}
 			skill.setRsStatus(ReleaseSkillStatus.UNDER_AUDITING.getIndex());
 			
+			//判断rsid是否为空 为空添加 不为空 更新
+			int flag=0;
+			if(skill.getRsId()!=null){
+				flag=rsDao.updateById(skill);
+			}else {
+				flag=rsDao.addReleaseSkill(skill);
+			}
 			//判断是否插入成功
-			if(rsDao.addReleaseSkill(skill)>0){
+			if(flag>0){
 				int fkId = skill.getRsId();
 				//添加证明图片
 				pService.addManyPicture(pictureList, fkId, CategoryEnum.RELEASESKILL.getIndex(), session);
 				//添加封面
 				pService.addOnePicture(cover, fkId, CategoryEnum.RELEASECOVER.getIndex(),0, session);
-				result= new Result(true,"添加成功");
+				result= new Result<Object>(true,"添加成功");
 			}else{
-				result= new Result(false,"添加失败，请重试！");
+				result= new Result<Object>(false,"添加失败，请重试！");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -101,20 +111,52 @@ public class ReleaseSkillService {
 		return rsDao.queryByCategory(category);
 	}
 
-	public ReleaseSkill queryById(int id) {
-		return rsDao.queryById(id);
+	public ReleaseSkill queryById(int id,int status) {
+		return rsDao.queryById(id,status);
 	}
 	
-	public List<ReleaseSkill> queryByPublisher(String id) {
-		return rsDao.queryByPublisher(id);
+	public List<ReleaseSkill> queryByPublisher(String id,int exceptStatus) {
+		return rsDao.queryByPublisher(id,exceptStatus);
 	}
 	
-	public List<ReleaseSkill> queryByBuyer(String id) {
-		return rsDao.queryByBuyer(id);
+	public List<ReleaseSkill> queryByBuyer(String id,int exceptStatus) {
+		return rsDao.queryByBuyer(id,exceptStatus);
+	}
+	
+	public int queryStatusById(int id){
+		return rsDao.queryStatusById(id);
 	}
 
-	public int auditing(int id,int status,int cost,int tryCost,String auditor){
-		return rsDao.auditing(id, status, cost, tryCost, auditor);
+	@Transactional
+	public Result<Object> auditing(int id,int status,String auditingMsg,Admin admin,String context){
+		ReleaseSkill skill=rsDao.queryById(id,ReleaseSkillStatus.UNDER_AUDITING.getIndex());
+		if (skill==null) {
+			return new Result<>(false,"没有找到对应的技能贴！");
+		}
+		if (skill.getRsStatus()==null||skill.getRsStatus()!=ReleaseSkillStatus.UNDER_AUDITING.getIndex()) {
+			return new Result<Object>(false,"当前技能贴已经审核过了或者不能被审核！");
+		}
+		if (rsDao.updateStatusById(skill.getRsId(), status, auditingMsg,admin.getId())!=1) {
+			return new Result<Object>(false,"审核失败！");
+		}
+		
+		//执行审核成功，给用户发送审核通过消息
+		StringBuffer sb=new StringBuffer();
+		if(status==ReleaseSkillStatus.REGULAR.getIndex()){
+			sb.append("尊敬的用户 ").append(skill.getRsPublisher().getName()).append(" 您好，您发布的技能贴 <a href='").append(context)
+			.append("/v1/skills/releaseSkills/").append(id).append("/details'>").append(skill.getRsTitle()).append(" </a>已经通过管理员 ")
+			.append(admin.getName()).append(" 的审核！");
+			letterService.addLetter(admin, skill.getRsPublisher(), sb.toString());
+		}else if (status==ReleaseSkillStatus.BE_REFUSED.getIndex()) {
+			sb.append("尊敬的用户 ").append(skill.getRsPublisher().getName()).append(" 您好，您发布的技能贴 ")
+			.append(skill.getRsTitle()).append(" 没有通过管理员 ").append(admin.getName())
+			.append(" 的审核！拒绝理由为：").append(auditingMsg).append("  <a href='").append(context)
+			.append("/v1/skills/releaseSkills/creation?id=").append(id).append("'>点击这里重新填写！</a>");
+			letterService.addLetter(admin, skill.getRsPublisher(), sb.toString());
+		}
+		
+		
+		return new Result<Object>(true,"审核成功！");
 	}
 	
 	/*if (status == ReleaseSkillStatus.BE_SOLD.getIndex()) {
@@ -130,7 +172,6 @@ public class ReleaseSkillService {
 	
 	@Transactional
 	public String buyOrTry(int id, int status, String buyer) throws Exception {
-		String result = null;
 		int cost = 0;
 //		ReleaseSkill skill = rsDao.queryById(id);
 		ReleaseSkill skill = rsDao.queryCost(id);

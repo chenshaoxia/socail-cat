@@ -4,7 +4,7 @@ public class Admin {
     private String id;
     private String name;
     private String password;
-    private String pictrue;
+    private String picture;
     private String phone;
     private String email;
 
@@ -36,15 +36,15 @@ public class Admin {
         this.password = password;
     }
 
-    public String getPictrue() {
-        return pictrue;
-    }
+    public String getPicture() {
+		return picture;
+	}
 
-    public void setPictrue(String pictrue) {
-        this.pictrue = pictrue;
-    }
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
 
-    public String getPhone() {
+	public String getPhone() {
         return phone;
     }
 

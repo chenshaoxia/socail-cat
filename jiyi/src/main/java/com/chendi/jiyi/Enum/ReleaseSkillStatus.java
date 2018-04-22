@@ -2,10 +2,13 @@ package com.chendi.jiyi.Enum;
 
 public enum ReleaseSkillStatus {
 	UNDER_AUDITING("等待审核", 0), 
-	REGULAR("通过审核", 1), 
-	BE_TRIED("试用状态", 2),
-	BE_SOLD("已被购买", 3), 
-	BE_DELETED("被删除", -1);
+	REGULAR("通过审核", 1),
+	BE_REFUSED("审核不通过",-1),
+//	BE_TRIED("试用状态", 2),
+	BE_SOLD("已被购买", 2),
+	COMPLETED("已完成", 3),
+	IN_RETURN("退订中", 4),
+	BE_DELETED("被删除", -2);
 
 	private String name;
 	private int index;

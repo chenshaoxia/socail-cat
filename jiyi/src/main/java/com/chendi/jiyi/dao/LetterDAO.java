@@ -18,7 +18,7 @@ public interface LetterDAO {
 	
 	public List<Letter> queryBySenderId(@Param("senderId")String senderId);
 	
-	public List<Letter> queryByReceiverId(@Param("receiverId")String receiverId);
+	public List<Letter> queryByReceiverId(@Param("receiverId")String receiverId,@Param("hasRead")Integer hasRead);
 
 	public int updateRead(@Param("lId")int mId,@Param("lHasRead")int mHasRead);
 	

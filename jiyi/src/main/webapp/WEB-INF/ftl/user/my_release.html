@@ -1,4 +1,4 @@
- <#assign ctx=request.contextPath />
+<#assign ctx=request.contextPath />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +41,7 @@
 			</div>
 			<!--user-header-inner-->
 			<div class="user-header-nav">
-				<a href="myReleaseSkills">我的技能</a> <a href="#">我的悬赏</a> <a
+				<a href="myPages" style="border-bottom: 2px solid #f07f7f;">我的技能贴</a> <a href="myRewardSkills">我的悬赏贴</a> <a
 					href="myRewardSkills">正在学习</a> <a href="myInfo">个人资料</a> <a
 					href="user-appeal.html">我要申诉</a>
 			</div>
@@ -51,24 +51,27 @@
 
 		<div class="user-content">
 			<div class="user-nav">
-				<a href="#" style="color: white; background-color: #f07f7f">全部</a> <a
-					href="#">已过审</a> <a href="#">待审核</a> <a href="#">未过审</a> <a
-					href="#">已完成</a> <a href="#">退订中</a> <a href="#">被投诉</a> <a
-					href="#">草稿</a>
+				<a href="#" style="color: white; background-color: #f07f7f">全部 ${(releaseList?size)!}</a> 
+				<#if statusMap??>
+					<#list statusMap?keys as key>
+						<a href="#">${key} <#if statusMap["${key}"]!=0>${statusMap["${key}"]}</#if></a>
+					</#list>
+				</#if>
+				
 			</div>
 			<div class="user-post">
 				<#list releaseList as skill>
 				<div class="user-post-item">
-					<img src="images/background-index.jpg" />
+					<img src="${ctx}/${(skill.rsCover)!}" />
 					<div class="user-post-wrapper">
 						<div class="user-post-top">
 							<span class="user-post-title">${skill.rsTitle}</span> <span
-								class="user-post-category">${skill.rsCategory}</span> <span
-								class="user-post-logo">${skill.getRsStatusEnum()}</span> <i
+								class="user-post-category">${(skill.getCategoryEnum())!}</span> <span
+								class="user-post-logo">${(skill.getStatusEnum())!}</span> <i
 								class="fa fa-thumbs-o-up user-post-like">11</i>
 						</div>
 						<div class="user-post-bottom">
-							<span>${skill.rsCreateTime}</span> <span>15:14</span> <i
+							<span>${skill.rsCreateTime}</span><i
 								class="fa fa-edit"></i> <i class="fa fa-share"></i>
 						</div>
 					</div>

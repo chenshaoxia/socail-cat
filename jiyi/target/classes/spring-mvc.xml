@@ -35,10 +35,13 @@
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Service" />
 	</context:component-scan>
-
+	
+	<!-- 配置扫描websocket下的类 -->
+	<!-- <context:component-scan base-package="com.chendi.jiyi.websocket"/> -->
+	
 	<!-- MVC静态资源 -->
-	<mvc:resources mapping="/css/**" location="/css/" />
-	<mvc:resources mapping="/img/**" location="/img/" />
+	<!-- <mvc:resources mapping="/css/**" location="/css/" /> -->
+	<!-- <mvc:resources mapping="/img/**" location="/img/" /> -->
 	<mvc:resources mapping="/js/**" location="/js/" />
 	<mvc:resources mapping="/lib/**" location="/lib/" />
 	<mvc:resources mapping="/images/**" location="/images/" />

@@ -27,12 +27,24 @@ public enum InstituteEnum {
 		this.name1 = name1;
 		this.index = index;
 	}
-	public String getname1() {
+	
+	public static String getNameByIndex(int index) {
+		for (InstituteEnum i : InstituteEnum.values()) {
+			if (i.getIndex() == index) {
+				return i.getName1();
+			}
+		}
+		return "其他学院";
+	}
+	
+	public String getName1() {
 		return name1;
 	}
-	public void setname1(String name1) {
+
+	public void setName1(String name1) {
 		this.name1 = name1;
 	}
+
 	public int getIndex() {
 		return index;
 	}

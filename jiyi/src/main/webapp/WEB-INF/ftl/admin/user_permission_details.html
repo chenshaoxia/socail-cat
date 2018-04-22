@@ -1,0 +1,134 @@
+<#assign ctx=request.contextPath />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>许可详情</title>
+<link rel="stylesheet" href="${ctx}/styles/reset.css">
+<link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
+<link rel="stylesheet" href="${ctx}/styles/bootstrap.min.css">
+
+<link rel="stylesheet" href="${ctx}/styles/admin.css">
+<link rel="stylesheet" href="${ctx}/styles/admin-auth-more.css">
+
+<script src="${ctx}/lib/jquery.min.js"></script>
+<script src="${ctx}/lib/bootstrap.min.js"></script>
+
+<script src="${ctx}/js/admin_order.js"></script>
+
+</head>
+<body>
+	<div class="admin-upload-wrapper">
+		<div class="admin-bar">
+			<div class="admin-card">
+				<img class="admin-card-img" src="${ctx}/${(Session.admin.picture)!}" />
+				<span class="admin-card-name">${Session.admin.name}</span>
+			</div>
+			<div class="admin-nav">
+				<a href="${ctx}/v1/admin/releasePermission" class="admin-nav-link">上传许可</a>
+				<a href="${ctx}/v1/admin/userPermission" class="admin-nav-link admin-nav-linked">用户认证</a> <a
+					href="${ctx}/v1/admin/releaseManage" class="admin-nav-link">帖子管理</a> <a
+					href="${ctx}/v1/admin/userManage" class="admin-nav-link">用户管理</a> <a
+					href="${ctx}/v1/admin/noticeManage" class="admin-nav-link">公告管理</a> <a
+					href="${ctx}/v1/admin/appealManage" class="admin-nav-link">申诉处理</a>
+			</div>
+		</div>
+		<!--admin-bar-->
+
+		<div class="admin-content">
+			<div class="admin-header">
+				<span class="admin-header-title">许可详情</span>
+				<div class="admin-search">
+					<input type="search" /> <i class="fa fa-search"></i>
+				</div>
+			</div>
+			<div class="admin-table-wrapper">
+				<a href="${ctx}/v1/admin/userPermission" class="admin-table-title">< 返回</a>
+				<div class="admin-table-body-wrapper">
+					<table class="admin-table-body">
+						<thead>
+							<tr>
+								<th class="admin-table-sub">项目</th>
+								<th>内容</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="admin-table-sub">学号</td>
+								<td>${(user.id)!}</td>
+							</tr>
+							<tr>
+								<td class="admin-table-sub">姓名</td>
+								<td>${(user.name)!}</td>
+							</tr>
+							<tr>
+								<td class="admin-table-sub">性别</td>
+								<td>${(user.sex)!}</td>
+							</tr>
+							<tr>
+								<td class="admin-table-sub">学院</td>
+								<td>${(user.getInstituteEnum())!}</td>
+							</tr>
+							<tr>
+								<td class="admin-table-sub">专业</td>
+								<td>${(user.specialty)!}</td>
+							</tr>
+							<tr>
+								<td class="admin-table-sub">电子邮箱</td>
+								<td>${(user.email)!}</td>
+							</tr>
+							<tr>
+								<td class="admin-table-sub">qq号码</td>
+								<td>${(user.qq)!}</td>
+							</tr>
+							<tr>
+								<td class="admin-table-sub">当前状态</td>
+								<td>${(user.getStatusEnum())!}</td>
+							</tr>
+							<tr>
+								<td class="admin-table-sub">创建时间</td>
+								<td>${(user.createTime)!}</td>
+							</tr>
+							<tr>
+								<td class="admin-table-sub">认证照片</td>
+								<td><img src="${ctx}/${(user.realName)!}" height="200" width="300" /></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="admin-auth-button">
+						<button class="admin-auth-button-approve button" id="user_approval">许可</button>
+						<button class="button admin-auth-button-fail" data-toggle="modal"
+							data-target="#refuseModal">拒绝</button>
+						<!-- Modal -->
+						<div class="modal fade" id="refuseModal" tabindex="-1"
+							role="dialog">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">拒绝理由</h5>
+										<button type="button" class="close" data-dismiss="modal">
+											<span>&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<textarea class="input-group" id="auditingMsg" placeholder="拒绝理由..."
+											style="height: 100px;padding: 3px 10px;"></textarea>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-sm btn-secondary"
+											data-dismiss="modal" style="border:0">关闭</button>
+										<button type="button" id="user_refusal" class="btn btn-sm btn-primary"
+											style="background-color: #f07f7f;border: 0;">发送</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--admin-content-->
+
+	</div>
+</body>
+</html>

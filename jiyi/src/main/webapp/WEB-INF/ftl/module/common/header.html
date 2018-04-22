@@ -1,4 +1,6 @@
- <#assign ctx=request.contextPath />
+<#assign ctx=request.contextPath />
+<script src="${ctx}/js/user_order.js"></script>
+
 <div class="header-container">
 	<img class="header-logo" src="${ctx}/images/logo.png" height="66"
 		width="158" />
@@ -11,8 +13,12 @@
 	</div>
 	<#if Session.user??>
 	<div class="header-uesr">
-		<a href="${ctx}/v1/messages/letters"><i class="fa fa-bell-o header-info-bell"><span class="header-info-count">11</span></i></a> 
-		<a href="${ctx}/v1/users/myPage">
+		<a href="${ctx}/v1/messages/letters"><i class="fa fa-bell-o header-info-bell">
+			<span id="not_read_num" class="header-info-count"></span></i>
+			<!--  -->
+			<input type="hidden" id="ctx" value="${ctx}">
+		</a> 
+		<a href="${ctx}/v1/users/myPages">
 			<img class="header-head" src="${ctx}/${Session.user.picture}" />
 		</a>
 	</div>

@@ -1,5 +1,7 @@
 package com.chendi.jiyi.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.chendi.jiyi.Enum.MessageStatusEnum;
 import com.chendi.jiyi.dto.CommonTools;
 import com.chendi.jiyi.dto.Result;
+import com.chendi.jiyi.entity.Letter;
 import com.chendi.jiyi.entity.PersonalLetter;
 import com.chendi.jiyi.entity.User;
 import com.chendi.jiyi.service.CommentService;
@@ -35,13 +38,29 @@ public class MessageController {
 	@Autowired
 	private UserService userService;
 
+	//返回未读消息条数
+	@RequestMapping(value = "/notRead", method = RequestMethod.GET)
+	@ResponseBody
+	public int noRead(Model model,HttpSession session) {
+		User user=(User) session.getAttribute("user");
+		if (user==null) {
+			return 0;
+		}
+		List<PersonalLetter> plList=plService.queryByReceiverId(user.getId(), MessageStatusEnum.NOTREAD.getIndex());
+		List<Letter> lList=lService.queryByReceiverId(user.getId(),MessageStatusEnum.NOTREAD.getIndex());
+		if (plList.size()+lList.size()==0) {
+			return 0;
+		}
+		return plList.size()+lList.size();
+	}
+	
 	@RequestMapping(value = "/letters", method = RequestMethod.GET)
 	public String letters(Model model,HttpSession session) {
 		User user=(User) session.getAttribute("user");
 		/*if (user==null) {
 			
 		}*/
-		model.addAttribute("letterList", lService.queryByReceiverId(user.getId()));
+		model.addAttribute("letterList", lService.queryByReceiverId(user.getId(),null));
 		return "message/letters";
 	}
 	
@@ -56,8 +75,9 @@ public class MessageController {
 		return "message/comments";
 	}
 	@RequestMapping(value = "/personalLetters", method = RequestMethod.GET)
-	public String personalLetters(Model model) {
-//		model.addAttribute("messageList", noticeService.queryAll());
+	public String personalLetters(Model model,HttpSession session) {
+		User user=(User) session.getAttribute("user");
+		model.addAttribute("letterList", plService.queryByReceiverId(user.getId(),null));
 		return "message/personalLetters";
 	}
 	

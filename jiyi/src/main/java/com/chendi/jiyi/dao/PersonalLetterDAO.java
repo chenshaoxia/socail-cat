@@ -11,15 +11,15 @@ public interface PersonalLetterDAO {
 
 	public int addLetter(PersonalLetter letter);
 
-	/*public List<Letter> queryBySenderId(String senderId);
+	/*public List<PersonalLetter> queryBySenderId(String senderId);
 
-	public List<Letter> queryByReceiverId(String receiverId);*/
+	public List<PersonalLetter> queryByReceiverId(String receiverId);*/
 	
-	public List<Letter> queryByBothId(@Param("senderId")String senderId,@Param("receiverId")String receiverId);
+	public List<PersonalLetter> queryByBothId(@Param("senderId")String senderId,@Param("receiverId")String receiverId);
 	
-	public List<Letter> queryBySenderId(@Param("senderId")String senderId);
+	public List<PersonalLetter> queryBySenderId(@Param("senderId")String senderId);
 	
-	public List<Letter> queryByReceiverId(@Param("receiverId")String receiverId);
+	public List<PersonalLetter> queryByReceiverId(@Param("receiverId")String receiverId,@Param("hasRead")Integer hasRead);
 
 	public int updateRead(@Param("plId")int mId,@Param("plHasRead")int mHasRead);
 	

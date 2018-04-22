@@ -2,10 +2,11 @@ package com.chendi.jiyi.Enum;
 
 public enum RewardSkillStatus {
 	UNDER_AUDITING("等待审核", 0), 
-	REGULAR("通过审核", 1), 
+	REGULAR("通过审核", 1),
+	BE_REFUSED("审核不通过", -1),
 	ACCEPTER_FULL("接受悬赏人数已满", 2),
 	BE_CHOOSED("悬赏人被选择", 3), 
-	BE_DELETED("被删除", -1);
+	BE_DELETED("被删除", -2);
 
 	private String name;
 	private int index;

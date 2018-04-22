@@ -9,11 +9,11 @@ import com.chendi.jiyi.entity.ReleaseSkill;
 public interface ReleaseSkillDAO {
 	public int addReleaseSkill(ReleaseSkill releaseSkill);
 
-	public ReleaseSkill queryById(int id);
+	public ReleaseSkill queryById(@Param("id")int id,@Param("status")int status);
 	
-	public List<ReleaseSkill> queryByPublisher(String id);
+	public List<ReleaseSkill> queryByPublisher(@Param("id")String id, @Param("exceptStatus") int exceptStatus);
 
-	public List<ReleaseSkill> queryByBuyer(String id);
+	public List<ReleaseSkill> queryByBuyer(@Param("id")String id, @Param("exceptStatus") int exceptStatus);
 
 	public ReleaseSkill queryCost(int id);
 	
@@ -27,8 +27,9 @@ public interface ReleaseSkillDAO {
 	
 	public List<ReleaseSkill> queryByStatus(int status);
 
-	public int auditing(@Param("id") int id, @Param("status") int status, @Param("cost") int cost,
-			@Param("tryCost") int tryCost, @Param("auditor") String auditor);
+	public int queryStatusById(@Param("id") int id);
+	
+	public int updateStatusById(@Param("id") int id, @Param("status") int status,@Param("auditingMsg") String auditingMsg, @Param("auditor") String auditor);
 
 	public int updateById(ReleaseSkill releaseSkill);
 

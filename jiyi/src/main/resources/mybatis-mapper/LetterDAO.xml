@@ -46,6 +46,9 @@
 		select l_id,l_sender,l_receiver,l_content,l_send_time,l_has_read
 		from letter
 		where l_receiver=#{receiverId}
+		<if test="hasRead!=null">
+			and l_has_read=#{hasRead}
+		</if>
 		order by l_send_time DESC
 	</select>
 	
