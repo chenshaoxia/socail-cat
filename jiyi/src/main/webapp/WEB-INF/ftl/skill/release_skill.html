@@ -4,70 +4,41 @@
 <head>
 <meta charset="UTF-8">
 <title>技能贴</title>
-<link rel="stylesheet" href="${ctx}/styles/reset.css">
-<link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
-<link rel="stylesheet" href="${ctx}/styles/shared.css">
-<link rel="stylesheet" href="${ctx}/styles/index.css">
-<link rel="stylesheet" href="${ctx}/styles/skills.css">
-<script src="${ctx}/lib/jquery.min.js"></script>
-<script src="${ctx}/js/index.js"></script>
+<link rel="stylesheet" href="${ctx}/css/skills.css">
+<script src="${ctx}/js/all.js"></script>
 <script src="${ctx}/js/user_order.js"></script>
 </head>
 <body>
-	<header> <#include "../module/common/header.html"> </header>
+<#include "../module/common/header.html">
 
 	<div class="skills-header" id="skills-header">
-		<span class="skills-title"><span class="skills-line"></span>技能<span
-			class="skills-line"></span></span>
-		<div class="skills-cate" id="skills-cate">
-			<!-- <a href="?category=${skillCategory[0].index}"
-				style="color:rgb(240, 129, 129);">全部</a>  -->
+        <span class="search-title">
+            <span class="search-title-line"></span>
+            技能
+            <span class="search-title-line"></span>
+        </span>
+		<div class="search-category" id="skills-cate">
+			<!-- <a href="?category=${skillCategory[0].index}" style="color:rgb(240, 129, 129);">全部</a>  -->
 			<#list skillCategory as c>
-				<a href="?category=${c.index}" <#if c_index=0>style="color:rgb(240, 129, 129);" </#if> >${c.name1}</a>
+				<a class="search-category-item" href="?category=${c.index}" <#if c_index=0>style="color:rgb(240, 129, 129);" </#if> >${c.name1}</a>
 			</#list>
 		</div>
 		<div class="skills-filter" id="skills-filter">
-			<a href="#" style="color: #101010">精选</a> 
-			<a id="&orderBy=rs_create_time" href="#">最新</a> 
-			<a id="&orderBy=praise" href="#">最热</a> 
-			<a id="&orderBy=rs_cost" href="#">价格↑↓</a>
+			<a href="#" class="search-filter-item">精选</a>
+			<a id="&orderBy=rs_create_time" href="#" class="search-filter-item">最新</a>
+			<a id="&orderBy=praise" href="#" class="search-filter-item">最热</a>
+			<a id="&orderBy=rs_cost" href="#" class="search-filter-item">价格↑↓</a>
 		</div>
 	</div>
 
 	<div class="index-wrapper">
 		<div class="items">
-			<#list skillList as skill> 
-			<a href="releaseSkills/${skill.rsId}/details">
-				<div class="item-wrapper">
-					<div class="item-img">
-					<#if skill.rsCover ??>
-						<img src="${ctx}/${(skill.rsCover)!}" width="190px" height="115px">
-					</#if>
-					</div>
-					<div class="item-message">
-						<div class="item-message-top">
-							<span class="item-title">${skill.rsTitle}</span> <!-- <span
-								class="item-like"><i class="fa fa-thumbs-o-up ">&nbsp;</i>11</span> -->
-						</div>
-						<div class="item-message-bottom">
-							<span class="item-cate">${skill.getCategoryEnum()}</span>
-						</div>
-					</div>
-					<div class="item-footer">
-						<div class="item-footer-left">
-							<img class="item-head" src="${ctx}/${skill.rsPublisher.picture}" />
-							<span class="item-name">${skill.rsPublisher.name}</span>
-						</div>
-						<#if skill.rsCreateTime??> <span class="item-time">${skill.rsCreateTime}</span>
-						</#if>
-					</div>
-				</div>
-			</a>
-			<!--item-wrapper-->
+			<#list skillList as skill>
+                <#include "../module/common/release-item.html">
 			</#list>
 		</div>
-
-		<!--items-->
 	</div>
+
+<#include "../module/common/footer.html">
 </body>
 </html>
