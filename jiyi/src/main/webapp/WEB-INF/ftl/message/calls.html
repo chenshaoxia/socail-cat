@@ -4,68 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <title>消息中心</title>
-    <link rel="stylesheet" href="${ctx}/styles/reset.css">
-    <link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
-    <link rel="stylesheet" href="${ctx}/styles/shared.css">
-    <link rel="stylesheet" href="${ctx}/styles/user.css">
-    <script src="${ctx}/lib/jquery.min.js"></script>
-    <script src="${ctx}/js/index.js"></script>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
 </head>
 <body>
-<header>
-    <div class="header-container">
-        <img class="header-logo" src="${ctx}/images/logo.png" height="66" width="158"/>
-        <div class="header-nav">
-            <a href="index.html">主页</a>
-            <a href="post-skills.html">技能贴</a>
-            <a href="reward-skills.html">悬赏贴</a>
-        </div>
-        <div class="header-search">
-            <input type="search" placeholder="search" />
-            <i class="fa fa-search"></i>
-        </div>
-        <div class="header-uesr">
-            <a href="message-info.html"><i class="fa fa-bell-o"></i></a>
-            <a href="user.html"><img class="header-head" src="${ctx}/images/stupid.jpg" /></a>
-        </div>
-        <div class="header-post">
-            <a href="login.html"><i class="fa fa-send fa-3x"></i></a>
-            <!--<span>发帖</span>-->
-        </div>
-    </div>
-</header>
-
+<#include "../module/common/header.html">
 
 <div class="message-wrapper">
     <div class="message-side">
         <div class="message-user">
-            <img src="images/stupid.jpg" />
-            <span>Kant</span>
-            <button>我要发帖</button>
+            <img src="${ctx}/${(Session.user.picture)!}" class="message-user-img"/>
+            <span class="message-user-span">${(Session.user.name)!}</span>
+            <button class="message-user-button">我要发帖</button>
         </div>
-         <div class="message-nav">
-            <a href="letters">通知</a>
-            <a href="comments">评论</a>
-            <a href="personalLetters">私信</a>
-            <a href="calls" class="message-nav-special" style="color: white">call我的人</a>
+        <div class="message-nav">
+            <a href="letters.html" class="message-nav-item ">通知</a>
+            <a href="comments.html" class="message-nav-item">评论</a>
+            <a href="personalLetters.html" class="message-nav-item">私信</a>
+            <a href="calls.html" class="message-nav-item message-nav-special">call我的人</a>
         </div>
     </div>
     <!--message-side-->
 
     <div class="message-content">
-        <span class="message-content-title">为我打call的人</span>
+        <span class="message-content-title">为我打call的人<span class="message-content-title-sub">清空消息</span></span>
         <div class="message-items">
-            <div class="message-comment-item">
-                <img class="message-comment-head" src="images/stupid.jpg"/>
+            <div class="message-item">
+                <img class="message-item-img" src="images/stupid.jpg"/>
                 <div class="message-comment-content">
                     <span class="message-comment-header">Kant</span>
-                    <span class="message-comment-data">2018/1/1</span>
-                    <p><i class="fa fa-heart" style="color: red"></i> 为我打call</p>
+                    <span class="message-item-header-date">2018/1/1
+                        <span class="message-item-header-read">标为已读<i class="fa fa-check"></i></span>
+                    </span>
+                    <p><i class="fa fa-heart"></i> 为我打call</p>
                 </div>
                 <img class="message-comment-img" src="${ctx}/images/background-index.jpg"/>
             </div>
         </div>
     </div>
 </div>
+
+<#include "../module/common/footer.html">
 </body>
 </html>
