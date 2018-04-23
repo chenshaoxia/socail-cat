@@ -2,144 +2,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>许可详情</title>
-<link rel="stylesheet" href="${ctx}/styles/reset.css">
-<link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
-<link rel="stylesheet" href="${ctx}/styles/bootstrap.min.css">
-
-<link rel="stylesheet" href="${ctx}/styles/admin.css">
-<link rel="stylesheet" href="${ctx}/styles/admin-auth-more.css">
-
-<script src="${ctx}/lib/jquery.datetimepicker.full.min.js"></script>
-<link rel="stylesheet" href="${ctx}/styles/jquery.datetimepicker.css">
-<script src="${ctx}/lib/jquery.min.js"></script>
-<script src="${ctx}/lib/bootstrap.min.js"></script>
-<script src="${ctx}/js/admin_order.js"></script>
+    <meta charset="UTF-8">
+    <title>许可详情</title>
+    <link rel="stylesheet" href="${ctx}/css/all.css">
+    <script src="${ctx}/lib/all.js"></script>
+    <script src="${ctx}/js/admin_order.js"></script>
 </head>
 <body>
-	<div class="admin-upload-wrapper">
-		<div class="admin-bar">
-			<div class="admin-card">
-				<img class="admin-card-img" src="${ctx}/${(Session.admin.picture)!}" />
-				<span class="admin-card-name">${Session.admin.name}</span>
-			</div>
-			<div class="admin-nav">
-				<a href="${ctx}/v1/admin/releasePermission" class="admin-nav-link admin-nav-linked">上传许可</a>
-				<a href="${ctx}/v1/admin/userPermission" class="admin-nav-link">用户认证</a> <a
-					href="${ctx}/v1/admin/releaseManage" class="admin-nav-link">帖子管理</a> <a
-					href="${ctx}/v1/admin/userManage" class="admin-nav-link">用户管理</a> <a
-					href="${ctx}/v1/admin/noticeManage" class="admin-nav-link">公告管理</a> <a
-					href="${ctx}/v1/admin/appealManage" class="admin-nav-link">申诉处理</a>
-			</div>
-		</div>
-		<!--admin-bar-->
+<div class="admin-upload-wrapper">
 
-		<div class="admin-content">
-			<div class="admin-header">
-				<span class="admin-header-title">技能贴审核</span>
-				<div class="admin-search">
-					<input type="search" /> <i class="fa fa-search"></i>
-				</div>
-			</div>
-			<div class="admin-table-wrapper">
-				<a href="../../releasePermission" class="admin-table-title">< 返回</a>
-				<div class="admin-table-body-wrapper">
-					<table class="admin-table-body">
-						<thead>
-							<tr>
-								<th class="admin-table-sub">项目</th>
-								<th>内容</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="admin-table-sub">名称</td>
-								<td>${(skill.rsTitle)!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">发布人</td>
-								<td>${(skill.rsPublisher.name)!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">发布时间</td>
-								<td>${(skill.rsCreateTime)!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">类别</td>
-								<td>${(skill.getCategoryEnum())!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">课时</td>
-								<td>${(skill.rsClassNum)!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">单课时长</td>
-								<td>${(skill.rsClassTime)!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">教学地点</td>
-								<td>${(skill.rsPlace)!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">目标</td>
-								<td>${(skill.rsTarget)!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">期限</td>
-								<td>${(skill.rsTerm)!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">个人技能描述</td>
-								<td>${(skill.rsPersonalDescribe)!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">喵币</td>
-								<td>${(skill.rsCost)!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">当前状态</td>
-								<td>${(skill.getStatusEnum())!}</td>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">封面图片</td>
+    <div class="admin-bar">
+    <#include "../module/common/admin-bar.html">
+    </div>
+
+    <div class="admin-content">
+
+        <div class="admin-header">
+            <span class="admin-header-title">技能贴审核</span>
+            <#include "../module/common/admin-search-plain.html">
+        </div>
+
+        <div class="admin-table-wrapper">
+            <a href="../../releasePermission" class="admin-table-title">< 返回</a>
+            <div class="admin-table-body-wrapper">
+                <table class="admin-table-body">
+                    <thead>
+                    <tr>
+                        <th class="admin-table-sub">项目</th>
+                        <th>内容</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="admin-table-sub">名称</td>
+                        <td>${(skill.rsTitle)!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">发布人</td>
+                        <td>${(skill.rsPublisher.name)!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">发布时间</td>
+                        <td>${(skill.rsCreateTime)!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">类别</td>
+                        <td>${(skill.getCategoryEnum())!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">课时</td>
+                        <td>${(skill.rsClassNum)!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">单课时长</td>
+                        <td>${(skill.rsClassTime)!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">教学地点</td>
+                        <td>${(skill.rsPlace)!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">目标</td>
+                        <td>${(skill.rsTarget)!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">期限</td>
+                        <td>${(skill.rsTerm)!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">个人技能描述</td>
+                        <td>${(skill.rsPersonalDescribe)!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">喵币</td>
+                        <td>${(skill.rsCost)!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">当前状态</td>
+                        <td>${(skill.getStatusEnum())!}</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">封面图片</td>
 								<#if skill.rsCover??>
 								<td><img src="${ctx}/${(skill.rsCover)!}" width="300px" height="200px"></td>
-								</#if>
-							</tr>
-							<tr>
-								<td class="admin-table-sub">证明图片</td>
+                                </#if>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">证明图片</td>
 								<#list skill.rsPictureList as pic>
 								<td>
-									<img src="${ctx}/${(pic.pPath)!}" width="300px" height="200px">
-								</td>
-								</#list>
-							</tr>
-						</tbody>
-					</table>
-					<div class="admin-auth-button">
-                    <button class="button admin-auth-button-approve" id="release_approval" data-toggle="modal" data-target="#passModal">许可</button>
-                    <button class="button admin-auth-button-fail" data-toggle="modal" data-target="#refuseModal">拒绝</button>
+                                    <img src="${ctx}/${(pic.pPath)!}" width="300px" height="200px">
+                                </td>
+                                </#list>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="admin-more-button">
+                    <button class="button admin-auth-button-approve" id="release_approval" data-toggle="modal"
+                            data-target="#passModal">许可
+                    </button>
+                    <button class="button admin-auth-button-fail" data-toggle="modal" data-target="#refuseModal">拒绝
+                    </button>
                     <!-- Modal -->
-					<div class="modal fade" id="refuseModal" tabindex="-1" role="dialog">
-					    <div class="modal-dialog" role="document">
-					        <div class="modal-content">
-					            <div class="modal-header">
-					                <h5 class="modal-title" id="exampleModalLabel">拒绝理由</h5>
-					                <button type="button" class="close" data-dismiss="modal">
-					                    <span>&times;</span>
-					                </button>
-					            </div>
-					            <div class="modal-body">
-					                <textarea class="input-group" id="auditingMsg" placeholder="拒绝理由..." style="height: 100px;padding: 3px 10px;"></textarea>
-					            </div>
-					            <div class="modal-footer">
-					                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" style="border:0">关闭</button>
-					                <button type="button" id="release_refusal" class="btn btn-sm btn-primary" style="background-color: #f07f7f;border: 0;">发送</button>
-					            </div>
-					        </div>
-					    </div>
-					</div>
+                    <div class="modal fade" id="refuseModal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">拒绝理由</h5>
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea class="input-group" id="auditingMsg" placeholder="拒绝理由..."
+                                              style="height: 100px;padding: 3px 10px;"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"
+                                            style="border:0">关闭
+                                    </button>
+                                    <button type="button" id="release_refusal" class="btn btn-sm btn-primary"
+                                            style="background-color: #f07f7f;border: 0;">发送
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,88 @@
+<#assign ctx=request.contextPath />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>公告详情</title>
+    <link rel="stylesheet" href="${ctx}/css/all.css">
+    <script src="${ctx}/lib/all.js"></script>
+    <script src="${ctx}/js/admin_order.js"></script>
+</head>
+<body>
+<div class="admin-upload-wrapper">
+
+    <div class="admin-bar">
+    <#include "../module/common/admin-bar.html">
+    </div>
+
+    <div class="admin-content">
+
+        <div class="admin-header">
+            <span class="admin-header-title">公告详情</span>
+            <#include "../module/common/admin-search-plain.html">
+        </div>
+
+        <div class="admin-table-wrapper">
+            <a href="../../releasePermission" class="admin-table-title">< 返回</a>
+            <div class="admin-table-body-wrapper">
+                <table class="admin-table-body">
+                    <thead>
+                    <tr>
+                        <th class="admin-table-sub">项目</th>
+                        <th>内容</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="admin-table-sub">标题</td>
+                        <td>公告标题</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">评论人</td>
+                        <td>Kant</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">详情</td>
+                        <td>这里是公告详情</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">创建时间</td>
+                        <td>2011/1/1</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">赞</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">图片</td>
+                        <td><img src="images/stupid.jpg" height="200" width="200"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="button admin-auth-button-fail" data-toggle="modal" data-target="#modelDelete">删除</button><div class="modal fade" id="modelDelete" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">删除确认</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>你确定要进行删除操作吗？</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" style="border:0">取消</button>
+                            <button type="button" class="btn btn-sm btn-primary" style="background-color: #f07f7f;border: 0;">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--admin-content-->
+
+</div>
+</body>
+</html>

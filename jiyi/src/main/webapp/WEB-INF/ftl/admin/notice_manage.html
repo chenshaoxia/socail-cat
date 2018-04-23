@@ -1,49 +1,43 @@
+<#assign ctx=request.contextPath />
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>帖子管理</title>
+    <title>公告管理</title>
     <link rel="stylesheet" href="${ctx}/css/all.css">
     <script src="${ctx}/js/all.js"></script>
 </head>
 <body>
 <div class="admin-upload-wrapper">
-
     <div class="admin-bar">
     <#include "../module/common/admin-bar.html">
     </div>
 
     <div class="admin-content">
-
         <div class="admin-header">
-            <span class="admin-header-title">帖子管理-技能</span>
-            <#include "../module/common/admin-search-high.html">
+            <span class="admin-header-title">公告管理</span>
+            <#include "../module/common/admin-search-plain.html">
         </div>
-
         <div class="admin-table-wrapper">
             <table class="table admin-table">
                 <thead>
                 <tr class="admin-table-tr">
                     <th>编号</th>
-                    <th>名称</th>
-                    <th>发布人</th>
-                    <th>接单人</th>
-                    <th>时间</th>
-                    <th>类别</th>
-                    <th>期限</th>
-                    <th>喵币</th>
+                    <th>备注</th>
+                    <th>优先级</th>
+                    <th>评论人</th>
+                    <th>创建时间</th>
+                    <th>点赞</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr onclick="{console.log('You click tr');window.location.href='admin-notices-more.html';}">
                     <td>1</td>
-                    <td>帖子名称</td>
-                    <td>Kant</td>
+                    <td>公告备注</td>
+                    <td>Max</td>
                     <td>Kant</td>
                     <td>2018/1/1</td>
-                    <td>音乐乐器</td>
-                    <td>2018/1/1</td>
-                    <td>29</td>
+                    <td>12</td>
                 </tr>
                 </tbody>
             </table>
