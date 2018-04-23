@@ -4,48 +4,21 @@
 <head>
 <meta charset="UTF-8">
 <title>用户认证</title>
-<link rel="stylesheet" href="${ctx}/styles/reset.css">
-<link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
-<link rel="stylesheet" href="${ctx}/styles/bootstrap.min.css">
-
-<link rel="stylesheet" href="${ctx}/styles/admin.css">
-
-<script src="${ctx}/lib/jquery.min.js"></script>
-<script src="${ctx}/lib/bootstrap.min.js"></script>
-
-<style type="text/css">
-	tr.changeBg:hover{
-		background-color:#ffaf60
-	}
-</style>
+<link rel="stylesheet" href="${ctx}/css/all.css">
+<script src="${ctx}/js/all.js"></script>
 </head>
 <body>
 	<div class="admin-upload-wrapper">
-		<div class="admin-bar">
-			<div class="admin-card">
-				<img class="admin-card-img" src="${ctx}/${(Session.admin.picture)!}" />
-				<span class="admin-card-name">${Session.admin.name}</span>
-			</div>
-			<div class="admin-nav">
-				<a href="${ctx}/v1/admin/releasePermission" class="admin-nav-link">上传许可</a>
-				<a href="${ctx}/v1/admin/userPermission" class="admin-nav-link admin-nav-linked">用户认证</a> <a
-					href="${ctx}/v1/admin/releaseManage" class="admin-nav-link">帖子管理</a> <a
-					href="${ctx}/v1/admin/userManage" class="admin-nav-link">用户管理</a> <a
-					href="${ctx}/v1/admin/noticeManage" class="admin-nav-link">公告管理</a> <a
-					href="${ctx}/v1/admin/appealManage" class="admin-nav-link">申诉处理</a>
-			</div>
-		</div>
-		<!--admin-bar-->
+
+		<#include "../module/common/admin-bar.html">
 
 		<div class="admin-content">
 			<div class="admin-header">
 				<span class="admin-header-title">用户认证(当前 ${(userList?size)!} 条待审核)</span>
-				<div class="admin-search">
-					<input type="search" /> <i class="fa fa-search"></i>
-				</div>
+				<#include "../module/common/admin-search-plain.html">
 			</div>
 			<div class="admin-table-wrapper">
-				<table class="table admin-table" style="background-color: white;">
+				<table class="table admin-table">
 					<thead>
 						<tr class="admin-table-tr">
 							<th>编号</th>
