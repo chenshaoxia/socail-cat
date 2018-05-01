@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>争议详情</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+</head>
+<body>
+<div class="admin-upload-wrapper">
+
+    <div class="admin-bar">
+        <div class="admin-card">
+    <img class="admin-card-img" src="images/stupid.jpg"/>
+    <span class="admin-card-name">Kant</span>
+</div>
+<div class="admin-nav">
+    <a data-toggle="collapse" href="#collapseUpload" class="admin-nav-link">上传许可<i class="fa fa-chevron-down admin-nav-link-icon"></i></a>
+    <div class="collapse.show" id="collapseUpload">
+        <a href="admin-upload.html" class="admin-nav-link-more">技能贴</a>
+        <a href="admin-upload-reward.html" class="admin-nav-link-more">悬赏贴</a>
+    </div>
+    <a href="admin-auth.html" class="admin-nav-link">用户认证</a>
+    <a data-toggle="collapse" href="#collapsePosts" class="admin-nav-link">帖子管理<i class="fa fa-chevron-down admin-nav-link-icon"></i></a>
+    <div class="collapse.show" id="collapsePosts">
+        <a href="admin-posts.html" class="admin-nav-link-more">技能贴</a>
+        <a href="admin-posts-reward.html" class="admin-nav-link-more">悬赏贴</a>
+    </div>
+    <a href="admin-users.html" class="admin-nav-link">用户管理</a>
+    <a data-toggle="collapse" href="#collapseNotice" class="admin-nav-link">公告管理<i class="fa fa-chevron-down admin-nav-link-icon"></i></a>
+    <div class="collapse.show" id="collapseNotice">
+        <a href="admin-notices-update.html" class="admin-nav-link-more">公告管理</a>
+        <a href="admin-notices-add.html" class="admin-nav-link-more">添加公告</a>
+    </div>
+    <a href="admin-appeal.html" class="admin-nav-link">申诉处理</a>
+    <a href="admin-feedback.html" class="admin-nav-link">意见反馈</a>
+</div>
+    </div>
+    <!--admin-bar-->
+
+    <div class="admin-content">
+        <div class="admin-header">
+            <span class="admin-header-title">争议详情</span>
+            <div class="admin-search">
+    <form>
+        <input type="search" class="admin-search-input"/>
+        <i class="fa fa-search"></i>
+    </form>
+</div>
+        </div>
+        <div class="admin-table-wrapper">
+            <a href="#" class="admin-table-title">< 返回</a>
+            <div class="admin-table-body-wrapper">
+                <table class="admin-table-body">
+                    <tbody>
+                    <tr>
+                        <th class="admin-table-sub">编号</th>
+                        <td>小提琴</td>
+                    </tr>
+                    <tr>
+                        <th class="admin-table-sub">申诉人</th>
+                        <td>Lan</td>
+                    </tr>
+                    <tr>
+                        <th class="admin-table-sub">发帖人</th>
+                        <td>Mount</td>
+                    </tr>
+                    <tr>
+                        <th class="admin-table-sub">申诉原因</th>
+                        <td>这里是一些不靠谱的理由</td>
+                    </tr>
+                    <tr>
+                        <th class="admin-table-sub">辩解理由</th>
+                        <td>辩解的理由同样很不靠谱</td>
+                    </tr>
+                    <tr>
+                        <th class="admin-table-sub">申诉结果</th>
+                        <td>——</td>
+                    </tr>
+                    <tr>
+                        <th class="admin-table-sub">审理人</th>
+                        <td>——</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="admin-more-button">
+                    <button class="button admin-auth-button-approve">同意</button>
+                    <button class="button admin-auth-button-fail" data-toggle="modal" data-target="#refuseModal">拒绝</button>
+                    <!-- Modal -->
+<div class="modal fade" id="refuseModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">拒绝理由</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea class="input-group" placeholder="拒绝理由..." style="height: 100px;padding: 3px 10px;"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" style="border:0">关闭</button>
+                <button type="button" class="btn btn-sm btn-primary" style="background-color: #f07f7f;border: 0;">发送</button>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--admin-content-->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>许可详情</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+
+</head>
+<body>
+<div class="admin-upload-wrapper">
+
+    <div class="admin-bar">
+        <div class="admin-card">
+    <img class="admin-card-img" src="images/stupid.jpg"/>
+    <span class="admin-card-name">Kant</span>
+</div>
+<div class="admin-nav">
+    <a data-toggle="collapse" href="#collapseUpload" class="admin-nav-link">上传许可<i class="fa fa-chevron-down admin-nav-link-icon"></i></a>
+    <div class="collapse.show" id="collapseUpload">
+        <a href="admin-upload.html" class="admin-nav-link-more">技能贴</a>
+        <a href="admin-upload-reward.html" class="admin-nav-link-more">悬赏贴</a>
+    </div>
+    <a href="admin-auth.html" class="admin-nav-link">用户认证</a>
+    <a data-toggle="collapse" href="#collapsePosts" class="admin-nav-link">帖子管理<i class="fa fa-chevron-down admin-nav-link-icon"></i></a>
+    <div class="collapse.show" id="collapsePosts">
+        <a href="admin-posts.html" class="admin-nav-link-more">技能贴</a>
+        <a href="admin-posts-reward.html" class="admin-nav-link-more">悬赏贴</a>
+    </div>
+    <a href="admin-users.html" class="admin-nav-link">用户管理</a>
+    <a data-toggle="collapse" href="#collapseNotice" class="admin-nav-link">公告管理<i class="fa fa-chevron-down admin-nav-link-icon"></i></a>
+    <div class="collapse.show" id="collapseNotice">
+        <a href="admin-notices-update.html" class="admin-nav-link-more">公告管理</a>
+        <a href="admin-notices-add.html" class="admin-nav-link-more">添加公告</a>
+    </div>
+    <a href="admin-appeal.html" class="admin-nav-link">申诉处理</a>
+    <a href="admin-feedback.html" class="admin-nav-link">意见反馈</a>
+</div>
+    </div>
+    <!--admin-bar-->
+
+    <div class="admin-content">
+        <div class="admin-header">
+            <span class="admin-header-title">许可详情</span>
+            <div class="admin-search">
+    <form>
+        <input type="search" class="admin-search-input"/>
+        <i class="fa fa-search"></i>
+    </form>
+</div>
+        </div>
+        <div class="admin-table-wrapper">
+            <a href="#" class="admin-table-title">< 返回</a>
+            <div class="admin-table-body-wrapper">
+                <table class="admin-table-body">
+                    <thead>
+                    <tr>
+                        <th class="admin-table-sub">项目</th>
+                        <th>内容</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="admin-table-sub">名称</td>
+                        <td>小提琴</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">发布人</td>
+                        <td>Kant</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">时间</td>
+                        <td>2018/1/1</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">类别</td>
+                        <td>音乐乐器</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">课时</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">单课时长</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">教学地点</td>
+                        <td>文波楼</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">目标</td>
+                        <td>emmmm 没有目标</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">期限</td>
+                        <td>2018/4/4</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">个人技能描述</td>
+                        <td>文波楼注视着你</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">喵币</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td class="admin-table-sub">证明图片</td>
+                        <td>
+                            没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图没有图
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="admin-more-button">
+                    <button class="button admin-auth-button-approve">许可</button>
+                    <button class="button admin-auth-button-fail" data-toggle="modal" data-target="#refuseModal">拒绝</button>
+                    <!-- Modal -->
+<div class="modal fade" id="refuseModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">拒绝理由</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea class="input-group" placeholder="拒绝理由..." style="height: 100px;padding: 3px 10px;"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" style="border:0">关闭</button>
+                <button type="button" class="btn btn-sm btn-primary" style="background-color: #f07f7f;border: 0;">发送</button>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--admin-content-->
+
+</div>
+</body>
+</html>

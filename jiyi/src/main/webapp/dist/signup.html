@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+</head>
+<body>
+<div class="signup-wrapper">
+    <div class="signup-slogan">
+        <img class="login-logo" src="images/logo.png"/>
+        <span class="login-title">一起加入我们&nbsp;！</span>
+    </div>
+    <div class="signup-form">
+        <form id="signup-form">
+            <span class="login-form-title">注册</span>
+            <div class="login-form-input-wrapper">
+                <input type="text" placeholder="学号" class="signup-form-input"/>
+                <span class="form-validate form-require signup-form-input-info">*&nbsp;学号不能为空</span>
+            </div>
+            <div class="login-form-input-wrapper">
+                <input type="text" placeholder="真实姓名" class="signup-form-input"/>
+                <span class="form-validate form-require signup-form-input-info">*&nbsp;真实姓名不能为空</span>
+            </div>
+            <div class="login-form-input-wrapper">
+                <input id="login-password" type="password" placeholder="密码" class="signup-form-input"/>
+                <span class="form-validate form-require signup-form-input-info">*&nbsp;密码不能为空</span>
+                <span id="form-password" class="form-validate signup-form-input-info">*&nbsp;请输入至少六位的密码</span>
+            </div>
+            <div class="login-form-input-wrapper">
+                <input id="login-repassword" type="password" placeholder="确认密码" class="signup-form-input"/>
+                <span id="form-repassword" class="form-validate signup-form-input-info">*&nbsp;两次密码不一致</span>
+            </div>
+            <div class="login-form-input-wrapper">
+                <input id="login-email" type="password" placeholder="电子邮箱" class="signup-form-input"/>
+                <span class="form-validate form-require signup-form-input-info">*&nbsp;邮箱不能为空</span>
+                <span id="form-email" class="form-validate signup-form-input-info">*&nbsp;邮箱格式不正确</span>
+            </div>
+            <span class="signup-form-info">*&nbsp;完善的用户信息将使您获得80的<a href="#">信用积分</a></span>
+            <div class="login-form-input-wrapper">
+                <input id="login-tel" type="password" placeholder="手机号" class="signup-form-input"/>
+                <span id="form-tel" class="form-validate signup-form-input-info">*&nbsp;请输入有效的手机号</span>
+            </div>
+            <div class="login-form-input-wrapper">
+                <input id="login-qq" type="password" placeholder="QQ号" class="signup-form-input"/>
+                <span id="form-qq" class="form-validate signup-form-input-info">*&nbsp;请输入有效的QQ号</span>
+            </div>
+            <div class="login-form-input-wrapper">
+                <select class="signup-form-input">
+                    <option disabled selected>不公开性别</option>
+                    <option>男</option>
+                    <option>女</option>
+                </select>
+            </div>
+            <div class="login-form-input-wrapper">
+                <select class="signup-form-input">
+                    <option disabled selected>不公开学院</option>
+                    <option>法学院</option>
+                    <option>刑事司法学院</option>
+                    <option>捅数学院</option>
+                </select>
+            </div>
+            <div class="login-form-input-wrapper">
+                <select class="signup-form-input">
+                    <option disabled selected>不公开专业</option>
+                    <option>计科</option>
+                    <option>信管</option>
+                </select>
+            </div>
+            <span class="signup-form-info">*&nbsp;请通过校园卡、学生证照片进行<a href="#">实名认证</a></span>
+            <div class="login-form-input-wrapper">
+                <div class="common-fileinput">
+                    <button class="common-fileinput-button">选择图片</button>
+                    <span class="common-fileinput-message">请上传照片进行实名认证</span>
+                    <input type="file" placeholder="上传认证图片" class="common-fileinput-real require" multiple/>
+                    <span class="form-validate form-require signup-form-input-info">*&nbsp;请上传校园卡或者学生证图片</span>
+                    <!--<i class="fa fa-check-circle-o common-fileinput-icon"></i>-->
+                </div>
+            </div>
+            <div class="login-form-input-wrapper">
+                <div class="signup-form-checkbox-wrapper">
+                    <input type="checkbox" name="agree" class="signup-form-checkbox require" id="signup-form-checkbox"/>我已阅读并同意<a href="#">条款</a>
+                </div>
+            </div>
+            <button type="submit" class="signup-form-button" id="signup-form-submit">注册</button>
+            <div class="signup-form-footer">
+                <span>记住密码</span>
+                <span>忘记密码\<a href="./login.html">注册</a></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="footer">
+  <span class="footer-item">关于我们</span>
+  <span class="footer-item">用户协议</span>
+</div>
+
+</body>
+</html>

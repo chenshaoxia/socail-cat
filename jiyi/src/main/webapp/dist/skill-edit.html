@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>技能贴编辑</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+</head>
+<body>
+
+<div class="header-container">
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" />
+        <div class="header-nav">
+            <a href="index.html" class="header-nav-item">主页</a>
+            <a href="search-post.html" class="header-nav-item">技能贴</a>
+            <a href="search-reward.html" class="header-nav-item">悬赏贴</a>
+        </div>
+        <div class="header-search">
+            <input type="search" placeholder="search" class="header-search-input" id="header-search-input"/>
+            <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
+        </div>
+        <div class="header-user">
+            <a href="message-info.html" class="header-user-message">
+                <i class="fa fa-bell-o header-user-message-bell">
+                    <span class="header-user-message-bell-count">11</span>
+                </i>
+            </a>
+            <a href="user.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
+            <a href="login.html" class="header-user-login">登录</a>
+            <a href="signup.html" class="header-user-login">注册</a>
+        </div>
+        <div class="header-post">
+            <a href="skill-edit.html"><i class="fa fa-send fa-3x"></i></a>
+        </div>
+    </header>
+</div>
+
+<div class="skill-edit-wrapper">
+    <form action="#">
+        <i class="fa fa-chevron-circle-left skill-edit-arrow"></i>
+        <h5 class="skill-edit-title">发布我的技能</h5>
+        <a href="post-edit.html" class="skill-edit-trans"><span>悬赏&nbsp;<i class="fa fa-arrow-circle-o-right"></i></span></a>
+        <div class="skill-edit-input-wrapper">
+            <input type="text" placeholder="标题" class="skill-edit-input min-width require"/>
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请输入帖子标题</p>
+        </div>
+        <div class="skill-edit-input-wrapper">
+            <select class="skill-edit-select require">
+                <option disabled selected value>技能类别</option>
+                <option>类别1</option>
+                <option>类别1</option>
+            </select>
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请选择技能类别</p>
+        </div>
+        <div class="skill-edit-input-wrapper">
+            <input type="number" placeholder="课时数" class="skill-edit-input min-width require"/>
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请输入课时数类别</p>
+        </div>
+        <div class="skill-edit-input-wrapper">
+            <select class="skill-edit-select require">
+                <option disabled selected value>单课时长</option>
+                <option>40分钟</option>
+                <option>60分钟</option>
+            </select>
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请选择单课时长</p>
+        </div>
+        <div class="skill-edit-input-wrapper">
+            <input type="text" placeholder="教学地点" class="skill-edit-input mid-width require"/>
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请输入教学地点（“文波702，西苑i-like”）</p>
+        </div>
+        <div class="skill-edit-input-wrapper">
+            <textarea placeholder="课程目标" class="skill-edit-text mid-width mid-height require"></textarea>
+            <p class="skill-edit-info">*&nbsp;请输入课程目标（“两小时上手蓝调口琴，三小时吹奏《海上钢琴师》”）</p>
+        </div>
+        <!--<div class="skill-edit-input-wrapper">-->
+        <!--<textarea placeholder="技能详情" class="skill-edit-text lar-width lar-height require"></textarea>-->
+        <!--<p class="skill-edit-info">*&nbsp;请输入技能详情（ emmmm 吹牛逼都会吧）</p>-->
+        <!--</div>-->
+        <div class="skill-edit-input-wrapper">
+            <textarea placeholder="个人技能描述" class="skill-edit-text lar-width lar-height require"></textarea>
+            <p class="skill-edit-info">*&nbsp;请输入个人技能描述（ emmmm 吹自己的牛逼，我会XXX，我能够XXX）</p>
+        </div>
+        <div class="skill-edit-input-wrapper">
+            <input type="number" placeholder="所需喵币数" class="skill-edit-input min-width require"/>
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请输入喵币数量</p>
+        </div>
+        <!-- ****************** 这里修改了上传按钮 ********************* -->
+        <div class="skill-edit-input-pic-wrapper">
+            <div class="skill-edit-input-wrapper skill-edit-input-pic">
+                <button>上传证明图片</button><div class="skill-edit-input-content"></div>
+                <input type="file" placeholder="上传封面图片" class="skill-edit-input min-width require" multiple/>
+                <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+                <p class="skill-edit-info skill-edit-btn-info">*&nbsp;请提供足以证明你有这个能力的图片</p>
+            </div>
+        </div>
+        <div class="skill-edit-input-pic-wrapper2">
+            <div class="skill-edit-input-wrapper skill-edit-input-pic">
+                <button>上传技能封面</button><div class="skill-edit-input-content"></div>
+                <input type="file" placeholder="上传技能封面" class="skill-edit-input min-width require" multiple/>
+                <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+                <p class="skill-edit-info skill-edit-btn-info">*&nbsp;为你的帖子选择一个好看的封面哦</p>
+            </div>
+        </div>
+        <!-- ****************** 这里修改了上传按钮 ********************* -->
+        <div class="skill-edit-law-wrapper">
+            <input id="skill-edit-law" type="checkbox" class="skill-edit-law">
+            <label for="skill-edit-law">我已阅读并同意<a href="#">《用户协议》</a></label>
+        </div>
+        <div class="skill-edit-btns">
+            <button class="skill-edit-btn">保存草稿</button>
+            <button id="skill-submit-btn" class="skill-edit-btn red-color" disabled style="background-color: #d2d2d2">
+                上传发布
+            </button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

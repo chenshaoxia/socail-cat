@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>主页</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+</head>
+<body>
+<div class="header-container">
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" />
+        <div class="header-nav">
+            <a href="index.html" class="header-nav-item">主页</a>
+            <a href="search-post.html" class="header-nav-item">技能贴</a>
+            <a href="search-reward.html" class="header-nav-item">悬赏贴</a>
+        </div>
+        <div class="header-search">
+            <input type="search" placeholder="search" class="header-search-input" id="header-search-input"/>
+            <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
+        </div>
+        <div class="header-user">
+            <a href="message-info.html" class="header-user-message">
+                <i class="fa fa-bell-o header-user-message-bell">
+                    <span class="header-user-message-bell-count">11</span>
+                </i>
+            </a>
+            <a href="user.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
+            <a href="login.html" class="header-user-login">登录</a>
+            <a href="signup.html" class="header-user-login">注册</a>
+        </div>
+        <div class="header-post">
+            <a href="skill-edit.html"><i class="fa fa-send fa-3x"></i></a>
+        </div>
+    </header>
+</div>
+
+
+<!-- 轮播图 -->
+<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <a href="notice.html"><img class="d-block w-100 index-carousel-item" src="./images/carousel-nature1.jpg" alt="First slide" /></a>
+        </div>
+        <div class="carousel-item">
+            <a href="notice.html"><img class="d-block w-100 index-carousel-item" src="./images/carousel-nature2.jpg" alt="Second slide" /></a>
+        </div>
+        <div class="carousel-item">
+            <a href="notice.html"><img class="d-block w-100 index-carousel-item" src="./images/carousel-nature3.jpg" alt="Third slide" /></a>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!-- 轮播图 -->
+
+<div class="index-wrapper">
+
+    <!-- 首页导航 -->
+    <div class="index-nav">
+        <hr>
+        <a class="index-nav-item" href="#">首页推荐</a>
+        <a class="index-nav-item" href="#">最新发布</a>
+        <a class="index-nav-item" href="#">最热上升</a>
+        <hr>
+    </div>
+    <div class="items">
+        <a href="detail-post.html">
+    <div class="item-wrapper">
+        <img src="images/carousel-nature1.jpg" class="item-img"/>
+        <div class="item-message">
+            <div class="item-message-top">
+                <span class="item-message-title">技能标题</span>
+                <span class="item-message-like"><i class="fa fa-thumbs-o-up ">&nbsp;</i>11</span>
+            </div>
+            <div class="item-message-bottom">
+                <span class="item-message-cate">类别</span>
+            </div>
+        </div>
+        <div class="item-footer">
+            <div class="item-footer-left">
+                <img class="item-footer-img" src="images/stupid.jpg"/>
+                <span class="item-footer-name">Kant</span>
+            </div>
+            <span class="item-footer-time">六小时前</span>
+        </div>
+    </div>
+</a>
+    </div>
+    <div class="items-line"></div>
+
+    <!-- 技能贴 -->
+    <div class="items-header">
+        <div class="items-header-left">
+            <span class="items-title">技能贴</span>
+            <span class="items-new">新动态</span>
+        </div>
+        <a href="search-post.html"><span class="items-more">查看更多></span></a>
+    </div>
+    <div class="items">
+        <a href="detail-post.html">
+    <div class="item-wrapper">
+        <img src="images/carousel-nature1.jpg" class="item-img"/>
+        <div class="item-message">
+            <div class="item-message-top">
+                <span class="item-message-title">技能标题</span>
+                <span class="item-message-like"><i class="fa fa-thumbs-o-up ">&nbsp;</i>11</span>
+            </div>
+            <div class="item-message-bottom">
+                <span class="item-message-cate">类别</span>
+            </div>
+        </div>
+        <div class="item-footer">
+            <div class="item-footer-left">
+                <img class="item-footer-img" src="images/stupid.jpg"/>
+                <span class="item-footer-name">Kant</span>
+            </div>
+            <span class="item-footer-time">六小时前</span>
+        </div>
+    </div>
+</a>
+    </div>
+    <div class="items-line"></div>
+
+    <!-- 悬赏贴 -->
+    <div class="items-header">
+        <div class="items-header-left">
+            <span class="items-title">悬赏贴</span>
+            <span class="items-new">新动态</span>
+        </div>
+        <a href="search-reward.html"><span class="items-more">查看更多></span></a>
+    </div>
+    <div class="items">
+        <a href="detail-post.html">
+    <div class="item-wrapper">
+        <img src="images/carousel-nature1.jpg" class="item-img"/>
+        <div class="item-message">
+            <div class="item-message-top">
+                <span class="item-message-title">技能标题</span>
+                <span class="item-message-like"><i class="fa fa-thumbs-o-up ">&nbsp;</i>11</span>
+            </div>
+            <div class="item-message-bottom">
+                <span class="item-message-cate">类别</span>
+            </div>
+        </div>
+        <div class="item-footer">
+            <div class="item-footer-left">
+                <img class="item-footer-img" src="images/stupid.jpg"/>
+                <span class="item-footer-name">Kant</span>
+            </div>
+            <span class="item-footer-time">六小时前</span>
+        </div>
+    </div>
+</a>
+    </div>
+    <div class="items-line"></div>
+</div>
+
+<div class="footer">
+  <span class="footer-item">关于我们</span>
+  <span class="footer-item">用户协议</span>
+</div>
+
+
+</body>
+</html>

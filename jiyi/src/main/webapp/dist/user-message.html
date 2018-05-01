@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>个人资料</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+</head>
+<body>
+
+<div class="header-container">
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" />
+        <div class="header-nav">
+            <a href="index.html" class="header-nav-item">主页</a>
+            <a href="search-post.html" class="header-nav-item">技能贴</a>
+            <a href="search-reward.html" class="header-nav-item">悬赏贴</a>
+        </div>
+        <div class="header-search">
+            <input type="search" placeholder="search" class="header-search-input" id="header-search-input"/>
+            <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
+        </div>
+        <div class="header-user">
+            <a href="message-info.html" class="header-user-message">
+                <i class="fa fa-bell-o header-user-message-bell">
+                    <span class="header-user-message-bell-count">11</span>
+                </i>
+            </a>
+            <a href="user.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
+            <a href="login.html" class="header-user-login">登录</a>
+            <a href="signup.html" class="header-user-login">注册</a>
+        </div>
+        <div class="header-post">
+            <a href="skill-edit.html"><i class="fa fa-send fa-3x"></i></a>
+        </div>
+    </header>
+</div>
+
+
+
+<div class="user-header-wrapper">
+    <div class="user-header"></div>
+    <div class="user-header-content">
+        <div class="user-header-inner">
+            <div class="user-header-left">
+                <img class="user-header-head" src="images/stupid.jpg"/>
+                <div class="user-header-left-message">
+                    <h5 class="user-header-title">Kant</h5>
+                    <span class="user-header-description">这个人很懒，什么都没说</span>
+                </div>
+            </div>
+            <!--user-header-left-->
+            <div class="user-header-right">
+                <div class="user-header-right-line">
+                    <span class="user-header-right-item">发帖</span>
+                    <span class="user-header-right-item">信用</span>
+                    <span class="user-header-right-item">喵币</span>
+                </div>
+                <div class="user-header-right-line">
+                    <span class="user-header-right-item">0</span>
+                    <span class="user-header-right-item">0</span>
+                    <span class="user-header-right-item">0</span>
+                </div>
+            </div>
+            <!--user-header-right-->
+        </div>
+        <!--user-header-inner-->
+        <div class="user-header-nav">
+            <a href="user.html" class="user-header-nav-item">技能</a>
+            <a href="#" class="user-header-nav-item">悬赏</a>
+            <a href="user-study.html" class="user-header-nav-item">进行中</a>
+            <a href="user-message.html" class="user-header-nav-item" style="border-color: #f07f7f;">个人</a>
+            <!--<a href="user-appeal.html" class="user-header-nav-item">我要申诉</a>-->
+        </div>
+        <!--user-header-nav-->
+    </div>
+    <!--user-header-content-->
+</div>
+
+<div class="user-message">
+    <form class="user-message-content">
+        <div class="user-message-userhead">
+            <img src="images/stupid.jpg" class="user-message-userhead-img"/>
+            <input type="file" multiple class="user-message-input-img">
+            <div>
+                <input type="text" placeholder="这个人很懒什么都没说" id="user-message-description"
+                       class="user-message-item-edit user-message-userhead-text" disabled>
+                <span class="user-message-userhead-btn"><i class="fa fa-pencil"></i></span>
+                <p class="user-head-validate" style="display: none">*&nbsp;个人签名最多只能输入16个字符</p>
+            </div>
+        </div>
+        <span class="user-message-title">基本信息
+            <span class="user-message-title-sub">*&nbsp;个人信息的修改需要在管理员审核后才能生效哦</span>
+        </span>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">用户名</span>
+            <input type="text" placeholder="Kant" class="user-message-item-edit" disabled>
+            <!--<span class="user-message-item-btn">修改</span>-->
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">性别</span>
+            <!--<input type="radio" name="gender" value="male" class="user-message-item-radio"/>-->
+            <span class="user-message-item-radio-span">男</span>
+            <!--<input type="radio" name="gender" value="female" class="user-message-item-radio"/>-->
+            <!--<span class="user-message-item-radio-span">女</span>-->
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">密码</span>
+            <input type="password" placeholder="*********" id="login-password" class="user-message-item-edit" disabled>
+            <!--<span class="user-message-item-btn">修改</span>-->
+            <!--<p id="form-password" class="user-message-validate">*&nbsp;请保证密码长于六个字符！</p>-->
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">邮箱</span>
+            <input type="email" placeholder="2777187968@qq.com" id="login-email" class="user-message-item-edit"
+                   disabled>
+            <!--<span class="user-message-item-btn">修改</span>-->
+            <select class="user-message-item-select">
+                <option>仅自己可见</option>
+                <option>所有人可见</option>
+            </select>
+            <!--<span id="form-email" class="user-message-validate">*&nbsp;请输入正确的邮箱格式！</span>-->
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">手机</span>
+            <input type="tel" placeholder="18310368280" id="login-tel" class="user-message-item-edit" disabled>
+            <!--<span class="user-message-item-btn">修改</span>-->
+            <select class="user-message-item-select">
+                <option>仅自己可见</option>
+                <option>所有人可见</option>
+            </select>
+            <!--<span id="form-tel" class="user-message-validate">*&nbsp;请输入正确的手机格式！</span>-->
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">微信</span>
+            <input type="text" placeholder="1604080208" class="user-message-item-edit" disabled>
+            <!--<span class="user-message-item-btn">修改</span>-->
+            <select class="user-message-item-select">
+                <option>仅自己可见</option>
+                <option>所有人可见</option>
+            </select>
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">QQ</span>
+            <input type="text" placeholder="12345678" class="user-message-item-edit" disabled>
+            <!--<span class="user-message-item-btn">修改</span>-->
+            <select class="user-message-item-select">
+                <option>仅自己可见</option>
+                <option>所有人可见</option>
+            </select>
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">学号</span>
+            <input type="text" placeholder="1604080208" class="user-message-item-edit" disabled>
+            <!--<span class="user-message-item-btn">修改</span>-->
+            <select class="user-message-item-select">
+                <option>仅自己可见</option>
+                <option>所有人可见</option>
+            </select>
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">专业</span>
+            <input type="text" placeholder="法学" class="user-message-item-edit" disabled>
+            <!--<span class="user-message-edit-btn">修改</span>-->
+        </div>
+        <div>
+            <button type="submit" class="user-message-save">保&nbsp;&nbsp;&nbsp;存</button>
+        </div>
+    </form>
+
+
+    <div class="user-message-content">
+        <span class="user-message-title">个人喵社会信息</span>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">状态</span>
+            <span class="user-message-item-text">正常</span>
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">信用</span>
+            <span class="user-message-item-text">87</span>
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">喵币</span>
+            <span class="user-message-item-text">199</span>
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">技能贴</span>
+            <span class="user-message-item-text">2</span>
+        </div>
+        <div class="user-message-item">
+            <span class="user-message-item-sub">悬赏贴</span>
+            <span class="user-message-item-text">8</span>
+        </div>
+    </div>
+    <!--user-message-content-->
+
+</div>
+<!--user-message-content-->
+
+</body>
+</html>

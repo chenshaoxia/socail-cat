@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我要申诉</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+</head>
+<body>
+
+<div class="header-container">
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" />
+        <div class="header-nav">
+            <a href="index.html" class="header-nav-item">主页</a>
+            <a href="search-post.html" class="header-nav-item">技能贴</a>
+            <a href="search-reward.html" class="header-nav-item">悬赏贴</a>
+        </div>
+        <div class="header-search">
+            <input type="search" placeholder="search" class="header-search-input" id="header-search-input"/>
+            <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
+        </div>
+        <div class="header-user">
+            <a href="message-info.html" class="header-user-message">
+                <i class="fa fa-bell-o header-user-message-bell">
+                    <span class="header-user-message-bell-count">11</span>
+                </i>
+            </a>
+            <a href="user.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
+            <a href="login.html" class="header-user-login">登录</a>
+            <a href="signup.html" class="header-user-login">注册</a>
+        </div>
+        <div class="header-post">
+            <a href="skill-edit.html"><i class="fa fa-send fa-3x"></i></a>
+        </div>
+    </header>
+</div>
+
+
+<div class="user-header-wrapper">
+    <div class="user-header"></div>
+    <div class="user-header-content">
+        <div class="user-header-inner">
+            <div class="user-header-left">
+                <img class="user-header-head" src="images/stupid.jpg"/>
+                <div class="user-header-left-message">
+                    <h5 class="user-header-title">Kant</h5>
+                    <span class="user-header-description">这个人很懒，什么都没说</span>
+                </div>
+            </div>
+            <!--user-header-left-->
+            <div class="user-header-right">
+                <div class="user-header-right-line">
+                    <span class="user-header-right-item">发帖</span>
+                    <span class="user-header-right-item">信用</span>
+                    <span class="user-header-right-item">喵币</span>
+                </div>
+                <div class="user-header-right-line">
+                    <span class="user-header-right-item">0</span>
+                    <span class="user-header-right-item">0</span>
+                    <span class="user-header-right-item">0</span>
+                </div>
+            </div>
+            <!--user-header-right-->
+        </div>
+        <!--user-header-inner-->
+        <div class="user-header-nav">
+            <a href="user.html" class="user-header-nav-item">我的技能</a>
+            <a href="#" class="user-header-nav-item">我的悬赏</a>
+            <a href="user-study.html" class="user-header-nav-item">正在学习</a>
+            <a href="user-message.html" class="user-header-nav-item">个人资料</a>
+            <!--<a href="user-appeal.html" class="user-header-nav-item" style="border-color: #f07f7f;">我要申诉</a>-->
+        </div>
+        <!--user-header-nav-->
+    </div>
+    <!--user-header-content-->
+</div>
+
+<div class="user-appeal">
+    <span class="user-appeal-header">申请退订 <span class="user-appeal-header-sub">* 只能退订24小时之内的帖子</span></span>
+    <div class="user-appeal-items">
+        <span class="user-appeal-sub">您正在学习的有</span>
+        <div class="user-appeal-item">
+            <div class="user-appeal-item">
+                <img class="user-appeal-img" src="images/background-index.jpg"/>
+                <div class="user-appeal-content">
+                    <span class="user-appeal-title">标题</span>
+                    <span class="user-appeal-data">2017/3/27 购入</span>
+                    <button class="user-appeal-btn">退订</button>
+                </div>
+            </div>
+        </div>
+        <div class="user-appeal-item">
+            <div class="user-appeal-item">
+                <img class="user-appeal-img" src="images/background-index.jpg"/>
+                <div class="user-appeal-content">
+                    <span class="user-appeal-title">标题</span>
+                    <span class="user-appeal-data">2017/3/27 购入</span>
+                    <button class="user-appeal-btn">退订</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <textarea placeholder="申请理由" class="user-appeal-text">
+        </textarea>
+    <button class="user-appeal-btn user-appeal-btn-block">确认</button>
+</div>
+<div class="footer">
+  <span class="footer-item">关于我们</span>
+  <span class="footer-item">用户协议</span>
+</div>
+
+</body>
+</html>

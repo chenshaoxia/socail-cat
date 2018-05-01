@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>技能详情</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+</head>
+<body>
+<div class="header-container">
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" />
+        <div class="header-nav">
+            <a href="index.html" class="header-nav-item">主页</a>
+            <a href="search-post.html" class="header-nav-item">技能贴</a>
+            <a href="search-reward.html" class="header-nav-item">悬赏贴</a>
+        </div>
+        <div class="header-search">
+            <input type="search" placeholder="search" class="header-search-input" id="header-search-input"/>
+            <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
+        </div>
+        <div class="header-user">
+            <a href="message-info.html" class="header-user-message">
+                <i class="fa fa-bell-o header-user-message-bell">
+                    <span class="header-user-message-bell-count">11</span>
+                </i>
+            </a>
+            <a href="user.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
+            <a href="login.html" class="header-user-login">登录</a>
+            <a href="signup.html" class="header-user-login">注册</a>
+        </div>
+        <div class="header-post">
+            <a href="skill-edit.html"><i class="fa fa-send fa-3x"></i></a>
+        </div>
+    </header>
+</div>
+
+
+<div class="index-wrapper">
+    <div class="detail-wrapper">
+
+        <div class="detail-nav">
+            <a href="#" class="detail-nav-item">全部技能</a>>
+            <a href="#" class="detail-nav-item">类别</a>>
+            <a href="#" class="detail-nav-item">技能标题</a>
+        </div>
+
+        <div class="detail-header">
+            <img class="detail-header-img" src="images/background-detail.jpg"/>
+            <div class="detail-header-message">
+                <h3 class="detail-header-message-title">技能标题</h3>
+                <div>
+                    <span id="detail-header-message-call-first" class="detail-header-message-call">为Ta打Call</span>
+                    <span id="detail-header-message-call-second" class="detail-header-message-call">打完了</span>
+                </div>
+                <div class="detail-header-message-heads">
+                    <a href="#"><img src="images/stupid.jpg" class="detail-header-message-heads-item"/></a>
+                    <a href="#"><img src="images/stupid.jpg" class="detail-header-message-heads-item"/></a>
+                    <a href="#"><img src="images/stupid.jpg" class="detail-header-message-heads-item"/></a>
+                    <a href="#"><img src="images/stupid.jpg" class="detail-header-message-heads-item"/></a>
+                    <a href="#"><img src="images/stupid.jpg" class="detail-header-message-heads-item"/></a>
+                    <a href="#"><img src="images/stupid.jpg" class="detail-header-message-heads-item"/></a>
+                    <span id="detail-header-message-heads-more">...</span>
+                    <span class="detail-header-message-heads-count">共有4人为他实名</span>
+                </div>
+                <div class="detail-header-btn">
+                    <div class="detail-header-btn-item">
+                        <i class="fa fa-tags"></i>
+                        <span class="post-btn-content">课时 11</span>
+                    </div>
+                    <div class="detail-header-btn-item">
+                        <i class="fa fa-hand-lizard-o"></i>
+                        <span class="post-btn-content">单课时长 4min</span>
+                    </div>
+                    <div class="detail-header-btn-item">
+                        <i class="fa fa-krw"></i>
+                        <span class="post-btn-content">购买 111</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--post-header-->
+
+        <div class="detail-content-wrapper">
+            <div class="detail-content">
+                <div class="detail-content-nav">
+                    <a href="detail-post.html"><span class="detail-content-nav-item">技能简介</span></a>
+                    <i class="detail-content-nav-line"></i>
+                    <a href="detail-comment.html"><span class="detail-content-nav-item" style="color: white; background-color: #f07f7f">评论</span></a>
+                </div>
+                <div class="detail-content-comment">
+    <div class="detail-content-comment-wrapper">
+        <div class="detail-content-comment-message">
+            <img src="../images/stupid.jpg" class="detail-content-comment-message-img"/>
+            <div>
+                <div>
+                    <span class="detail-content-comment-message-name">Kant</span>
+                    <span class="detail-content-comment-message-time">18:30</span>
+                </div>
+                <p class="detail-content-comment-message-paragraph">
+                    如果你无法简洁的表达你的思想，那只说明你还不够了解它
+                    如果你无法简洁的表达你的思想，那只说明你还不够了解它
+                    如果你无法简洁的表达你的思想，那只说明你还不够了解它
+                    如果你无法简洁的表达你的思想，那只说明你还不够了解它
+                </p>
+                <div class="detail-content-comment-message-comment">
+                    <i class="fa fa-sort-up detail-content-comment-message-comment-pick"></i>
+                    <div class="detail-content-comment-message-comment-name-wrapper">
+                        <span class="detail-content-comment-message-comment-name">Kant</span>
+                        <i class="fa fa-comment-o detail-content-comment-message-comment-icon"></i>
+                    </div>
+                    <p class="detail-content-comment-message-comment-content">这里是我评论的内容</p>
+                </div>
+                <div class="detail-content-comment-message-comment">
+                    <i class="fa fa-sort-up detail-content-comment-message-comment-pick detail-content-comment-message-comment-pick-re"></i>
+                    <div class="detail-content-comment-message-comment-name-wrapper">
+                        <span class="detail-content-comment-message-comment-name">Kant <span class="detail-content-comment-message-comment-name-slash">回复</span> Robinson</span>
+                        <i class="fa fa-comment-o detail-content-comment-message-comment-icon"></i>
+                    </div>
+                    <p class="detail-content-comment-message-comment-content">这里是我评论的内容</p>
+                </div>
+                <div class="detail-content-comment-message-operate">
+                    <i class="fa fa-warning"><span>举报</span></i>
+                    <i class="fa fa-comment-o"></i>
+                    <i class="fa fa-thumbs-o-up"><span>11</span></i>
+                </div>
+                <div class="detail-content-comment-message-reply-wrapper">
+                    <input type="text" placeholder="回复 kant" class="detail-content-comment-message-reply">
+                    <button class="detail-content-comment-message-btn">回复</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+            <div class="detail-more">
+                <div class="detail-more-inner">
+                    <img src="images/stupid.jpg"/>
+                    <span>Kant</span>
+                    <div class="detail-more-span">
+                        <span>发帖 11</span>
+                        <span>信用 90</span>
+                    </div>
+                    <button class="detail-more-btn" data-toggle="modal" data-target="#messageModal">私信</button>
+                    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="messageModalLabel">写私信</h5>
+                                    <i class="fa fa-close" data-dismiss="modal"></i>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea class="detail-more-modal-text"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="modal-footer-confirm">确定</button>
+                                    <button class="modal-footer-cancel" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+  <span class="footer-item">关于我们</span>
+  <span class="footer-item">用户协议</span>
+</div>
+
+</body>
+</html>
