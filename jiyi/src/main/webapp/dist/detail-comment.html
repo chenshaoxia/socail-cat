@@ -84,9 +84,12 @@
         <div class="detail-content-wrapper">
             <div class="detail-content">
                 <div class="detail-content-nav">
-                    <a href="detail-post.html"><span class="detail-content-nav-item">技能简介</span></a>
-                    <i class="detail-content-nav-line"></i>
-                    <a href="detail-comment.html"><span class="detail-content-nav-item" style="color: white; background-color: #f07f7f">评论</span></a>
+                    <div>
+                        <a href="detail-post.html"><span class="detail-content-nav-item">技能简介</span></a>
+                        <i class="detail-content-nav-line"></i>
+                        <a href="detail-comment.html"><span class="detail-content-nav-item" style="color: white; background-color: #f07f7f">评论</span></a>
+                    </div>
+                    <a class="detail-content-nav-button" href="#comment-action">我要评论</a>
                 </div>
                 <div class="detail-content-comment">
     <div class="detail-content-comment-wrapper">
@@ -130,6 +133,13 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="detail-content-comment-action">
+        <div class="form-group">
+            <label for="comment-action" class="detail-content-comment-action-text">请输入评论内容</label>
+            <textarea class="form-control" id="comment-action"></textarea>
+        </div>
+        <button class="detail-content-comment-action-button">回复</button>
     </div>
 </div>
             </div>
