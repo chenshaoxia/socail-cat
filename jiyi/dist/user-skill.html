@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户中心</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+</head>
+<body>
+<div class="header-container">
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" />
+        <div class="header-nav">
+            <a href="index.html" class="header-nav-item">主页</a>
+            <a href="search-post.html" class="header-nav-item">技能贴</a>
+            <a href="search-reward.html" class="header-nav-item">悬赏贴</a>
+            <a href="notices.html" class="header-nav-item">公告栏</a>
+        </div>
+        <div class="header-search">
+            <input type="search" placeholder="search" class="header-search-input" id="header-search-input"/>
+            <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
+        </div>
+        <div class="header-user">
+            <a href="message-info.html" class="header-user-message">
+                <i class="fa fa-bell-o header-user-message-bell">
+                    <span class="header-user-message-bell-count">11</span>
+                </i>
+            </a>
+            <a href="user.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
+            <a href="login.html" class="header-user-login">登录</a>
+            <a href="signup.html" class="header-user-login">注册</a>
+        </div>
+        <div class="header-post">
+            <a href="skill-edit.html"><i class="fa fa-send fa-3x"></i></a>
+        </div>
+    </header>
+</div>
+
+
+<div class="user-header-wrapper">
+    <div class="user-header"></div>
+    <div class="user-header-content">
+        <div class="user-header-inner">
+            <div class="user-header-left">
+                <img class="user-header-head" src="images/stupid.jpg"/>
+                <div class="user-header-left-message">
+                    <h5 class="user-header-title">Kant</h5>
+                    <span class="user-header-description">这个人很懒，什么都没说</span>
+                </div>
+            </div>
+            <!--user-header-left-->
+            <div class="user-header-right">
+                <div class="user-header-right-line">
+                    <span class="user-header-right-item">发帖</span>
+                    <span class="user-header-right-item">信用</span>
+                    <span class="user-header-right-item">喵币</span>
+                </div>
+                <div class="user-header-right-line">
+                    <span class="user-header-right-item">0</span>
+                    <span class="user-header-right-item">0</span>
+                    <span class="user-header-right-item">0</span>
+                </div>
+            </div>
+            <!--user-header-right-->
+        </div>
+        <!--user-header-inner-->
+        <div class="user-header-nav">
+            <a href="user-skill.html" class="user-header-nav-item user-header-nav-item-special">我的技能</a>
+            <a href="user-reward.html" class="user-header-nav-item">我的悬赏</a>
+            <a href="user-buy.html" class="user-header-nav-item">已购买</a>
+            <a href="user-accept.html" class="user-header-nav-item">已接受</a>
+            <a href="user-message.html" class="user-header-nav-item">个人中心</a>
+        </div>
+        <!--user-header-nav-->
+    </div>
+    <!--user-header-content-->
+</div>
+
+<div class="user-content">
+    <div class="user-content-nav" id="user-skill-nav">
+        <a href="#" class="user-content-nav-item" data-skill="0">全部</a>
+        <a href="#" class="user-content-nav-item" data-skill="1">已过审</a>
+        <a href="#" class="user-content-nav-item" data-skill="2">待审核</a>
+        <a href="#" class="user-content-nav-item" data-skill="3">未过审</a>
+        <a href="#" class="user-content-nav-item" data-skill="4">已完成</a>
+        <a href="#" class="user-content-nav-item" data-skill="5">退订中</a>
+        <a href="#" class="user-content-nav-item" data-skill="6">被投诉</a>
+        <a href="#" class="user-content-nav-item" data-skill="7">草稿</a>
+    </div>
+    <div class="user-content-items">
+        <div class="post-user-item-wrapper">
+    <div class="post-user-item">
+        <img src="images/background-index.jpg" class="post-user-item-img"/>
+        <div class="post-user-item-message">
+            <div class="post-user-item-message-content">
+                <div class="post-user-item-message-content-line">
+                    <span class="post-user-item-message-content-logo">已过审</span>
+                </div>
+                <div class="post-user-item-message-content-line">
+                    <span class="post-user-item-message-content-title">技能标题</span>
+                </div>
+                <div class="post-user-item-message-content-line">
+                    <span class="post-user-item-message-content-category">类别</span>
+                    <i class="fa fa-thumbs-o-up post-user-item-message-content-like">11</i>
+                </div>
+            </div>
+            <div class="post-user-item-message-operate">
+                <span class="post-user-item-message-operate-date">2018/3/28</span>
+                <span class="post-user-item-message-operate-time">15:14</span>
+                <i class="fa fa-edit"></i>
+                <i class="fa fa-share"></i>
+            </div>
+        </div>
+    </div>
+    <!--user-post-item-->
+</div>
+        <div class="post-user-item-wrapper">
+    <div class="post-user-item">
+        <img src="images/background-index.jpg" class="post-user-item-img"/>
+        <div class="post-user-item-message">
+            <div class="post-user-item-message-content">
+                <div class="post-user-item-message-content-line">
+                    <span class="post-user-item-message-content-logo">已过审</span>
+                </div>
+                <div class="post-user-item-message-content-line">
+                    <span class="post-user-item-message-content-title">技能标题</span>
+                </div>
+                <div class="post-user-item-message-content-line">
+                    <span class="post-user-item-message-content-category">类别</span>
+                    <i class="fa fa-thumbs-o-up post-user-item-message-content-like">11</i>
+                </div>
+            </div>
+            <div class="post-user-item-message-operate">
+                <span class="post-user-item-message-operate-date">2018/3/28</span>
+                <span class="post-user-item-message-operate-time">15:14</span>
+                <i class="fa fa-edit"></i>
+                <i class="fa fa-share"></i>
+            </div>
+        </div>
+    </div>
+    <!--user-post-item-->
+</div>
+        <div class="post-user-item-wrapper">
+    <div class="post-user-item">
+        <img src="images/background-index.jpg" class="post-user-item-img"/>
+        <div class="post-user-item-message">
+            <div class="post-user-item-message-content">
+                <div class="post-user-item-message-content-line">
+                    <span class="post-user-item-message-content-logo">已过审</span>
+                </div>
+                <div class="post-user-item-message-content-line">
+                    <span class="post-user-item-message-content-title">技能标题</span>
+                </div>
+                <div class="post-user-item-message-content-line">
+                    <span class="post-user-item-message-content-category">类别</span>
+                    <i class="fa fa-thumbs-o-up post-user-item-message-content-like">11</i>
+                </div>
+            </div>
+            <div class="post-user-item-message-operate">
+                <span class="post-user-item-message-operate-date">2018/3/28</span>
+                <span class="post-user-item-message-operate-time">15:14</span>
+                <i class="fa fa-edit"></i>
+                <i class="fa fa-share"></i>
+            </div>
+        </div>
+    </div>
+    <!--user-post-item-->
+</div>
+        <!--<div class="user-post-item-wrapper">-->
+            <!--<div class="user-post-item">-->
+                <!--<img src="images/background-index.jpg"/>-->
+                <!--<div class="user-post-wrapper">-->
+                    <!--<div class="user-post-top">-->
+                        <!--<span class="user-post-title">技能标题</span>-->
+                        <!--<span class="user-post-category">类别</span>-->
+                        <!--<span class="user-post-logo">已过审</span>-->
+                        <!--<i class="fa fa-thumbs-o-up user-post-like">11</i>-->
+                    <!--</div>-->
+                    <!--<div class="user-post-bottom">-->
+                        <!--<span>2018/3/28</span>-->
+                        <!--<span>15:14</span>-->
+                        <!--<i class="fa fa-edit" data-toggle="modal" data-target="#editModal"></i>-->
+                        <!--&lt;!&ndash;<button class="button admin-auth-button-approve" data-toggle="modal" data-target="#editModal">修改</button>&ndash;&gt;-->
+                        
+                        <!--<i class="fa fa-share"></i>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;user-post-item&ndash;&gt;-->
+        <!--</div>-->
+    </div>
+</div>
+<div class="footer">
+  <span class="footer-item">关于我们</span>
+  <span class="footer-item">用户协议</span>
+</div>
+
+</body>
+</html>
