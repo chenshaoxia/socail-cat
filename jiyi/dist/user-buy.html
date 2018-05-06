@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正在学习</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+</head>
+<body>
+
+<div class="header-container">
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" />
+        <div class="header-nav">
+            <a href="index.html" class="header-nav-item">主页</a>
+            <a href="search-post.html" class="header-nav-item">技能贴</a>
+            <a href="search-reward.html" class="header-nav-item">悬赏贴</a>
+            <a href="notices.html" class="header-nav-item">公告栏</a>
+        </div>
+        <div class="header-search">
+            <input type="search" placeholder="search" class="header-search-input" id="header-search-input"/>
+            <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
+        </div>
+        <div class="header-user">
+            <a href="message-info.html" class="header-user-message">
+                <i class="fa fa-bell-o header-user-message-bell">
+                    <span class="header-user-message-bell-count">11</span>
+                </i>
+            </a>
+            <a href="user.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
+            <a href="login.html" class="header-user-login">登录</a>
+            <a href="signup.html" class="header-user-login">注册</a>
+        </div>
+        <div class="header-post">
+            <a href="skill-edit.html"><i class="fa fa-send fa-3x"></i></a>
+        </div>
+    </header>
+</div>
+
+
+<div class="user-header-wrapper">
+    <div class="user-header"></div>
+    <div class="user-header-content">
+        <div class="user-header-inner">
+            <div class="user-header-left">
+                <img class="user-header-head" src="images/stupid.jpg"/>
+                <div class="user-header-left-message">
+                    <h5 class="user-header-title">Kant</h5>
+                    <span class="user-header-description">这个人很懒，什么都没说</span>
+                </div>
+            </div>
+            <!--user-header-left-->
+            <div class="user-header-right">
+                <div class="user-header-right-line">
+                    <span class="user-header-right-item">发帖</span>
+                    <span class="user-header-right-item">信用</span>
+                    <span class="user-header-right-item">喵币</span>
+                </div>
+                <div class="user-header-right-line">
+                    <span class="user-header-right-item">0</span>
+                    <span class="user-header-right-item">0</span>
+                    <span class="user-header-right-item">0</span>
+                </div>
+            </div>
+            <!--user-header-right-->
+        </div>
+        <!--user-header-inner-->
+        <div class="user-header-nav">
+            <a href="user-skill.html" class="user-header-nav-item ">我的技能</a>
+            <a href="user-reward.html" class="user-header-nav-item">我的悬赏</a>
+            <a href="user-buy.html" class="user-header-nav-item user-header-nav-item-special" >已购买</a>
+            <a href="user-accept.html" class="user-header-nav-item">已接受</a>
+            <a href="user-message.html" class="user-header-nav-item">个人中心</a>
+        </div>
+        <!--user-header-nav-->
+    </div>
+    <!--user-header-content-->
+</div>
+<p class="user-study-confirm">“结束学习” 和 “完成悬赏” 后请及时确认哦！</p>
+<div class="user-content">
+    <div class="user-content-nav-special" id="user-buy-nav">
+        <a href="#" class="user-content-nav-item" data-buy="0">全部</a>
+        <a href="#" class="user-content-nav-item" data-buy="1">进行中</a>
+        <a href="#" class="user-content-nav-item" data-buy="2">已完成</a>
+        <a href="#" class="user-content-nav-item" data-buy="3">退订中</a>
+        <a href="#" class="user-content-nav-item" data-buy="4">已退订</a>
+    </div>
+    <div class="items">
+        <div class="item-wrapper">
+    <a href="detail-post.html">
+    <img src="images/carousel-nature1.jpg" class="item-img"/>
+    <div class="item-message">
+        <div class="item-message-top">
+            <span class="item-message-title">技能标题</span>
+            <span class="item-message-like"><i class="fa fa-thumbs-o-up ">&nbsp;</i>11</span>
+        </div>
+        <div class="item-message-bottom">
+            <span class="item-message-cate">类别</span>
+        </div>
+    </div>
+    <div class="item-footer">
+        <div class="item-footer-left">
+            <img class="item-footer-img" src="images/stupid.jpg"/>
+            <span class="item-footer-name">Kant</span>
+        </div>
+        <span class="item-footer-time">六小时前</span>
+    </div>
+    </a>
+    <div class="item-operate">
+        <div class="item-operate-item" data-toggle="modal" data-target="#studyConfirmModal">确认完成</div>
+        <div class="item-operate-item">退订</div>
+
+        <div class="modal" id="studyConfirmModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">评价</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="star-input" data-score="4"></div>
+                        <input id="star-target" name="star">
+                        <textarea id="star-text" class="form-control" placeholder="这里是评价的内容"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" style="background-color: #f07f7f; border: 0;">确认</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+<!--items-->
+</body>
+</html>
