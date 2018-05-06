@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jiyi:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="jiyi.war">
+      <element id="artifact" artifact-name="jiyi:war exploded" />
+    </root>
+  </artifact>
+</component>

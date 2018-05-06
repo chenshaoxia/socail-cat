@@ -37,9 +37,13 @@ body {
 
 /* items */
 .items {
-    display: flex;
+    /*display: flex;*/
+    width: 1060px;
+    margin: 0 auto;
 }
+
 .item-wrapper {
+    display: inline-block;
     width: 190px;
     margin: 8px;
     border: 1px #d2d2d2 solid;

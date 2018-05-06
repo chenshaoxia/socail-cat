@@ -1,8 +1,7 @@
-body {
-    background-color: #d2d2d2;
-    /*display: flex;*/
-    /*align-items: center;*/
+.login-background {
     background-image: url("../images/background-login.jpg");
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 .login-wrapper {
     /*display: flex;*/
@@ -62,7 +61,7 @@ body {
     top: 6px;
     color: rgb(187, 187, 187);
 }
-.login-box input,.signup-box input, .signup-box select{
+.login-box input,.signup-box-input, .signup-box select{
     width: 304px;
     height: 27px;
     display: block;
@@ -93,10 +92,10 @@ body {
     top: 13px;
     margin-right: 10px;
 }
-.login-box input:focus, .signup-box input:focus {
+.login-box input:focus, .signup-box-input:focus {
     border: 0;
 }
-.login-box button, .signup-box button {
+.login-box-button, .signup-box-button {
     display: block;
     margin: 0 auto 20px;
     padding: 5px;
@@ -162,4 +161,12 @@ body {
     position: relative;
     bottom: 20px;
     left: 100px;
+}
+.inputfile-wrapper {
+    position: relative;
+    height: 50px;
+}
+.inputfile-offset {
+    bottom: 30px;
+    left: 80px;
 }

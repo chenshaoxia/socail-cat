@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>技能贴</title>
-<link rel="stylesheet" href="${ctx}/css/skills.css">
+<link rel="stylesheet" href="${ctx}/css/all.css">
 <script src="${ctx}/js/all.js"></script>
 <script src="${ctx}/js/user_order.js"></script>
 </head>
@@ -33,7 +33,7 @@
 
 	<div class="index-wrapper">
 		<div class="items">
-			<#list skillList as skill>
+			<#list (skillList)! as skill>
                 <#include "../module/common/release-item.html">
 			</#list>
 		</div>

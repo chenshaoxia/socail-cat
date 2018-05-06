@@ -6,7 +6,7 @@
 <mapper namespace="com.chendi.jiyi.dao.AdminDAO">
 	<select id="login" resultType="Admin">
 		select
-		id,name,password,picture,phone,email
+		id,name,picture,phone,email
 		from admin
 		where id=#{id} and
 		password=#{password}
@@ -21,10 +21,25 @@
 
 	<select id="queryName" resultType="Admin">
 		select
-		id,name
+		id,name,picture
 		from admin
 		where id=#{id}
 	</select>
+	
+	<select id="queryRoles" resultType="Role">
+		select r.r_id,r.r_name from role r,admin_role ar 
+		where ar.admin_id=#{id} and ar.role_id=r.r_id
+	</select>
+	
+	<select id="queryPermissions" resultType="Permission">  
+        select p.p_id,p.p_name from role_permission rp ,permission p 
+        where rp.role_id in 
+        <foreach collection="roleList" item="roleId"
+        	open="(" close=")" separator=",">
+        	#{roleId}
+        </foreach>
+         and rp.permission_id=p.p_id  
+    </select>  
 
 	<update id="updatePassword">
 		update admin

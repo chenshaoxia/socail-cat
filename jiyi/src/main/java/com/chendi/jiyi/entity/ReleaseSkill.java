@@ -39,15 +39,7 @@ public class ReleaseSkill {
 	public ReleaseSkill() {
 		super();
 	}
-	
-	public String getStatusEnum(){
-		return ReleaseSkillStatus.getName(getRsStatus().intValue());
-	}
-	
-	public String getCategoryEnum(){
-		return SkillCategoryEnum.getName1(rsCategory);
-	}
-	
+
 	public Integer getRsId() {
 		return rsId;
 	}
@@ -207,7 +199,7 @@ public class ReleaseSkill {
 	public void setRsAuditor(Admin rsAuditor) {
 		this.rsAuditor = rsAuditor;
 	}
-	
+
 	public String getRsAuditingMsg() {
 		return rsAuditingMsg;
 	}

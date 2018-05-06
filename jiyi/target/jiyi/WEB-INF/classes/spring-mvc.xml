@@ -35,10 +35,13 @@
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Service" />
 	</context:component-scan>
-
+	
+	<!-- 配置扫描websocket下的类 -->
+	<!-- <context:component-scan base-package="com.chendi.jiyi.websocket"/> -->
+	
 	<!-- MVC静态资源 -->
-	<mvc:resources mapping="/css/**" location="/css/" />
-	<mvc:resources mapping="/img/**" location="/img/" />
+	<!-- <mvc:resources mapping="/css/**" location="/css/" /> -->
+	<!-- <mvc:resources mapping="/img/**" location="/img/" /> -->
 	<mvc:resources mapping="/js/**" location="/js/" />
 	<mvc:resources mapping="/lib/**" location="/lib/" />
 	<mvc:resources mapping="/images/**" location="/images/" />
@@ -63,9 +66,10 @@
 
 	<bean id="freeMarkerViewResolver"
 		  class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="viewClass" value="com.chendi.jiyi.freemarker.MyFreeMarkerView" />
 		<property name="cache" value="true" />
 		<property name="prefix" value="" /><!-- 上面已经配了，这里就不用配啦 -->
-		<property name="suffix" value=".ftl" />
+		<property name="suffix" value=".html" />
 		<property name="contentType" value="text/html;charset=UTF-8" />
 		<property name="allowSessionOverride" value="true" />
 		<property name="allowRequestOverride" value="true" />
@@ -74,16 +78,17 @@
 		<property name="exposeSessionAttributes" value="true" />
 		<property name="requestContextAttribute" value="request" />
 	</bean>
-	<!--freemarker-->
+	<!-- freemarker -->
 
 	<!-- 视图解析器 -->
-	<!--<bean id="viewResolver"
+	<!-- <bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
-	</bean>-->
+		<property name="contentType" value="text/html;charset=UTF-8"></property>
+	</bean> -->
 
 	<!-- 上传文件 maxUploadSize上传最大文件 resolveLazily延迟加载 为了推迟文件解析 一遍捕获文件大小异常 org.springframework.web.multipart.commons.CommonsMultipartResolver -->
 	<bean id="multipartResolver"

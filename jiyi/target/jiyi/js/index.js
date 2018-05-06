@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     // 点赞按钮
     $('.item-like').click(function () {
@@ -15,67 +14,8 @@ $(document).ready(function () {
         if ($(this).css("color") !== 'rgb(171, 204, 202)') {
             $('.index-nav-item').css("color", "#101010");
             $(this).css("color", "#abccca");
-        } else  {
+        } else {
             $(this).css("color", "#101010");
-        }
-    });
-
-    // 验证必填字段
-    $('form input').blur(function () {
-        console.log($(this).val().trim() === '');
-        if ($(this).val() === '') {
-            $(this).siblings('.form-require').css("display", "block");
-        } else {
-            $(this).siblings('.form-require').css("display", "none");
-            // if ($(this) === $('#login-password')) {
-            //     if ($(this).val().trim().length < 6 ) {
-            //         $('#form-password').css("display", "block");
-            //     }
-            // }
-        }
-        $(this).val()
-    });
-
-    // 验证密码强度
-    $('#login-password').blur(function () {
-        if ($(this).val().trim().length < 6 && $(this).val().trim() !== '') {
-            $('#form-password').css("display", "block");
-        } else {
-            $('#form-password').css("display", "none");
-        }
-    });
-
-    // 验证重复密码
-    $('#login-repassword').blur(function () {
-        if ($(this).val() !== $('#login-password').val()) {
-            $('#form-repassword').css("display", "block");
-            // $(this).siblings('#form-repassword').css("display", "block");
-        } else {
-            $('#form-repassword').css("display", "none");
-        }
-    });
-
-    // 验证邮箱
-    $('#login-email').blur(function () {
-        var reg = /\w+[@]{1}\w+[.]\w+/;
-        var email = $("#login-email").val();
-        if (!reg.test(email) && email.trim() !== '') {
-            $('#form-email').css("display", "block");
-            // $(this).siblings('#form-repassword').css("display", "block");
-        } else {
-            $('#form-email').css("display", "none");
-        }
-    });
-
-    // 验证手机
-    $('#login-tel').blur(function () {
-        var reg = /^1[34578]\d{9}$/;
-        var tel = $("#login-tel").val();
-        if (!reg.test(tel) && tel.trim() !== '') {
-            $('#form-tel').css("display", "block");
-            // $(this).siblings('#form-repassword').css("display", "block");
-        } else {
-            $('#form-tel').css("display", "none");
         }
     });
 
@@ -85,7 +25,8 @@ $(document).ready(function () {
             $('.message-nav a').css("color", 'rgb(16, 16, 16)');
             $(this).css("background-color", 'rgb(240, 127, 127)');
             $(this).css("color", 'white');
-        } else {}
+        } else {
+        }
     });
 
     $('.user-nav a').click(function () {
@@ -94,7 +35,8 @@ $(document).ready(function () {
             $('.user-nav a').css("color", 'rgb(16, 16, 16)');
             $(this).css("background-color", 'rgb(240, 127, 127)');
             $(this).css("color", 'white');
-        } else {}
+        } else {
+        }
     });
 
     // 搜索页面导航
@@ -102,14 +44,84 @@ $(document).ready(function () {
         if ($(this).css("color") !== 'rgb(240, 127, 127)') {
             $('.skills-cate a').css("color", '#101010');
             $(this).css("color", 'rgb(240, 127, 127)');
-        } else {}
+        } else {
+        }
     });
     $('.skills-filter a').click(function () {
         if ($(this).css("color") !== '#101010') {
             console.log($(this).css("color"));
             $('.skills-filter a').css("color", 'rgb(187, 187, 187)');
             $(this).css("color", '#101010');
-        } else {}
+        } else {
+        }
+    });
+
+
+    $('.user-header-nav a').click(function () {
+        $('.user-header-nav a').css("border-bottom", 'none');
+        $(this).css("border-bottom", '2px solid #f07f7f');
+    });
+
+    $('.require').blur(function () {
+        console.log("leave");
+        if ($(this).val() !== null && $(this).val().trim() !== '') {
+            $(this).css('border-color', '#9dc8ee');
+            $(this).siblings('.skill-edit-input-icon').css('display', 'inline');
+            $(this).siblings('.skill-edit-info').css('display', 'none');
+        } else {
+            $(this).css('border-color', '#f07f7f');
+            $(this).siblings('.skill-edit-input-icon').css('display', 'none');
+            $(this).siblings('.skill-edit-info').css('display', 'block');
+        }
+    });
+
+
+    /*
+        技能详情页面
+            为他实名
+            二级导航
+     */
+
+    // 为他实名
+    $('#post-call-first').click(function () {
+        $(this).css('display', 'none');
+        $('#post-call-second').css('display', 'inline-block');
+    });
+    $('#post-call-second').click(function () {
+        $(this).css('display', 'none');
+        $('#post-call-first').css('display', 'inline-block');
+    });
+    // hover名片
+    // $('.post-heads span').hover(function () {
+    //     if ($(this).siblings('div').length === 0) {
+    //         console.log("yes:" + $(this).siblings('div').length);
+    //         var card =
+    //             '<div class="post-heads-card" style="position: absolute; z-index: 2">' +
+    //             '<img src="../images/stupid.jpg" />' +
+    //             '</div>';
+    //         var $panel = $(card);
+    //         $(this).parent().append($panel);
+    //     }
+    // }, function () {
+    //     console.log("blur");
+    //     $(this).siblings('div').remove();
+    // });
+    if ($('.post-heads img').length > 7) {
+        $('#post-heads-more').css('display', 'inline');
+    }
+
+    // 二级导航
+    $('.post-sub1').click(function () {
+        $(this).css('color', 'white');
+        $(this).css('background-color', '#f07f7f');
+        $('.post-sub2').css('color', 'black');
+        $('.post-sub2').css('background-color', 'transparent');
+    });
+    $('.post-sub2').click(function () {
+        $(this).css('color', 'white');
+        $(this).css('background-color', '#f07f7f');
+        $('.post-sub1').css('color', 'black');
+        $('.post-sub1').css('background-color', 'transparent');
     });
 
 });
