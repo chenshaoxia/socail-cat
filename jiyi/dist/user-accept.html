@@ -27,7 +27,7 @@
                     <span class="header-user-message-bell-count">11</span>
                 </i>
             </a>
-            <a href="user.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
+            <a href="user-skill.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
             <a href="login.html" class="header-user-login">登录</a>
             <a href="signup.html" class="header-user-login">注册</a>
         </div>
@@ -82,17 +82,21 @@
         <a href="#" class="user-content-nav-item" data-accept="0">全部</a>
         <a href="#" class="user-content-nav-item" data-accept="1">进行中</a>
         <a href="#" class="user-content-nav-item" data-accept="2">已完成</a>
-        <a href="#" class="user-content-nav-item" data-accept="3">退订中</a>
-        <a href="#" class="user-content-nav-item" data-accept="4">已退订</a>
+        <a href="#" class="user-content-nav-item" data-accept="3">投诉中</a>
+        <a href="#" class="user-content-nav-item" data-accept="4">已处理</a>
     </div>
     <div class="items">
-        <div class="item-wrapper">
+        <div class="item-wrapper" data-buy="0">
     <a href="detail-post.html">
     <img src="images/carousel-nature1.jpg" class="item-img"/>
     <div class="item-message">
         <div class="item-message-top">
             <span class="item-message-title">技能标题</span>
-            <span class="item-message-like"><i class="fa fa-thumbs-o-up ">&nbsp;</i>11</span>
+            <span class="item-message-like">
+                <!-- 将点赞按钮修改成状态 -->
+                <span class="post-user-item-message-content-logo">进行中</span>
+                <!-- 将点赞按钮修改成状态 -->
+            </span>
         </div>
         <div class="item-message-bottom">
             <span class="item-message-cate">类别</span>
