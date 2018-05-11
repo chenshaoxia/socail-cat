@@ -21,10 +21,17 @@
             <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
         </div>
         <div class="header-user">
-            <a href="message-info.html" class="header-user-message">
-                <i class="fa fa-bell-o header-user-message-bell">
-                    <span class="header-user-message-bell-count">11</span>
+            <a href="message-info.html" class="header-user-message" id="header-user-message">
+                <!-- 修改了 -->
+                <i class="fa fa-bell-o header-user-message-bell" id="header-user-message-bell">
+                    <span class="header-user-message-bell-count"></span>
                 </i>
+                <div class="header-user-message-bell-div" id="header-user-message-bell-div">
+                    <div class="header-user-message-bell-div-triangle"></div>
+                    <a class="header-user-message-bell-div-item" href="message-mess.html">你有 4 条未读私信</a>
+                    <a class="header-user-message-bell-div-item"  href="message-info.html">你有 11 条未读通知</a>
+                </div>
+                <!-- 修改了 -->
             </a>
             <a href="user-skill.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
             <a href="login.html" class="header-user-login">登录</a>
@@ -78,14 +85,14 @@
 
 <div class="user-content">
     <div class="user-content-nav" id="user-reward-nav">
-        <a href="#" class="user-content-nav-item" data-reward="0">全部</a>
-        <a href="#" class="user-content-nav-item" data-reward="1">待审核</a>
-        <a href="#" class="user-content-nav-item" data-reward="2">未过审</a>
-        <a href="#" class="user-content-nav-item" data-reward="3">已过审</a>
-        <a href="#" class="user-content-nav-item" data-reward="7">被接受</a>
-        <a href="#" class="user-content-nav-item" data-reward="4">进行中</a>
-        <a href="#" class="user-content-nav-item" data-reward="5">被投诉</a>
-        <a href="#" class="user-content-nav-item" data-reward="6">已完成</a>
+        <a href="#" class="user-content-nav-item" data-reward="0">全部<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-reward="1">待审核<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-reward="2">未过审<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-reward="3">已过审<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-reward="7">被接受<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-reward="4">进行中<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-reward="5">被投诉<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-reward="6">已完成<span class="user-content-nav-item-icon">0</span></a>
     </div>
     <div class="user-content-items">
         <div class="post-user-item-wrapper">
