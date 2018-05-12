@@ -1,0 +1,79 @@
+<#assign ctx=request.contextPath />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>私信管理</title>
+    <link rel="stylesheet" href="${ctx}/css/all.css">
+    <script src="${ctx}/js/all.js"></script>
+    <script type="text/javascript">
+        var webSocket = new WebSocket("ws://localhost:8080/jiyi/ws");
+        webSocket.onopen = function (event) {
+            console.log("连接成功");
+            console.log(event);
+        };
+        webSocket.onerror = function (event) {
+            console.log("连接失败");
+            console.log(event);
+        };
+        webSocket.onclose = function (event) {
+            console.log("Socket连接断开");
+            console.log(event);
+        };
+        webSocket.onmessage = function (event) {
+            //接受来自服务器的消息
+            //...
+            console.log(event);
+            console.log(event.data);
+        }
+    </script>
+</head>
+<body>
+<#include "../module/common/header.html">
+
+<div class="message-wrapper">
+
+    <div class="message-side">
+        <div class="message-user">
+            <img src="${ctx}/${(Session.user.picture)!}" class="message-user-img"/>
+            <span class="message-user-span">${(Session.user.name)!}</span>
+            <button class="message-user-button">我要发帖</button>
+        </div>
+        <div class="message-nav">
+            <a href="letters.html" class="message-nav-item ">通知</a>
+            <a href="comments.html" class="message-nav-item">评论</a>
+            <a href="personalLetters.html" class="message-nav-item message-nav-special">私信</a>
+            <a href="calls.html" class="message-nav-item">call我的人</a>
+        </div>
+    </div>
+    <!--message-side-->
+
+    <div class="message-content">
+        <span class="message-content-title">我的私信<span class="message-content-title-sub">清空私信</span></span>
+        <div class="message-items">
+				<#if letterList??>
+					<#list letterList as letter>
+					<div class="message-item">
+                        <img class="message-item-img" src="${ctx}/${(letter.plSender.picture)!}"/>
+                        <div class="message-item-content">
+                            <div class="message-item-header ">
+                                <h5 class="message-item-header-title">${(letter.plSender.name)!}</h5>
+                                <span class="message-item-header-date">${(letter.plSendTime)!}</span>
+                                <span class="message-item-header-read">标为已读<i class="fa fa-check"></i></span>
+                            </div>
+                            <p class="message-item-content-p">
+                                ${(letter.plContent)!}
+                            </p>
+                        </div>
+                        <i class="fa fa-remove"></i>
+                    </div>
+                    </#list>
+                <#else>
+					你当前没有新私信、
+                </#if>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

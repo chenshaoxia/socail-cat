@@ -1,0 +1,210 @@
+<#assign ctx=request.contextPath />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>悬赏详情</title>
+    <link rel="stylesheet" href="${ctx}/css/all.css">
+    <script src="${ctx}/js/user_order.js"></script>
+    <script src="${ctx}/js/all.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+		<#if hasSupport??&&hasSupport &gt; 0>
+			$("#reward_support").hide();
+			$("#rewardSupportTips").show();
+        </#if>
+        })
+    </script>
+</head>
+<body>
+<#include "../module/common/header.html">
+
+<div class="index-wrapper">
+    <div class="detail-wrapper">
+
+        <div class="detail-nav">
+            <a href="#" class="detail-nav-item">全部技能</a>>
+            <a href="#" class="detail-nav-item">${(skill.getCategoryEnum())!}</a>>
+            <a href="#" class="detail-nav-item">${(skill.rsTitle)!}</a>
+        </div>
+
+        <!--post-nav-->
+        <div class="detail-header">
+
+            <#if (skill.rsCover)??>
+            <img class="detail-header-img" src="${ctx}/${(skill.rsCover)!}">
+            <#else>
+            <img class="detail-header-img" src="${ctx}/images/background-detail.jpg"/>
+            </#if>
+
+            <div class="detail-header-message">
+                <h3 class="detail-header-message-title">${skill.rsTitle}</h3>
+                <div>
+                    <span id="releaseSupportTips" class="detail-header-message-call">打完了</span>
+                    <span id="release_support" class="detail-header-message-call"
+                          onclick="support('${base}','${skill.rsId}','release_skill')">为Ta打Call</span>
+                </div>
+
+                <div class="detail-header-message-heads" id="supportDiv">
+						<#list praiseList as praise>
+							<a href="#">
+                                <img src="${ctx}/${praise.pUser.picture}"
+                                     class="detail-header-message-heads-item"/>
+                            </a>
+                        </#list>
+                    <span id="detail-header-message-heads-more">...</span>
+                    <span id="post-heads-more"
+                          class="detail-header-message-heads-count">共有${praiseList?size}人为他打call</span>
+                </div>
+
+                <div class="detail-header-btn">
+                    <div class="detail-header-btn-item">
+                        <i class="fa fa-tags"></i>
+                        <span class="post-btn-content">当前接受人数 ${(skill.rsAccepterList?size)!}/5</span>
+                    </div>
+                    <div class="detail-header-btn-item">
+                        <i class="fa fa-hand-lizard-o"></i>
+                        <span class="post-btn-content">单课时长 ${skill.rsClassTime}min</span>
+                    </div>
+                    <div class="detail-header-btn-item">
+                        <i class="fa fa-krw"></i>
+                        <span id="buy" class="post-btn-content">接受悬赏 ${(skill.rsCost)!}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--post-header-->
+
+        <!-- 发布人看 -->
+        <div class="detail-list-wrapper">
+            <div class="detail-list">
+                <div class="detail-list-item-wrapper">
+                    <div class="detail-list-item">
+                        <a href="user-message.html"><img src="images/stupid.jpg" class="detail-list-item-user"/></a>
+                        <input type="radio" name="buyer" class="detail-list-item-radio">
+                        <div class="detail-list-item-fa-wrapper">
+                            <i class="fa fa-circle detail-list-item-fa"></i>
+                            <i class="fa fa-check detail-list-item-fa"></i>
+                        </div>
+                    </div>
+                    <div class="detail-list-item">
+                        <a href="index.html"><img src="images/stupid.jpg" class="detail-list-item-user"/></a>
+                        <input type="radio" name="buyer" class="detail-list-item-radio">
+                        <div class="detail-list-item-fa-wrapper">
+                            <i class="fa fa-circle detail-list-item-fa"></i>
+                            <i class="fa fa-check detail-list-item-fa"></i>
+                        </div>
+                    </div>
+                    <div class="detail-list-item">
+                        <a href="index.html"><img src="images/stupid.jpg" class="detail-list-item-user"/></a>
+                        <input type="radio" name="buyer" class="detail-list-item-radio">
+                        <div class="detail-list-item-fa-wrapper">
+                            <i class="fa fa-circle detail-list-item-fa"></i>
+                            <i class="fa fa-check detail-list-item-fa"></i>
+                        </div>
+                    </div>
+                    <span class="detail-list-message-header">已有4人接受了该悬赏</span>
+                </div>
+                <div class="detail-list-message">
+                    <small class="detail-list-message-description">请选择一个你认为合适人接受悬赏</small>
+                    <button type="submit" class="detail-list-message-button">决定就是你了</button>
+                </div>
+            </div>
+            <!-- 发布人看 -->
+
+            <!-- 非发布人看 -->
+            <!--<div class="detail-list">-->
+            <!--<div class="detail-list-item-wrapper">-->
+            <!--<div class="detail-list-item">-->
+            <!--<a href="user-message.html"><img src="images/stupid.jpg" class="detail-list-item-user"/></a>-->
+            <!--<a href="index.html"><img src="images/stupid.jpg" class="detail-list-item-user"/></a>-->
+            <!--<a href="index.html"><img src="images/stupid.jpg" class="detail-list-item-user"/></a>-->
+            <!--</div>-->
+            <!--<span class="detail-list-message-header">已有4人接受了该悬赏</span>-->
+            <!--</div>-->
+            <!--<div class="detail-list-message">-->
+            <!--</div>-->
+            <!--</div>-->
+            <!-- 非发布人看 -->
+
+        </div>
+
+        <div class="detail-content-wrapper">
+            <div class="detail-content">
+
+                <div class="detail-content-nav">
+                    <a href="detail-post.html">
+                        <span class="detail-content-nav-item"
+                              style="color: white; background-color: #f07f7f">技能简介</span>
+                    </a>
+                    <i class="detail-content-nav-line"></i>
+                    <a href="#"><span class="detail-content-nav-item" id="comment">评论</span></a>
+                </div>
+
+                <div class="detail-content-info">
+                    <span class="detail-content-info-title">悬赏详情</span>
+                    <span class="detail-content-info-detail">${(skill.rsDetails)!}</span>
+                    <span class="detail-content-info-title">悬赏类别</span>
+                    <span class="detail-content-info-detail">${(skill.getCategoryEnum())!}</span>
+                    <span class="detail-content-info-title">悬赏目标</span>
+                    <span class="detail-content-info-detail">${skill.rsTarget}</span>
+                    <span class="detail-content-info-title">教学地点</span>
+                    <span class="detail-content-info-detail">${skill.rsPlace}</span>
+                    <span class="detail-content-info-title">完成期限</span>
+                    <span class="detail-content-info-detail">${skill.rsTerm}</span>
+                    <span class="detail-content-info-title">悬赏图片</span>
+                    <span class="detail-content-info-detail">
+						<#list skill.rsPictureList as picture>
+						<img class="detail-content-info-img" src="${ctx}/${picture.pPath}"/>
+                        </#list>
+                        <#if skill.rsPictureList??>
+                            <#list skill.rsPictureList as picture>
+									<img class="detail-content-info-img" src="${ctx}/${(picture.pPath)!}"/>
+                            </#list>
+                        </#if>
+                    </span>
+                </div>
+            </div>
+
+            <div class="detail-more">
+                <div class="detail-more-inner">
+                    <img src="${ctx}/${(skill.rsPublisher.picture)!}"/>
+                    <span>${skill.rsPublisher.name}</span>
+                    <div class="detail-more-span">
+                        <span>
+                            发帖 ${(skill.rsPublisher.releaseNum+skill.rsPublisher.rewardNum)!}
+                        </span>
+                        <span>
+                            信用 ${(skill.rsPublisher.credit)!}
+                        </span>
+                    </div>
+                    <button class="detail-more-btn" data-toggle="modal" data-target="#messageModal">私信</button>
+                    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="messageModalLabel">写私信</h5>
+                                    <i class="fa fa-close" data-dismiss="modal"></i>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea id="letterContent" class="post-more-modal-text"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button onclick="personalLetter('${base}','${skill.rsPublisher.id}');"
+                                            class="modal-footer-confirm">确定
+                                    </button>
+                                    <button class="modal-footer-consol" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<#include "../module/common/footer.html">
+</body>
+</html>

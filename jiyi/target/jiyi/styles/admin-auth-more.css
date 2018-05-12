@@ -1,0 +1,46 @@
+.admin-table-wrapper {
+  font-size: 12px; }
+  .admin-table-wrapper .admin-table-title {
+    display: block;
+    margin-bottom: 10px;
+    color: #bbbbbb; }
+  .admin-table-wrapper .admin-table-body-wrapper {
+    width: 1070px;
+    padding: 18px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #f27e7d;
+    border-radius: 10px;
+    background-color: white; }
+    .admin-table-wrapper .admin-table-body-wrapper .admin-table-body {
+      width: 1032px; }
+      .admin-table-wrapper .admin-table-body-wrapper .admin-table-body thead tr {
+        border-bottom: 1px solid #bbbbbb; }
+      .admin-table-wrapper .admin-table-body-wrapper .admin-table-body tr {
+        display: block;
+        border-bottom: 1px dotted #f27e7d; }
+        .admin-table-wrapper .admin-table-body-wrapper .admin-table-body tr .admin-table-sub {
+          width: 125px;
+          text-align: right;
+          padding-right: 40px; }
+        .admin-table-wrapper .admin-table-body-wrapper .admin-table-body tr td, .admin-table-wrapper .admin-table-body-wrapper .admin-table-body tr th {
+          padding: 10px; }
+    .admin-table-wrapper .admin-table-body-wrapper .admin-auth-button {
+      display: flex;
+      justify-content: center; }
+      .admin-table-wrapper .admin-table-body-wrapper .admin-auth-button .button {
+        margin: 25px 150px 0; }
+      .admin-table-wrapper .admin-table-body-wrapper .admin-auth-button .admin-auth-button-approve {
+        font-size: 14px;
+        color: white;
+        padding: 2px 8px;
+        border-width: 0;
+        border-radius: 4px;
+        background-color: #ff9800; }
+      .admin-table-wrapper .admin-table-body-wrapper .admin-auth-button .admin-auth-button-fail {
+        font-size: 14px;
+        color: white;
+        padding: 2px 8px;
+        border-width: 0;
+        border-radius: 4px;
+        background-color: #f27e7d; }

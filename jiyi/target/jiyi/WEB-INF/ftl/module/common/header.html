@@ -1,0 +1,41 @@
+<#assign ctx=request.contextPath />
+<script src="${ctx}/js/user_order.js"></script>
+
+<div class="header-container">
+    <header class="header">
+        <img class="header-logo" src="${ctx}/images/logo.png"/>
+
+        <div class="header-nav">
+            <a href="${ctx}/v1/index">主页</a>
+            <a href="${ctx}/v1/skills/releaseSkills">技能贴</a>
+            <a href="${ctx}/v1/skills/rewardSkills">悬赏贴</a>
+        </div>
+
+        <div class="header-search">
+            <input type="search" placeholder="search"/> <i class="fa fa-search"></i>
+        </div>
+
+        <#if Session.user??>
+        <div class="header-uesr">
+            <a href="${ctx}/v1/messages/letters" class="header-user-message">
+                <i class="fa fa-bell-o header-user-message-bell">
+                    <span id="not_read_num" class="header-user-message-bell-count"></span>
+                </i>
+                <input type="hidden" id="ctx" value="${ctx}">
+            </a>
+
+            <div class="header-user">
+                <a href="${ctx}/v1/users/myPages"><img class="header-user-img" src="${ctx}/${Session.user.picture}"/></a>
+            </div>
+            <div class="header-post">
+                <a href="${ctx}/v1/skills/releaseSkills/creation"><i class="fa fa-send fa-3x"></i></a>
+            </div>
+        </div>
+        <#else>
+        <div class="header-uesr">
+            <a href="${ctx}/v1/sessions/creation" class="header-user-login">登录</a>
+            <a href="${ctx}/v1/users/creation" class="header-user-login">注册</a>
+        </div>
+        </#if>
+    </header>
+</div>

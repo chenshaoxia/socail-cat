@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>帖子管理</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+
+    <link rel="stylesheet" href="styles/admin.css">
+    <link rel="stylesheet" href="styles/shared.css">
+    <link rel="stylesheet" href="styles/edit.css">
+
+    <script src="lib/jquery.datetimepicker.full.min.js"></script>
+    <link rel="stylesheet" href="styles/jquery.datetimepicker.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/post-edit.js"></script>
+</head>
+<body>
+<div class="admin-upload-wrapper">
+
+    <div class="admin-bar">
+        <div class="admin-card">
+    <img class="admin-card-img" src="images/stupid.jpg"/>
+    <span class="admin-card-name">Kant</span>
+</div>
+<div class="admin-nav">
+    <a href="admin-upload.html" class="admin-nav-link ">上传许可</a>
+    <a href="admin-auth.html" class="admin-nav-link admin-nav-linked">用户认证</a>
+    <a href="admin-posts.html" class="admin-nav-link">帖子管理</a>
+    <a href="admin-users.html" class="admin-nav-link">用户管理</a>
+    <a href="admin-notices-update.html" class="admin-nav-link">公告管理</a>
+    <a href="admin-appeal.html" class="admin-nav-link">申诉处理</a>
+</div>
+    </div>
+    <!--admin-bar-->
+
+    <div class="admin-content">
+        <div class="admin-header">
+            <div>
+                <span class="admin-header-title" style="bottom: 6px;">帖子管理</span>
+                <a href="admin-posts.html"><span class="admin-upload-link">技能贴</span></a>
+                <a href="admin-posts-reward.html"><span class="admin-upload-link admin-upload-link-hover">悬赏贴</span></a>
+            </div>
+            <div class="admin-search">
+                <input type="search" />
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+        <div class="admin-table-wrapper">
+            <div class="admin-btns">
+                <a href="admin-posts-reward-more.html"><button class="admin-btn tableBlue"><i class="fa fa-search-plus"></i>&nbsp;详情</button></a>
+                <button class="admin-btn tableBrown" data-toggle="modal" data-target="#editModal"><i class="fa fa-minus-circle"></i>&nbsp;修改</button>
+                <!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 670px;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">修改帖子</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="skill-edit-wrapper" style="top: 0;">
+    <form action="#">
+        <div class="skill-edit-input-wrapper">
+            <input type="text" placeholder="标题" class="skill-edit-input min-width require"/>
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请输入悬赏标题</p>
+        </div>
+        <div class="skill-edit-input-wrapper">
+            <select class="skill-edit-select require">
+                <option disabled selected value>悬赏类别</option>
+                <option>类别1</option>
+                <option>类别1</option>
+            </select>
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请选择悬赏类别</p>
+        </div>
+        <!-- ****************** 这里增加了截止时间 ********************* -->
+        <div class="skill-edit-input-wrapper">
+            <input id="datetimepicker" type="text" class="skill-edit-input min-width require" placeholder="截止日期">
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请选择截止日期</p>
+        </div>
+        <!-- ****************** 这里增加了截止时间 ********************* -->
+        <div class="skill-edit-input-wrapper">
+            <input type="number" placeholder="要求地点" class="skill-edit-input mid-width require"/>
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请输入要求地点</p>
+        </div>
+        <div class="skill-edit-input-wrapper">
+            <textarea placeholder="要求目标" class="skill-edit-text lar-width mid-height require"></textarea>
+            <p class="skill-edit-info">*&nbsp;请输入要求目标（“两小时上手蓝调口琴，三小时吹奏《海上钢琴师》”）</p>
+        </div>
+        <div class="skill-edit-input-wrapper">
+            <textarea placeholder="个人技能描述" class="skill-edit-text lar-width lar-height require"></textarea>
+            <p class="skill-edit-info">*&nbsp;请输入个人技能描述（ emmmm 吹自己的牛逼，我会XXX，我能够XXX）</p>
+        </div>
+        <div class="skill-edit-input-wrapper">
+            <input type="number" placeholder="悬赏喵币数" class="skill-edit-input min-width require"/>
+            <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+            <p class="skill-edit-info">*&nbsp;请输入喵币数量</p>
+        </div>
+        <div class="skill-edit-img-wrapper">
+            <p>证明图片</p>
+            <img src="../images/background4.jpg" class="skill-edit-img"/>
+        </div>
+        <div class="skill-edit-img-wrapper">
+            <p>封面图片</p>
+            <img src="../images/background4.jpg" class="skill-edit-img"/>
+        </div>
+    </form>
+</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" style="border:0">关闭</button>
+                <button type="button" class="btn btn-sm btn-primary" style="background-color: #f07f7f;border: 0;">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+                <button class="admin-btn tablePink"><i class="fa fa-check-circle-o"></i>&nbsp;删除</button>
+            </div>
+            <table class="table admin-table" style="background-color: white;">
+                <thead>
+                <tr class="admin-table-tr">
+                    <th></th>
+                    <th>编号</th>
+                    <th>名称</th>
+                    <th>发布人</th>
+                    <th>接单人</th>
+                    <th>时间</th>
+                    <th>类别</th>
+                    <th>期限</th>
+                    <th>喵币</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>1</td>
+                    <td>帖子名称</td>
+                    <td>Kant</td>
+                    <td>Kant</td>
+                    <td>2018/1/1</td>
+                    <td>音乐乐器</td>
+                    <td>2018/1/1</td>
+                    <td>29</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--admin-content-->
+
+</div>
+</body>
+</html>

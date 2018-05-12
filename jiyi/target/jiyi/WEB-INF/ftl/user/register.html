@@ -1,0 +1,112 @@
+<#assign ctx=request.contextPath />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>注册</title>
+<link rel="stylesheet" href="${ctx}/styles/reset.css">
+<link rel="stylesheet" href="${ctx}/styles/font-awesome.min.css">
+<link rel="stylesheet" href="${ctx}/styles/login.css">
+<link rel="stylesheet" href="${ctx}/styles/edit.css">
+<script src="${ctx}/lib/jquery.min.js"></script>
+<script src="${ctx}/js/index.js"></script>
+<script src="${ctx}/js/login.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		<#if result??>
+			alert("${result.msg}");
+		</#if>
+	});
+</script>
+</head>
+<body class="login-background">
+
+	<div class="signup-wrapper">
+
+		<div class="login-wrapper login-wrapper-left">
+			<img class="login-logo" src="${ctx}/images/logo.png" /> <span
+				class="login-title">一起加入我们！</span>
+		</div>
+		<div class="login-wrapper"></div>
+		<div class="login-wrapper">
+			<div class="signup-box">
+				<form action="creation" method="post" enctype="multipart/form-data">
+					<span class="login-sub">注册</span>
+					<div class="login-input">
+						<input type="text" name="id" value="${(user.id)!}" placeholder="学号" class="signup-box-input"/> <span
+							class="form-validate form-require">*&nbsp;学号不能为空</span>
+					</div>
+					<div class="login-input">
+						<input type="text" name="name" value="${(user.name)!}" placeholder="真实姓名" class="signup-box-input"/> <span
+							class="form-validate form-require">*&nbsp;真实姓名不能为空</span>
+					</div>
+					<div class="login-input">
+						<input id="login-password" name="password" type="password"
+							placeholder="密码" class="signup-box-input"/> <span class="form-validate form-require">*&nbsp;密码不能为空</span>
+						<span id="form-password" class="form-validate">*&nbsp;请输入至少六位的密码</span>
+					</div>
+					<div class="login-input">
+						<input id="login-repassword" type="password" placeholder="确认密码" class="signup-box-input"/>
+						<span id="form-repassword" class="form-validate">*&nbsp;两次密码不一致</span>
+					</div>
+					<div class="login-input">
+						<input id="login-email" name="email" value="${(user.email)!}" type="text"
+							placeholder="电子邮箱" class="signup-box-input"/> <span class="form-validate form-require">*&nbsp;邮箱不能为空</span>
+						<span id="form-email" class="form-validate">*&nbsp;邮箱格式不正确</span>
+					</div>
+					<span class="form-info">*&nbsp;完善的用户信息将使您获得80的<a href="#">信用积分</a></span>
+					<div class="login-input">
+						<input id="login-qq" name="qq" value="${(user.qq)!}" type="text" placeholder="QQ号" class="signup-box-input"/> <span
+							id="form-qq" class="form-validate">*&nbsp;请输入有效的QQ号</span>
+					</div>
+					<div class="login-input">
+						<select name="sex">
+							<option value="男" <#if (user.sex)??><#if "男" == (user.sex)!>selected="selected"</#if></#if>>男</option>
+							<option value="女" <#if (user.sex)??><#if "女" == (user.sex)!>selected="selected"</#if></#if>>女</option>
+						</select>
+					</div>
+					<div class="login-input">
+						<select name="institute"> 
+							<#list instituteList as institute>
+								<#if (user.institute) ?? && user.institute=institute.index>
+	               					<option value="${(institute.index)!}" selected="selected" >${(institute.name1)!}</option>
+	                			<#else>
+	                				<option value="${(institute.index)!}">${(institute.name1)!}</soption> 
+	                			</#if>
+								<!-- 这里用name报错 .NonStringException: [... Exception message was already printed; see it above ...] -->
+							</#list>
+						</select>
+					</div>
+					<div class="login-input">
+						<input id="login-specialty" name="specialty" value="${(user.specialty)!}" type="text" placeholder="专业" class="signup-box-input"/> <span
+							id="form-specialty" class="form-validate">*&nbsp;请输入有效的专业名称</span>
+					</div>
+					<span class="form-info">*&nbsp;请通过校园卡、学生证照片进行<a href="#">实名认证</a></span>
+					<div class="inputfile-wrapper">
+	                    <div class="skill-edit-input-wrapper skill-edit-input-pic inputfile-offset">
+	                        <button>选择图片</button><div class="skill-edit-input-content"></div>
+	                        <input type="file" name="picture1" placeholder="上传封面图片" class="skill-edit-input min-width require" multiple/>
+	                        <i class="fa fa-check-circle-o skill-edit-input-icon"></i>
+	                    </div>
+	                </div>
+					<div class="login-checkbox">
+                    	<input type="checkbox" class="signup-box-input"/>我已阅读并同意<a href="#">条款</a>
+               	 	</div>
+					<button type="submit" class="signup-box-button">注册</button>
+					<div class="login-footer">
+	                    <span>记住密码</span>
+	                    <span>忘记密码\<a href="${ctx}/v1/sessions/creation">登录</a></span>
+                	</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<span>关于我们</span> <span>用户协议</span>
+	</div>
+
+</body>
+
+</html>

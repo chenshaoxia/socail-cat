@@ -1,0 +1,50 @@
+ <#assign ctx=request.contextPath />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消息中心</title>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/all.js"></script>
+</head>
+<body>
+<#include "../module/common/header.html">
+
+
+<div class="message-wrapper">
+    <div class="message-side">
+        <div class="message-user">
+            <img src="${ctx}/${(Session.user.picture)!}" class="message-user-img"/>
+            <span class="message-user-span">${(Session.user.name)!}</span>
+            <button class="message-user-button">我要发帖</button>
+        </div>
+        <div class="message-nav">
+            <a href="letters.html" class="message-nav-item ">通知</a>
+            <a href="comments.html" class="message-nav-item message-nav-special">评论</a>
+            <a href="personalLetters.html" class="message-nav-item">私信</a>
+            <a href="calls.html" class="message-nav-item">call我的人</a>
+        </div>
+    </div>
+    <!--message-side-->
+
+    <div class="message-content">
+        <span class="message-content-title">我的评论<span class="message-content-title-sub">清空评论</span></span>
+        <div class="message-items">
+            <div class="message-item">
+                <img class="message-item-img" src="${ctx}/images/stupid.jpg"/>
+                <div class="message-comment-content">
+                    <span class="message-comment-header">Kant</span>
+                    <span class="message-item-header-date">2018/1/1
+                        <span class="message-item-header-read">标为已读<i class="fa fa-check"></i></span>
+                    </span>
+                    <p>这里是评论的内容</p>
+                </div>
+                <img class="message-comment-img" src="${ctx}/images/background-index.jpg"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<#include "../module/common/footer.html">
+</body>
+</html>
