@@ -21,12 +21,19 @@
             <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
         </div>
         <div class="header-user">
-            <a href="message-info.html" class="header-user-message">
-                <i class="fa fa-bell-o header-user-message-bell">
-                    <span class="header-user-message-bell-count">11</span>
+            <a href="message-info.html" class="header-user-message" id="header-user-message">
+                <!-- 修改了 -->
+                <i class="fa fa-bell-o header-user-message-bell" id="header-user-message-bell">
+                    <span class="header-user-message-bell-count"></span>
                 </i>
+                <div class="header-user-message-bell-div" id="header-user-message-bell-div">
+                    <div class="header-user-message-bell-div-triangle"></div>
+                    <a class="header-user-message-bell-div-item" href="message-mess.html">你有 4 条未读私信</a>
+                    <a class="header-user-message-bell-div-item"  href="message-info.html">你有 11 条未读通知</a>
+                </div>
+                <!-- 修改了 -->
             </a>
-            <a href="user.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
+            <a href="user-skill.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
             <a href="login.html" class="header-user-login">登录</a>
             <a href="signup.html" class="header-user-login">注册</a>
         </div>
@@ -44,18 +51,30 @@
             <a href="#" class="detail-nav-item">全部技能</a>>
             <a href="#" class="detail-nav-item">类别</a>>
             <a href="#" class="detail-nav-item">技能标题</a>
+
+            <div class="bshare-common">
+                <div class="bshare-custom">
+                    <a title="分享到QQ空间" class="bshare-qzone"></a>
+                    <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+                    <a title="分享到人人网" class="bshare-renren"></a>
+                    <a title="分享到腾讯微博" class="bshare-qqmb"></a>
+                    <a title="分享到网易微博" class="bshare-neteasemb"></a>
+                    <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+                    <span class="BSHARE_COUNT bshare-share-count">0</span>
+                </div>
+                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+            </div>
         </div>
 
         <div class="detail-header">
             <img class="detail-header-img" src="images/background-detail.jpg"/>
             <div class="detail-header-message">
                 <h3 class="detail-header-message-title">技能标题</h3>
-                <!-- 改动 -->
                 <div class="detail-header-message-call-wrapper">
                     <span class="detail-header-message-call">为Ta打Call</span>
                     <span class="detail-header-message-call">打完了</span>
                 </div>
-                <!-- 改动 -->
                 <div class="detail-header-message-heads">
                     <a href="#"><img src="images/stupid.jpg" class="detail-header-message-heads-item"/></a>
                     <a href="#"><img src="images/stupid.jpg" class="detail-header-message-heads-item"/></a>

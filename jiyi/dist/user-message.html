@@ -23,10 +23,17 @@
             <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
         </div>
         <div class="header-user">
-            <a href="message-info.html" class="header-user-message">
-                <i class="fa fa-bell-o header-user-message-bell">
-                    <span class="header-user-message-bell-count">11</span>
+            <a href="message-info.html" class="header-user-message" id="header-user-message">
+                <!-- 修改了 -->
+                <i class="fa fa-bell-o header-user-message-bell" id="header-user-message-bell">
+                    <span class="header-user-message-bell-count"></span>
                 </i>
+                <div class="header-user-message-bell-div" id="header-user-message-bell-div">
+                    <div class="header-user-message-bell-div-triangle"></div>
+                    <a class="header-user-message-bell-div-item" href="message-mess.html">你有 4 条未读私信</a>
+                    <a class="header-user-message-bell-div-item"  href="message-info.html">你有 11 条未读通知</a>
+                </div>
+                <!-- 修改了 -->
             </a>
             <a href="user-skill.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
             <a href="login.html" class="header-user-login">登录</a>

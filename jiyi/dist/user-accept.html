@@ -22,10 +22,17 @@
             <i class="fa fa-search header-search-icon" id="header-search-icon"></i>
         </div>
         <div class="header-user">
-            <a href="message-info.html" class="header-user-message">
-                <i class="fa fa-bell-o header-user-message-bell">
-                    <span class="header-user-message-bell-count">11</span>
+            <a href="message-info.html" class="header-user-message" id="header-user-message">
+                <!-- 修改了 -->
+                <i class="fa fa-bell-o header-user-message-bell" id="header-user-message-bell">
+                    <span class="header-user-message-bell-count"></span>
                 </i>
+                <div class="header-user-message-bell-div" id="header-user-message-bell-div">
+                    <div class="header-user-message-bell-div-triangle"></div>
+                    <a class="header-user-message-bell-div-item" href="message-mess.html">你有 4 条未读私信</a>
+                    <a class="header-user-message-bell-div-item"  href="message-info.html">你有 11 条未读通知</a>
+                </div>
+                <!-- 修改了 -->
             </a>
             <a href="user-skill.html"><img class="header-user-img" src="../images/stupid.jpg" /></a>
             <a href="login.html" class="header-user-login">登录</a>
@@ -79,11 +86,11 @@
 <p class="user-study-confirm">“结束学习” 和 “完成悬赏” 后请及时确认哦！</p>
 <div class="user-content">
     <div class="user-content-nav-special" id="user-accept-nav">
-        <a href="#" class="user-content-nav-item" data-accept="0">全部</a>
-        <a href="#" class="user-content-nav-item" data-accept="1">进行中</a>
-        <a href="#" class="user-content-nav-item" data-accept="2">已完成</a>
-        <a href="#" class="user-content-nav-item" data-accept="3">投诉中</a>
-        <a href="#" class="user-content-nav-item" data-accept="4">已处理</a>
+        <a href="#" class="user-content-nav-item" data-accept="0">全部<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-accept="1">进行中<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-accept="2">已完成<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-accept="3">投诉中<span class="user-content-nav-item-icon">0</span></a>
+        <a href="#" class="user-content-nav-item" data-accept="4">已处理<span class="user-content-nav-item-icon">0</span></a>
     </div>
     <div class="items">
         <div class="item-wrapper" data-buy="0">
@@ -124,9 +131,59 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div id="star-input" data-score="4"></div>
-                        <input id="star-target" name="star">
-                        <textarea id="star-text" class="form-control" placeholder="这里是评价的内容"></textarea>
+                        <div class="star-input" data-score="4"></div>
+                        <textarea class="star-text form-control" placeholder="这里是评价的内容"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" style="background-color: #f07f7f; border: 0;">确认</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+        <div class="item-wrapper" data-buy="0">
+    <a href="detail-post.html">
+    <img src="images/carousel-nature1.jpg" class="item-img"/>
+    <div class="item-message">
+        <div class="item-message-top">
+            <span class="item-message-title">技能标题</span>
+            <span class="item-message-like">
+                <!-- 将点赞按钮修改成状态 -->
+                <span class="post-user-item-message-content-logo">进行中</span>
+                <!-- 将点赞按钮修改成状态 -->
+            </span>
+        </div>
+        <div class="item-message-bottom">
+            <span class="item-message-cate">类别</span>
+        </div>
+    </div>
+    <div class="item-footer">
+        <div class="item-footer-left">
+            <img class="item-footer-img" src="images/stupid.jpg"/>
+            <span class="item-footer-name">Kant</span>
+        </div>
+        <span class="item-footer-time">六小时前</span>
+    </div>
+    </a>
+    <div class="item-operate">
+        <div class="item-operate-item" data-toggle="modal" data-target="#studyConfirmModal">确认完成</div>
+        <div class="item-operate-item">退订</div>
+
+        <div class="modal" id="studyConfirmModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">评价</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="star-input" data-score="4"></div>
+                        <textarea class="star-text form-control" placeholder="这里是评价的内容"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" style="background-color: #f07f7f; border: 0;">确认</button>
